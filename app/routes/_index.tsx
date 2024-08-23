@@ -6,13 +6,14 @@ import { generateObject, generateText } from 'ai';
 import { openai } from '@ai-sdk/openai';
 import { z } from 'zod';
 import ItineraryForm from '~/components/ItineraryForm';
-import { generateDateCombinations } from '~/lib/helper-functions';
+import { generateDateCombinations, formatDate } from '~/lib/helper-functions';
 import { useActionData } from '@remix-run/react';
+import fs from 'fs/promises';
+import { getRoundTripFlights, getMultiCityFlights } from '~/lib/getFlights';
+import { FlightResults } from '~/components/FlightResults';
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
-  console.log('formData', formData);
-
   const homeTown = formData.get('homeTown') as string;
   const entryCity = formData.get('entryCity') as string;
   const departureCity = formData.get('departureCity') as string;
@@ -60,6 +61,47 @@ export const action: ActionFunction = async ({ request }) => {
 
   console.log('cityCodes', cityCodes);
 
+  // Call getRoundTripFlights function
+  const roundTripFlights = await getRoundTripFlights(
+    cityCodes.homeTownIataCodes,
+    cityCodes.entryCityIataCodes,
+    dateCombinations,
+    numAdults,
+    children,
+    infants
+  );
+
+  // Add multi-city flight search
+  const multiCityFlights = await getMultiCityFlights(
+    cityCodes.homeTownIataCodes,
+    cityCodes.entryCityIataCodes,
+    cityCodes.departureCityIataCodes,
+    dateCombinations,
+    numAdults,
+    children,
+    infants
+  );
+
+  const flightResults = {
+    dateCombinations: dateCombinations.map(([dep, ret]) => [
+      formatDate(dep),
+      formatDate(ret),
+    ]),
+    roundTripFlights,
+    multiCityFlights,
+  };
+
+  // Save results to a file
+  try {
+    const logContent = JSON.stringify(flightResults, null, 2);
+    await fs.writeFile('flight_search_results.json', logContent);
+    console.log(
+      'Flight search results have been saved to flight_search_results.json'
+    );
+  } catch (error) {
+    console.error('Error writing flight search results to file:', error);
+  }
+
   return json({
     homeTown,
     entryCity,
@@ -74,6 +116,7 @@ export const action: ActionFunction = async ({ request }) => {
     endDate,
     dateCombinations,
     cityCodes,
+    flightResults,
   });
 };
 
@@ -91,6 +134,10 @@ export default function Index() {
   return (
     <div className="font-sans p-4">
       <ItineraryForm />
+      <FlightResults
+        roundTripFlights={data?.flightResults?.roundTripFlights}
+        multiCityFlights={data?.flightResults?.multiCityFlights}
+      />
     </div>
   );
 }
