@@ -20,7 +20,7 @@ const ItineraryForm: React.FC = () => {
     <>
       <Form method="post" className="shadow-xl card bg-base-200">
         <div className="card-body">
-          <h2 className="mb-6 card-title">Create Your Itinerary</h2>
+          <h2 className="mb-6 card-title">Create Your Itinerary!!</h2>
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             <div className="form-control">
