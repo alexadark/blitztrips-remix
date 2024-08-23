@@ -30,9 +30,26 @@ interface FlightOption {
   return_google_flights_url?: string;
 }
 
+interface MultiCityFlight {
+  flights: FlightDetails[];
+  totalPrice?: number;
+  totalDuration?: number;
+  google_flights_url?: string;
+}
+
+interface MultiCityFlightOption {
+  flights: MultiCityFlight[];
+  totalPrice?: number;
+  totalDuration?: number;
+}
+
 interface FlightResultsProps {
-  roundTripFlights: {
+  roundTripFlights?: {
     results: FlightOption[];
+    typicalPriceRange: [number, number] | null;
+  };
+  multiCityFlights?: {
+    results: MultiCityFlightOption[];
     typicalPriceRange: [number, number] | null;
   };
 }
@@ -58,8 +75,8 @@ const formatDateTime = (dateTimeString?: string) => {
 };
 
 const FlightSegment: React.FC<{
-  flight?: Flight;
-  type: 'Outbound' | 'Return';
+  flight?: Flight | MultiCityFlight;
+  type: string;
 }> = ({ flight, type }) => {
   if (!flight || !flight.flights || flight.flights.length === 0) {
     return <div>{type} flight information not available</div>;
@@ -108,11 +125,11 @@ const FlightSegment: React.FC<{
 
 export const FlightResults: React.FC<FlightResultsProps> = ({
   roundTripFlights,
+  multiCityFlights,
 }) => {
   if (
-    !roundTripFlights ||
-    !roundTripFlights.results ||
-    roundTripFlights.results.length === 0
+    (!roundTripFlights || roundTripFlights.results.length === 0) &&
+    (!multiCityFlights || multiCityFlights.results.length === 0)
   ) {
     return <div>No flight results available.</div>;
   }
@@ -120,15 +137,19 @@ export const FlightResults: React.FC<FlightResultsProps> = ({
   return (
     <div className="max-w-4xl mx-auto flight-results">
       <h2 className="mb-4 text-2xl font-bold">Flight Search Results</h2>
-      {roundTripFlights.typicalPriceRange && (
+      {(roundTripFlights?.typicalPriceRange ||
+        multiCityFlights?.typicalPriceRange) && (
         <p className="mb-6 text-lg">
-          Typical Price Range: ${roundTripFlights.typicalPriceRange[0]} - $
-          {roundTripFlights.typicalPriceRange[1]}
+          Typical Price Range: $
+          {roundTripFlights?.typicalPriceRange?.[0] ||
+            multiCityFlights?.typicalPriceRange?.[0]}{' '}
+          - $
+          {roundTripFlights?.typicalPriceRange?.[1] ||
+            multiCityFlights?.typicalPriceRange?.[1]}
         </p>
       )}
-      {roundTripFlights.results.map((flightOption, index) => {
-        console.log('Flight Option:', flightOption);
-        return (
+      {roundTripFlights &&
+        roundTripFlights.results.map((flightOption, index) => (
           <div
             key={index}
             className="p-6 mb-8 bg-white border border-gray-200 rounded-lg shadow-md"
@@ -167,8 +188,42 @@ export const FlightResults: React.FC<FlightResultsProps> = ({
 
             <FlightSegment flight={flightOption.return} type="Return" />
           </div>
-        );
-      })}
+        ))}
+      {multiCityFlights &&
+        multiCityFlights.results.map((flightOption, index) => (
+          <div
+            key={index}
+            className="p-6 mb-8 bg-white border border-gray-200 rounded-lg shadow-md"
+          >
+            <h3 className="mb-4 text-xl font-semibold">
+              Multi-City Flight Option {index + 1}
+            </h3>
+            <p className="mb-2 text-lg font-bold">
+              Total Price: ${flightOption.totalPrice?.toFixed(2) || 'N/A'}
+            </p>
+            <p className="mb-4">
+              Total Duration: {formatDuration(flightOption.totalDuration)}
+            </p>
+            {flightOption.flights.map((flight, flightIndex) => (
+              <React.Fragment key={flightIndex}>
+                <p className="mb-4">
+                  <a
+                    href={flight.google_flights_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-bold text-blue-500"
+                  >
+                    Flight {flightIndex + 1} URL
+                  </a>
+                </p>
+                <FlightSegment
+                  flight={flight}
+                  type={`Flight ${flightIndex + 1}`}
+                />
+              </React.Fragment>
+            ))}
+          </div>
+        ))}
     </div>
   );
 };

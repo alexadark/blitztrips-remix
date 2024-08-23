@@ -2,8 +2,16 @@ import { getJson } from 'serpapi';
 import fs from 'fs/promises';
 import path from 'path';
 import { formatDate } from './helper-functions';
+import { generateId } from 'ai';
 
 const API_KEY = process.env.SERPAPI_API_KEY;
+
+const commonParams = {
+  api_key: API_KEY,
+  engine: 'google_flights',
+  hl: 'en',
+  currency: 'USD',
+};
 
 export async function getRoundTripFlights(
   homeTownIataCodes: string[],
@@ -22,23 +30,21 @@ export async function getRoundTripFlights(
 
   const departureIds = homeTownIataCodes.join(',');
   const arrivalIds = entryCityIataCodes.join(',');
+  const roundTripParams = {
+    ...commonParams,
+    departure_id: departureIds,
+    arrival_id: arrivalIds,
+
+    type: '1', // Round trip
+  };
 
   for (const [departureDate, returnDate] of dateCombinations) {
     try {
       // Fetch outbound flights
       const outboundResults = await getJson({
-        api_key: API_KEY,
-        engine: 'google_flights',
-        departure_id: departureIds,
-        arrival_id: arrivalIds,
+        ...roundTripParams,
         outbound_date: formatDate(departureDate),
         return_date: formatDate(returnDate),
-        type: '1', // Round trip
-        adults: adults.toString(),
-        children: children.toString(),
-        infants_in_seat: infants.toString(),
-        hl: 'en',
-        currency: 'USD',
       });
 
       // Save outbound results to a JSON file
@@ -63,29 +69,19 @@ export async function getRoundTripFlights(
         outboundResults.best_flights.length > 0
       ) {
         for (const outboundFlight of outboundResults.best_flights) {
-          // Fetch return flights using the departure_token
+          // Fetch return flights for each outbound best flight using the departure_token
           const returnResults = await getJson({
-            api_key: API_KEY,
-            engine: 'google_flights',
-            departure_id: departureIds, // Swap departure and arrival for return flight
-            arrival_id: arrivalIds,
-            outbound_date: formatDate(departureDate), // Use return date as outbound
-            return_date: formatDate(returnDate), // Use departure date as return
-            type: '1', // Round trip
-            adults: adults.toString(),
-            children: children.toString(),
-            infants_in_seat: infants.toString(),
-            hl: 'en',
-            currency: 'USD',
+            ...roundTripParams,
+            outbound_date: formatDate(departureDate),
+            return_date: formatDate(returnDate),
             departure_token: outboundFlight.departure_token,
           });
 
           // Save return results to a JSON file
           await saveToJsonFile(
             returnResults,
-            `return_results_${formatDate(returnDate)}_${
-              outboundFlight.departure_token
-            }.json`
+
+            `return_results_${formatDate(returnDate)}_${generateId()}.json`
           );
 
           const returnGoogleFlightsUrl =
@@ -99,7 +95,7 @@ export async function getRoundTripFlights(
               results.push({
                 outbound: outboundFlight,
                 return: returnFlight,
-                totalPrice: returnFlight.price, // Use the price from the return flight
+                totalPrice: returnFlight.price,
                 totalDuration:
                   outboundFlight.total_duration + returnFlight.total_duration,
                 outbound_google_flights_url: outboundGoogleFlightsUrl,
@@ -167,11 +163,12 @@ export async function getMultiCityFlights(
         api_key: API_KEY,
         engine: 'google_flights',
         hl: 'en',
-        currency: 'USD',
-        type: '3', // Multi-city
         adults: adults,
         children: children,
         infants_in_seat: infants,
+        currency: 'USD',
+        type: '3', // Multi-city
+
         multi_city_json: JSON.stringify(multiCityJson),
       };
 

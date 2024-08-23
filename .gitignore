@@ -4,3 +4,4 @@ node_modules
 /build
 .env
 flight_data
+flight_search_results.json
