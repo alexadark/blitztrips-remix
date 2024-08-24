@@ -10,7 +10,7 @@ import { generateDateCombinations, formatDate } from '~/lib/helper-functions';
 import { useActionData } from '@remix-run/react';
 import fs from 'fs/promises';
 import { getRoundTripFlights, getMultiCityFlights } from '~/lib/getFlights';
-import { FlightResults } from '~/components/FlightResults';
+// import { FlightResults } from '~/components/FlightResults';
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
@@ -134,10 +134,18 @@ export default function Index() {
   return (
     <div className="font-sans p-4">
       <ItineraryForm />
-      <FlightResults
+      {/* <FlightResults
         roundTripFlights={data?.flightResults?.roundTripFlights}
         multiCityFlights={data?.flightResults?.multiCityFlights}
-      />
+      /> */}
+      {data?.flightResults && (
+        <div className="mt-8">
+          <h2 className="text-2xl font-bold mb-4">Flight Results</h2>
+          <pre className="bg-gray-100">
+            {JSON.stringify(data.flightResults, null, 2)}
+          </pre>
+        </div>
+      )}
     </div>
   );
 }

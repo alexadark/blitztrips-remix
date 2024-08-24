@@ -30,22 +30,22 @@ export async function getRoundTripFlights(
 
   const departureIds = homeTownIataCodes.join(',');
   const arrivalIds = entryCityIataCodes.join(',');
-  const roundTripParams = {
-    ...commonParams,
-    departure_id: departureIds,
-    arrival_id: arrivalIds,
-
-    type: '1', // Round trip
-  };
 
   for (const [departureDate, returnDate] of dateCombinations) {
+    const roundTripParams = {
+      ...commonParams,
+      adults: adults,
+      children: children,
+      infants_in_seat: infants,
+      departure_id: departureIds,
+      arrival_id: arrivalIds,
+      type: '1', // Round trip
+      outbound_date: formatDate(departureDate),
+      return_date: formatDate(returnDate),
+    };
     try {
       // Fetch outbound flights
-      const outboundResults = await getJson({
-        ...roundTripParams,
-        outbound_date: formatDate(departureDate),
-        return_date: formatDate(returnDate),
-      });
+      const outboundResults = await getJson(roundTripParams);
 
       // Save outbound results to a JSON file
       await saveToJsonFile(
@@ -72,8 +72,6 @@ export async function getRoundTripFlights(
           // Fetch return flights for each outbound best flight using the departure_token
           const returnResults = await getJson({
             ...roundTripParams,
-            outbound_date: formatDate(departureDate),
-            return_date: formatDate(returnDate),
             departure_token: outboundFlight.departure_token,
           });
 
@@ -160,15 +158,11 @@ export async function getMultiCityFlights(
     try {
       // First leg
       const firstLegParams = {
-        api_key: API_KEY,
-        engine: 'google_flights',
-        hl: 'en',
+        ...commonParams,
         adults: adults,
         children: children,
         infants_in_seat: infants,
-        currency: 'USD',
         type: '3', // Multi-city
-
         multi_city_json: JSON.stringify(multiCityJson),
       };
 

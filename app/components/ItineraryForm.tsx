@@ -124,7 +124,7 @@ const ItineraryForm: React.FC = () => {
                 id="numAdults"
                 name="numAdults"
                 min={1}
-                defaultValue={2}
+                defaultValue={1}
                 required
                 className="input input-bordered"
               />
