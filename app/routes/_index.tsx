@@ -72,15 +72,15 @@ export const action: ActionFunction = async ({ request }) => {
   );
 
   // Add multi-city flight search
-  const multiCityFlights = await getMultiCityFlights(
-    cityCodes.homeTownIataCodes,
-    cityCodes.entryCityIataCodes,
-    cityCodes.departureCityIataCodes,
-    dateCombinations,
-    numAdults,
-    children,
-    infants
-  );
+  // const multiCityFlights = await getMultiCityFlights(
+  //   cityCodes.homeTownIataCodes,
+  //   cityCodes.entryCityIataCodes,
+  //   cityCodes.departureCityIataCodes,
+  //   dateCombinations,
+  //   numAdults,
+  //   children,
+  //   infants
+  // );
 
   const flightResults = {
     dateCombinations: dateCombinations.map(([dep, ret]) => [
@@ -88,7 +88,7 @@ export const action: ActionFunction = async ({ request }) => {
       formatDate(ret),
     ]),
     roundTripFlights,
-    multiCityFlights,
+    // multiCityFlights,
   };
 
   // Save results to a file

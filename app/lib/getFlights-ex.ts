@@ -26,11 +26,11 @@ export async function getRoundTripFlights(
   }
 
   const results = [];
+  let overallTypicalPriceRange: [number, number] | null = null;
 
   const departureIds = homeTownIataCodes.join(',');
   const arrivalIds = entryCityIataCodes.join(',');
 
-  //Loop around each date combination
   for (const [departureDate, returnDate] of dateCombinations) {
     const roundTripParams = {
       ...commonParams,
@@ -59,9 +59,13 @@ export async function getRoundTripFlights(
       // Store the typical price range if available
       const typicalPriceRange =
         outboundResults.price_insights?.typical_price_range || null;
-
-      // Filter and sort outbound flights
-      const outboundFlights = outboundResults.best_flights;
+      if (
+        typicalPriceRange &&
+        (!overallTypicalPriceRange ||
+          typicalPriceRange[0] < overallTypicalPriceRange[0])
+      ) {
+        overallTypicalPriceRange = typicalPriceRange;
+      }
 
       const dateCombinationResults = {
         departureDate,
@@ -71,12 +75,17 @@ export async function getRoundTripFlights(
         outboundFlights: [],
       };
 
-      // const filteredOutboundFlights = allOutboundFlights
-      //   .filter((flight) => !flight.layovers || flight.layovers.length === 0)
-      //   .sort((a, b) => a.price - b.price)
-      //   .slice(0, 5);
+      // Filter and sort outbound flights
+      const allOutboundFlights = [
+        ...(outboundResults.best_flights || []),
+        ...(outboundResults.other_flights || []),
+      ];
+      const filteredOutboundFlights = allOutboundFlights
+        .filter((flight) => !flight.layovers || flight.layovers.length === 0)
+        .sort((a, b) => a.price - b.price)
+        .slice(0, 5);
 
-      for (const outboundFlight of outboundFlights) {
+      for (const outboundFlight of filteredOutboundFlights) {
         // Fetch return flights for each outbound flight using the departure_token
         const returnResults = await getJson({
           ...roundTripParams,
@@ -98,19 +107,24 @@ export async function getRoundTripFlights(
           ...(returnResults.other_flights || []),
         ];
         const filteredReturnFlights = allReturnFlights
-          .filter((flight) => flight.price <= typicalPriceRange[1])
+          .filter(
+            (flight) =>
+              flight.price >= typicalPriceRange[0] &&
+              flight.price <= typicalPriceRange[1] &&
+              (!flight.layovers || flight.layovers.length === 0)
+          )
           .sort((a, b) => a.price - b.price)
           .slice(0, 5);
-        //Push the outbound flight and his return flights to the date combination results, the outboundFlights will be an array of objects with the outbound flight and his return flights
+
         dateCombinationResults.outboundFlights.push({
-          outboundFlight,
-          outbound_google_flights_url: outboundGoogleFlightsUrl,
-          return_google_flights_url: returnGoogleFlightsUrl,
-          returnFlights: allReturnFlights.map((returnFlight) => ({
-            returnFlight,
+          outbound: outboundFlight,
+          returnFlights: filteredReturnFlights.map((returnFlight) => ({
+            return: returnFlight,
             totalPrice: returnFlight.price,
             totalDuration:
               outboundFlight.total_duration + returnFlight.total_duration,
+            outbound_google_flights_url: outboundGoogleFlightsUrl,
+            return_google_flights_url: returnGoogleFlightsUrl,
           })),
         });
       }
@@ -127,11 +141,14 @@ export async function getRoundTripFlights(
   const filePath = path.join(process.cwd(), 'flight_data', fileName);
 
   await fs.mkdir(path.dirname(filePath), { recursive: true });
-  await fs.writeFile(filePath, JSON.stringify({ results }, null, 2));
+  await fs.writeFile(
+    filePath,
+    JSON.stringify({ results, overallTypicalPriceRange }, null, 2)
+  );
 
   console.log(`Saved final round-trip results to ${filePath}`);
 
-  return { results };
+  return { results, overallTypicalPriceRange };
 }
 
 export async function getMultiCityFlights(
