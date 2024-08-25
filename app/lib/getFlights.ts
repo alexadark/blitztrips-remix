@@ -1,8 +1,7 @@
 import { getJson } from 'serpapi';
 import fs from 'fs/promises';
 import path from 'path';
-import { formatDate } from './helper-functions';
-import { generateId } from 'ai';
+import { format } from 'date-fns';
 
 const API_KEY = process.env.SERPAPI_API_KEY;
 
@@ -32,6 +31,8 @@ export async function getRoundTripFlights(
 
   //Loop around each date combination
   for (const [departureDate, returnDate] of dateCombinations) {
+    const outbound_date = format(departureDate, 'yyyy-MM-dd');
+    const return_date = format(returnDate, 'yyyy-MM-dd');
     const roundTripParams = {
       ...commonParams,
       adults: adults,
@@ -40,18 +41,12 @@ export async function getRoundTripFlights(
       departure_id: departureIds,
       arrival_id: arrivalIds,
       type: '1', // Round trip
-      outbound_date: formatDate(departureDate),
-      return_date: formatDate(returnDate),
+      outbound_date,
+      return_date,
     };
     try {
       // Fetch outbound flights
       const outboundResults = await getJson(roundTripParams);
-
-      // Save outbound results to a JSON file
-      await saveToJsonFile(
-        outboundResults,
-        `outbound_results_${formatDate(departureDate)}.json`
-      );
 
       const outboundGoogleFlightsUrl =
         outboundResults.search_metadata.google_flights_url;
@@ -64,17 +59,13 @@ export async function getRoundTripFlights(
       const outboundFlights = outboundResults.best_flights;
 
       const dateCombinationResults = {
-        departureDate,
-        returnDate,
+        roundTrip: true,
+        outbound_date,
+        return_date,
         typicalPriceRange,
         outboundGoogleFlightsUrl,
         outboundFlights: [],
       };
-
-      // const filteredOutboundFlights = allOutboundFlights
-      //   .filter((flight) => !flight.layovers || flight.layovers.length === 0)
-      //   .sort((a, b) => a.price - b.price)
-      //   .slice(0, 5);
 
       for (const outboundFlight of outboundFlights) {
         // Fetch return flights for each outbound flight using the departure_token
@@ -82,12 +73,6 @@ export async function getRoundTripFlights(
           ...roundTripParams,
           departure_token: outboundFlight.departure_token,
         });
-
-        // Save return results to a JSON file
-        await saveToJsonFile(
-          returnResults,
-          `return_results_${formatDate(returnDate)}_${generateId()}.json`
-        );
 
         const returnGoogleFlightsUrl =
           returnResults.search_metadata.google_flights_url;
@@ -97,10 +82,7 @@ export async function getRoundTripFlights(
           ...(returnResults.best_flights || []),
           ...(returnResults.other_flights || []),
         ];
-        const filteredReturnFlights = allReturnFlights
-          .filter((flight) => flight.price <= typicalPriceRange[1])
-          .sort((a, b) => a.price - b.price)
-          .slice(0, 5);
+
         //Push the outbound flight and his return flights to the date combination results, the outboundFlights will be an array of objects with the outbound flight and his return flights
         dateCombinationResults.outboundFlights.push({
           outboundFlight,
@@ -148,117 +130,109 @@ export async function getMultiCityFlights(
   }
 
   const results = [];
-  let typicalPriceRange: [number, number] | null = null;
 
   const departureIds = homeTownIataCodes.join(',');
   const arrivalIds = entryCityIataCodes.join(',');
   const returnDepartureIds = departureCityIataCodes.join(',');
 
   for (const [departureDate, returnDate] of dateCombinations) {
+    const outbound_date = format(departureDate, 'yyyy-MM-dd');
+    const return_date = format(returnDate, 'yyyy-MM-dd');
     const multiCityJson = [
       {
         departure_id: departureIds,
         arrival_id: arrivalIds,
-        date: formatDate(departureDate),
+        date: outbound_date,
       },
       {
         departure_id: returnDepartureIds,
         arrival_id: departureIds,
-        date: formatDate(returnDate),
+        date: return_date,
       },
     ];
+    // First leg
+    const firstLegParams = {
+      ...commonParams,
+      adults,
+      children,
+      infants_in_seat: infants,
+      type: '3', // Multi-city
+      multi_city_json: JSON.stringify(multiCityJson),
+    };
 
     try {
-      // First leg
-      const firstLegParams = {
-        ...commonParams,
-        adults: adults,
-        children: children,
-        infants_in_seat: infants,
-        type: '3', // Multi-city
-        multi_city_json: JSON.stringify(multiCityJson),
-      };
+      const outboundResults = await getJson(firstLegParams);
 
-      const firstLegResults = await getJson(firstLegParams);
-
-      // Store the typical price range if available
-      typicalPriceRange =
-        firstLegResults.price_insights?.typical_price_range || null;
+      const outboundGoogleFlightsUrl =
+        outboundResults.search_metadata.google_flights_url;
 
       await saveToJsonFile(
-        firstLegResults,
-        `raw_multi_city_results_first_leg_${formatDate(
-          departureDate
-        )}_${formatDate(returnDate)}.json`
+        outboundResults,
+        `raw_multi_city_results_first_leg_${outbound_date}_${return_date}.json`
       );
 
-      const dateCombinationResults = [];
+      const outboundFlights = outboundResults.best_flights;
 
-      for (const firstLegFlight of firstLegResults.best_flights) {
-        // Second leg
-        const secondLegParams = {
+      const dateCombinationResults = {
+        roundTrip: false,
+        outbound_date,
+        return_date,
+        outboundGoogleFlightsUrl,
+        outboundFlights: [],
+      };
+
+      for (const outboundFlight of outboundFlights) {
+        // Second leg = Fetch return flights for each outbound flight using the departure_token
+        const returnFlights = await getJson({
           ...firstLegParams,
-          departure_token: firstLegFlight.departure_token,
-        };
-
-        const secondLegResults = await getJson(secondLegParams);
+          departure_token: outboundFlight.departure_token,
+        });
 
         // Save second leg raw results
         await saveToJsonFile(
-          secondLegResults,
-          `raw_multi_city_results_second_leg_${formatDate(
-            departureDate
-          )}_${formatDate(returnDate)}.json`
+          returnFlights,
+          `raw_multi_city_results_second_leg_${outbound_date}_${return_date}.json`
         );
+        const returnGoogleFlightsUrl =
+          returnFlights.search_metadata.google_flights_url;
 
-        // Combine first and second leg flights
-        if (
-          secondLegResults.best_flights &&
-          secondLegResults.best_flights.length > 0
-        ) {
-          for (const secondLegFlight of secondLegResults.best_flights) {
-            dateCombinationResults.push({
-              outbound: firstLegFlight,
-              return: secondLegFlight,
-              totalPrice: secondLegFlight.price,
-              totalDuration:
-                firstLegFlight.total_duration + secondLegFlight.total_duration,
-              outbound_google_flights_url:
-                firstLegResults.search_metadata.google_flights_url,
-              return_google_flights_url:
-                secondLegResults.search_metadata.google_flights_url,
-            });
-          }
-        }
+        // Combine and filter return flights
+        const allReturnFlights = [
+          ...(returnFlights.best_flights || []),
+          ...(returnFlights.other_flights || []),
+        ];
+
+        dateCombinationResults.outboundFlights.push({
+          outboundFlight,
+          outbound_google_flights_url: outboundGoogleFlightsUrl,
+          return_google_flights_url: returnGoogleFlightsUrl,
+          returnFlights: allReturnFlights.map((returnFlight) => ({
+            returnFlight,
+            totalPrice: returnFlight.price,
+            totalDuration:
+              outboundFlight.total_duration + returnFlight.total_duration,
+          })),
+        });
       }
 
-      results.push({
-        departureDate,
-        returnDate,
-        typicalPriceRange,
-        outboundGoogleFlightsUrl:
-          firstLegResults.search_metadata.google_flights_url,
-        flightPairs: dateCombinationResults,
-      });
+      results.push(dateCombinationResults);
     } catch (error) {
       console.error(
-        `Error fetching multi-city flights for ${formatDate(
-          departureDate
-        )} - ${formatDate(returnDate)}:`,
+        `Error fetching multi-city flights for ${format(
+          departureDate,
+          'yyyy-MM-dd'
+        )} - ${format(returnDate, 'yyyy-MM-dd')}:`,
         error
       );
     }
   }
 
   // Save results with typicalPriceRange
-  await saveToJsonFile(
-    { results, typicalPriceRange },
-    'multi_city_results.json'
-  );
+  await saveToJsonFile({ results }, 'multi_city_results.json');
 
   console.log('All raw results and combined results saved.');
 
-  return { results, typicalPriceRange };
+  return { results };
 }
 
 // Helper function to save data to a JSON file

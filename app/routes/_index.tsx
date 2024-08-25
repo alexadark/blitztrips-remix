@@ -6,7 +6,8 @@ import { generateObject, generateText } from 'ai';
 import { openai } from '@ai-sdk/openai';
 import { z } from 'zod';
 import ItineraryForm from '~/components/ItineraryForm';
-import { generateDateCombinations, formatDate } from '~/lib/helper-functions';
+import { generateDateCombinations } from '~/lib/helper-functions';
+import { format } from 'date-fns';
 import { useActionData } from '@remix-run/react';
 import fs from 'fs/promises';
 import { getRoundTripFlights, getMultiCityFlights } from '~/lib/getFlights';
@@ -72,23 +73,23 @@ export const action: ActionFunction = async ({ request }) => {
   );
 
   // Add multi-city flight search
-  // const multiCityFlights = await getMultiCityFlights(
-  //   cityCodes.homeTownIataCodes,
-  //   cityCodes.entryCityIataCodes,
-  //   cityCodes.departureCityIataCodes,
-  //   dateCombinations,
-  //   numAdults,
-  //   children,
-  //   infants
-  // );
+  const multiCityFlights = await getMultiCityFlights(
+    cityCodes.homeTownIataCodes,
+    cityCodes.entryCityIataCodes,
+    cityCodes.departureCityIataCodes,
+    dateCombinations,
+    numAdults,
+    children,
+    infants
+  );
 
   const flightResults = {
     dateCombinations: dateCombinations.map(([dep, ret]) => [
-      formatDate(dep),
-      formatDate(ret),
+      format(dep, 'yyyy-MM-dd'),
+      format(ret, 'yyyy-MM-dd'),
     ]),
     roundTripFlights,
-    // multiCityFlights,
+    multiCityFlights,
   };
 
   // Save results to a file
