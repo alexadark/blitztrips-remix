@@ -1,3 +1,6 @@
+import { promises as fs } from 'fs';
+import path from 'path';
+
 export function generateDateCombinations(
   startDate: Date,
   endDate: Date,
@@ -133,8 +136,10 @@ function cleanFlightData(flights) {
   }));
 }
 
-// Helper function to save data to a JSON file
-export async function saveToJsonFile(data: any, filename: string) {
+export async function saveToJsonFile(
+  data: unknown,
+  filename: string
+): Promise<void> {
   const filePath = path.join(process.cwd(), 'flight_data', filename);
   await fs.mkdir(path.dirname(filePath), { recursive: true });
   await fs.writeFile(filePath, JSON.stringify(data, null, 2));

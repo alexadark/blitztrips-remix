@@ -1,5 +1,5 @@
 import { getJson } from 'serpapi';
-import fs from 'fs/promises';
+
 import { format } from 'date-fns';
 import { reorganizeFlightData } from './helper-functions';
 
@@ -155,11 +155,6 @@ export async function getMultiCityFlights(
 
       const outboundGoogleFlightsUrl =
         outboundResults.search_metadata.google_flights_url;
-
-      await saveToJsonFile(
-        outboundResults,
-        `raw_multi_city_results_first_leg_${outbound_date}_${return_date}.json`
-      );
 
       const outboundFlights = outboundResults.best_flights;
 
