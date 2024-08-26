@@ -1,6 +1,4 @@
 import { getJson } from 'serpapi';
-import fs from 'fs/promises';
-import path from 'path';
 import { format } from 'date-fns';
 import { reorganizeFlightData } from './helper-functions';
 
@@ -104,15 +102,6 @@ export async function getRoundTripFlights(
     }
   }
 
-  // Save the final results to a JSON file
-  const fileName = 'final_round_trip_results.json';
-  const filePath = path.join(process.cwd(), 'flight_data', fileName);
-
-  await fs.mkdir(path.dirname(filePath), { recursive: true });
-  await fs.writeFile(filePath, JSON.stringify({ results }, null, 2));
-
-  console.log(`Saved final round-trip results to ${filePath}`);
-
   return { results };
 }
 
@@ -166,11 +155,6 @@ export async function getMultiCityFlights(
       const outboundGoogleFlightsUrl =
         outboundResults.search_metadata.google_flights_url;
 
-      await saveToJsonFile(
-        outboundResults,
-        `raw_multi_city_results_first_leg_${outbound_date}_${return_date}.json`
-      );
-
       const outboundFlights = outboundResults.best_flights;
 
       const dateCombinationResults = {
@@ -189,11 +173,6 @@ export async function getMultiCityFlights(
           departure_token: outboundFlight.departure_token,
         });
 
-        // Save second leg raw results
-        await saveToJsonFile(
-          returnFlights,
-          `raw_multi_city_results_second_leg_${outbound_date}_${return_date}.json`
-        );
         const returnGoogleFlightsUrl =
           returnFlights.search_metadata.google_flights_url;
 
@@ -231,20 +210,5 @@ export async function getMultiCityFlights(
   results = reorganizeFlightData(results);
   console.log(results);
 
-  // Save results with typicalPriceRange
-  await saveToJsonFile({ results }, 'final_results.json');
-
-  console.log('All raw results and combined results saved.');
-
   return { results };
-}
-
-console.log('All raw results and combined results saved.');
-
-// Helper function to save data to a JSON file
-async function saveToJsonFile(data: any, filename: string) {
-  const filePath = path.join(process.cwd(), 'flight_data', filename);
-  await fs.mkdir(path.dirname(filePath), { recursive: true });
-  await fs.writeFile(filePath, JSON.stringify(data, null, 2));
-  console.log(`Saved results to ${filePath}`);
 }
