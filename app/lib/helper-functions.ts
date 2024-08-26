@@ -64,9 +64,41 @@ export function reorganizeFlightData(data) {
 
     const entry = resultMap.get(key);
     entry[tripType] = {
-      outboundGoogleFlightsUrl: item[tripType].outboundGoogleFlightsUrl,
-      outboundFlights: item[tripType].outboundFlights,
+      outbound_google_flights_url: item[tripType].outboundGoogleFlightsUrl,
+      return_google_flights_url:
+        item[tripType].outboundFlights[0].return_google_flights_url,
+      flights: [],
     };
+
+    item[tripType].outboundFlights.forEach((outboundFlight) => {
+      outboundFlight.returnFlights.forEach((returnFlight) => {
+        entry[tripType].flights.push({
+          outbound: outboundFlight.outboundFlight,
+          return: returnFlight.returnFlight,
+          totalPrice: returnFlight.totalPrice,
+          totalDuration:
+            outboundFlight.outboundFlight.total_duration +
+            returnFlight.returnFlight.total_duration,
+        });
+      });
+    });
+
+    // Calculate average duration and remove significantly longer flights
+    const avgDuration =
+      entry[tripType].flights.reduce(
+        (sum, flight) => sum + flight.totalDuration,
+        0
+      ) / entry[tripType].flights.length;
+    const durationThreshold = avgDuration * 1.2; // Flights 50% longer than average are considered significantly longer
+    entry[tripType].flights = entry[tripType].flights.filter(
+      (flight) => flight.totalDuration <= durationThreshold
+    );
+
+    // Sort flights by total price
+    entry[tripType].flights.sort((a, b) => a.totalPrice - b.totalPrice);
+
+    // Keep only the top 5 flights
+    entry[tripType].flights = entry[tripType].flights.slice(0, 5);
 
     if (tripType === 'roundtrips') {
       entry[tripType].typicalPriceRange = item[tripType].typicalPriceRange;
