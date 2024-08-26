@@ -73,7 +73,7 @@ export const action: ActionFunction = async ({ request }) => {
   );
 
   // Add multi-city flight search
-  const multiCityFlights = await getMultiCityFlights(
+  const finalResults = await getMultiCityFlights(
     cityCodes.homeTownIataCodes,
     cityCodes.entryCityIataCodes,
     cityCodes.departureCityIataCodes,
@@ -88,8 +88,8 @@ export const action: ActionFunction = async ({ request }) => {
       format(dep, 'yyyy-MM-dd'),
       format(ret, 'yyyy-MM-dd'),
     ]),
-    roundTripFlights,
-    multiCityFlights,
+    // roundTripFlights,
+    finalResults,
   };
 
   // Save results to a file

@@ -72,9 +72,16 @@ export function reorganizeFlightData(data) {
 
     item[tripType].outboundFlights.forEach((outboundFlight) => {
       outboundFlight.returnFlights.forEach((returnFlight) => {
+        const cleanedOutbound = cleanFlightData(
+          outboundFlight.outboundFlight.flights
+        );
+        const cleanedReturn = cleanFlightData(
+          returnFlight.returnFlight.flights
+        );
+
         entry[tripType].flights.push({
-          outbound: outboundFlight.outboundFlight,
-          return: returnFlight.returnFlight,
+          outbound: cleanedOutbound,
+          return: cleanedReturn,
           totalPrice: returnFlight.totalPrice,
           totalDuration:
             outboundFlight.outboundFlight.total_duration +
@@ -83,16 +90,14 @@ export function reorganizeFlightData(data) {
       });
     });
 
-    // Calculate average duration and remove significantly longer flights
-    const avgDuration =
-      entry[tripType].flights.reduce(
-        (sum, flight) => sum + flight.totalDuration,
-        0
-      ) / entry[tripType].flights.length;
-    const durationThreshold = avgDuration * 1.2; // Flights 50% longer than average are considered significantly longer
-    entry[tripType].flights = entry[tripType].flights.filter(
-      (flight) => flight.totalDuration <= durationThreshold
+    // Filter flights
+    const directFlights = entry[tripType].flights.filter(
+      (flight) => flight.outbound.length === 1 && flight.return.length === 1
     );
+
+    if (directFlights.length > 0) {
+      entry[tripType].flights = directFlights;
+    }
 
     // Sort flights by total price
     entry[tripType].flights.sort((a, b) => a.totalPrice - b.totalPrice);
@@ -106,4 +111,32 @@ export function reorganizeFlightData(data) {
   });
 
   return Array.from(resultMap.values());
+}
+
+function cleanFlightData(flights) {
+  return flights.map((flight) => ({
+    departure: {
+      airport: flight.departure_airport.id,
+      time: flight.departure_airport.time,
+    },
+    arrival: {
+      airport: flight.arrival_airport.id,
+      time: flight.arrival_airport.time,
+    },
+    duration: flight.duration,
+    airline: flight.airline,
+    airline_logo: flight.airline_logo,
+    flight_number: flight.flight_number,
+    ...(flight.often_delayed_by_over_30_min && {
+      often_delayed_by_over_30_minutes: true,
+    }),
+  }));
+}
+
+// Helper function to save data to a JSON file
+export async function saveToJsonFile(data: any, filename: string) {
+  const filePath = path.join(process.cwd(), 'flight_data', filename);
+  await fs.mkdir(path.dirname(filePath), { recursive: true });
+  await fs.writeFile(filePath, JSON.stringify(data, null, 2));
+  console.log(`Saved results to ${filePath}`);
 }
