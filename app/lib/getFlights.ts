@@ -2,6 +2,7 @@ import { getJson } from 'serpapi';
 import fs from 'fs/promises';
 import path from 'path';
 import { format } from 'date-fns';
+import { reorganizeFlightData } from './helper-functions';
 
 const API_KEY = process.env.SERPAPI_API_KEY;
 
@@ -11,7 +12,7 @@ const commonParams = {
   hl: 'en',
   currency: 'USD',
 };
-
+let results = [];
 export async function getRoundTripFlights(
   homeTownIataCodes: string[],
   entryCityIataCodes: string[],
@@ -23,8 +24,6 @@ export async function getRoundTripFlights(
   if (!API_KEY) {
     throw new Error('SERPAPI_API_KEY is not set in environment variables');
   }
-
-  const results = [];
 
   const departureIds = homeTownIataCodes.join(',');
   const arrivalIds = entryCityIataCodes.join(',');
@@ -59,12 +58,13 @@ export async function getRoundTripFlights(
       const outboundFlights = outboundResults.best_flights;
 
       const dateCombinationResults = {
-        roundTrip: true,
-        outbound_date,
-        return_date,
-        typicalPriceRange,
-        outboundGoogleFlightsUrl,
-        outboundFlights: [],
+        roundtrips: {
+          outbound_date,
+          return_date,
+          typicalPriceRange,
+          outboundGoogleFlightsUrl,
+          outboundFlights: [],
+        },
       };
 
       for (const outboundFlight of outboundFlights) {
@@ -84,7 +84,7 @@ export async function getRoundTripFlights(
         ];
 
         //Push the outbound flight and his return flights to the date combination results, the outboundFlights will be an array of objects with the outbound flight and his return flights
-        dateCombinationResults.outboundFlights.push({
+        dateCombinationResults.roundtrips.outboundFlights.push({
           outboundFlight,
           outbound_google_flights_url: outboundGoogleFlightsUrl,
           return_google_flights_url: returnGoogleFlightsUrl,
@@ -129,7 +129,7 @@ export async function getMultiCityFlights(
     throw new Error('SERPAPI_API_KEY is not set in environment variables');
   }
 
-  const results = [];
+  // const results = [];
 
   const departureIds = homeTownIataCodes.join(',');
   const arrivalIds = entryCityIataCodes.join(',');
@@ -174,11 +174,12 @@ export async function getMultiCityFlights(
       const outboundFlights = outboundResults.best_flights;
 
       const dateCombinationResults = {
-        roundTrip: false,
-        outbound_date,
-        return_date,
-        outboundGoogleFlightsUrl,
-        outboundFlights: [],
+        multiCity: {
+          outbound_date,
+          return_date,
+          outboundGoogleFlightsUrl,
+          outboundFlights: [],
+        },
       };
 
       for (const outboundFlight of outboundFlights) {
@@ -202,7 +203,7 @@ export async function getMultiCityFlights(
           ...(returnFlights.other_flights || []),
         ];
 
-        dateCombinationResults.outboundFlights.push({
+        dateCombinationResults.multiCity.outboundFlights.push({
           outboundFlight,
           outbound_google_flights_url: outboundGoogleFlightsUrl,
           return_google_flights_url: returnGoogleFlightsUrl,
@@ -227,13 +228,18 @@ export async function getMultiCityFlights(
     }
   }
 
+  results = reorganizeFlightData(results);
+  console.log(results);
+
   // Save results with typicalPriceRange
-  await saveToJsonFile({ results }, 'multi_city_results.json');
+  await saveToJsonFile({ results }, 'final_results.json');
 
   console.log('All raw results and combined results saved.');
 
   return { results };
 }
+
+console.log('All raw results and combined results saved.');
 
 // Helper function to save data to a JSON file
 async function saveToJsonFile(data: any, filename: string) {

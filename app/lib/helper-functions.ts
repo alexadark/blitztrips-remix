@@ -44,3 +44,34 @@ export const formatDateTime = (dateTimeString?: string) => {
     hour12: true,
   });
 };
+
+export function reorganizeFlightData(data) {
+  const resultMap = new Map();
+
+  data.forEach((item) => {
+    const tripType = item.roundtrips ? 'roundtrips' : 'multiCity';
+    const { outbound_date, return_date } = item[tripType];
+    const key = `${outbound_date}_${return_date}`;
+
+    if (!resultMap.has(key)) {
+      resultMap.set(key, {
+        outbound_date,
+        return_date,
+        roundtrips: null,
+        multiCity: null,
+      });
+    }
+
+    const entry = resultMap.get(key);
+    entry[tripType] = {
+      outboundGoogleFlightsUrl: item[tripType].outboundGoogleFlightsUrl,
+      outboundFlights: item[tripType].outboundFlights,
+    };
+
+    if (tripType === 'roundtrips') {
+      entry[tripType].typicalPriceRange = item[tripType].typicalPriceRange;
+    }
+  });
+
+  return Array.from(resultMap.values());
+}
