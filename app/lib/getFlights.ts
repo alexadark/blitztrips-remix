@@ -207,6 +207,7 @@ export async function getMultiCityFlights(
       );
     }
   }
+  results = reorganizeFlightData(results);
 
   return { results };
 }
