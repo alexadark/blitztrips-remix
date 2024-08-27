@@ -1,75 +1,124 @@
-const FlightResult = ({ result }) => {
-  const { outbound_date, return_date, roundtrips, multiCity } = result;
+import React from 'react';
 
-  const renderFlight = (flight, isOutbound) => {
-    const leg = isOutbound ? flight.outbound[0] : flight.return[0];
-    return (
-      <div className="flight-leg">
+// Define types
+type Leg = {
+  airline: string;
+  airline_logo: string;
+  flight_number: string;
+  departure: {
+    time: string;
+    airport: string;
+  };
+  arrival: {
+    time: string;
+    airport: string;
+  };
+  often_delayed_by_over_30_minutes: boolean;
+};
+
+type Flight = {
+  outbound: Leg[];
+  return: Leg[];
+  totalDuration: number;
+  totalPrice: number;
+};
+
+type Result = {
+  outbound_date: string;
+  return_date: string;
+  roundtrips: {
+    flights: Flight[];
+  };
+  multiCity: {
+    flights: Flight[];
+  };
+};
+
+type FlightResultsProps = {
+  results: Result[];
+};
+
+const FlightOption: React.FC<{ flight: Flight; index: number }> = ({
+  flight,
+  index,
+}) => {
+  const renderLeg = (leg: Leg, isOutbound: boolean) => (
+    <div className="flex items-center justify-between p-4 bg-white shadow-md rounded-lg">
+      <div className="flex items-center space-x-4">
         <img
           src={leg.airline_logo}
           alt={leg.airline}
-          className="airline-logo"
+          className="w-8 h-8 rounded-full"
         />
-        <div className="flight-info">
-          <div className="time">
+        <div>
+          <p className="text-lg font-semibold">
             {leg.departure.time.split(' ')[1]} -{' '}
             {leg.arrival.time.split(' ')[1]}
-          </div>
-          <div className="airports">
+          </p>
+          <p className="text-sm text-gray-500">
             {leg.departure.airport} - {leg.arrival.airport}
-          </div>
-          <div className="airline-info">
-            {leg.airline} • {leg.flight_number}
-          </div>
-          {leg.often_delayed_by_over_30_minutes && (
-            <div className="delay-warning">Often delayed by 30+ min</div>
-          )}
+          </p>
         </div>
       </div>
-    );
-  };
-
-  const renderFlightOption = (flight, index) => {
-    return (
-      <div key={index} className="flight-option">
-        {renderFlight(flight, true)}
-        {renderFlight(flight, false)}
-        <div className="flight-summary">
-          <div className="total-duration">
-            {Math.floor(flight.totalDuration / 60)}h {flight.totalDuration % 60}
-            m
-          </div>
-          <div className="total-price">${flight.totalPrice}</div>
-        </div>
+      <div className="text-right">
+        <p className="text-lg font-semibold">
+          {Math.floor(flight.totalDuration / 60)}h {flight.totalDuration % 60}m
+        </p>
+        <p className="text-sm text-gray-500">
+          {leg.airline} • {leg.flight_number}
+        </p>
       </div>
-    );
-  };
+    </div>
+  );
 
   return (
-    <div className="flight-result">
-      <h2>
-        {outbound_date} - {return_date}
-      </h2>
-      <div className="roundtrips">
-        <h3>Round Trips</h3>
-        {roundtrips.flights.map((flight, index) =>
-          renderFlightOption(flight, index)
-        )}
+    <div className="space-y-4 border border-gray-200 rounded-lg p-4">
+      <h3 className="text-xl font-bold">Option {index + 1}</h3>
+      <div className="space-y-2">
+        <h4 className="text-lg font-semibold">Outbound</h4>
+        {renderLeg(flight.outbound[0], true)}
       </div>
-      <div className="multi-city">
-        <h3>Multi-City</h3>
-        {multiCity.flights.map((flight, index) =>
-          renderFlightOption(flight, index)
-        )}
+      <div className="space-y-2">
+        <h4 className="text-lg font-semibold">Return</h4>
+        {renderLeg(flight.return[0], false)}
+      </div>
+      <div className="text-right">
+        <p className="text-2xl font-bold">${flight.totalPrice}</p>
+        <p className="text-sm text-gray-500">round trip</p>
       </div>
     </div>
   );
 };
 
-export const FlightResults = ({ results }) => {
-  console.log('results', results);
+const FlightResult: React.FC<{ result: Result }> = ({ result }) => {
+  const { outbound_date, return_date, roundtrips, multiCity } = result;
+
   return (
-    <div className="flight-results">
+    <div className="space-y-6">
+      <h2 className="text-2xl font-bold">
+        {outbound_date} - {return_date}
+      </h2>
+      <div className="space-y-6">
+        <h3 className="text-xl font-semibold">Round Trips</h3>
+        {roundtrips.flights.map((flight, index) => (
+          <FlightOption key={index} flight={flight} index={index} />
+        ))}
+      </div>
+      {multiCity.flights.length > 0 && (
+        <div className="space-y-6">
+          <h3 className="text-xl font-semibold">Multi-City</h3>
+          {multiCity.flights.map((flight, index) => (
+            <FlightOption key={index} flight={flight} index={index} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const FlightResults: React.FC<FlightResultsProps> = ({ results }) => {
+  return (
+    <div className="space-y-12">
       {results?.map((result, index) => (
         <FlightResult key={index} result={result} />
       ))}

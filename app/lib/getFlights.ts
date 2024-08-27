@@ -1,7 +1,7 @@
 import { getJson } from 'serpapi';
 
 import { format } from 'date-fns';
-import { reorganizeFlightData } from './helper-functions';
+import { reorganizeFlightData, saveToJsonFile } from './helper-functions';
 
 const API_KEY = process.env.SERPAPI_API_KEY;
 
@@ -207,6 +207,11 @@ export async function getMultiCityFlights(
       );
     }
   }
+
+  // Save raw results to file
+  await saveToJsonFile(results, 'rawFlights.json');
+
+  // Reorganize flight data
   results = reorganizeFlightData(results);
 
   return { results };
