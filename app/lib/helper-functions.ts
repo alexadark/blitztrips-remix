@@ -51,6 +51,8 @@ export const formatDateTime = (dateTimeString?: string) => {
 export function reorganizeFlightData(data) {
   const resultMap = new Map();
 
+  // const length = data.length;
+
   data.forEach((item) => {
     const tripType = item.roundtrips ? 'roundtrips' : 'multiCity';
     const { outbound_date, return_date } = item[tripType];
@@ -66,47 +68,12 @@ export function reorganizeFlightData(data) {
     }
 
     const entry = resultMap.get(key);
+
+    // Always process the data, overwriting any existing data
     entry[tripType] = {
       outbound_google_flights_url: item[tripType].outboundGoogleFlightsUrl,
-      return_google_flights_url:
-        item[tripType].outboundFlights[0].return_google_flights_url,
-      flights: [],
+      flights: processFlights(item[tripType]),
     };
-
-    item[tripType].outboundFlights.forEach((outboundFlight) => {
-      outboundFlight.returnFlights.forEach((returnFlight) => {
-        const cleanedOutbound = cleanFlightData(
-          outboundFlight.outboundFlight.flights
-        );
-        const cleanedReturn = cleanFlightData(
-          returnFlight.returnFlight.flights
-        );
-
-        entry[tripType].flights.push({
-          outbound: cleanedOutbound,
-          return: cleanedReturn,
-          totalPrice: returnFlight.totalPrice,
-          totalDuration:
-            outboundFlight.outboundFlight.total_duration +
-            returnFlight.returnFlight.total_duration,
-        });
-      });
-    });
-
-    // Filter flights
-    const directFlights = entry[tripType].flights.filter(
-      (flight) => flight.outbound.length === 1 && flight.return.length === 1
-    );
-
-    if (directFlights.length > 0) {
-      entry[tripType].flights = directFlights;
-    }
-
-    // Sort flights by total price
-    entry[tripType].flights.sort((a, b) => a.totalPrice - b.totalPrice);
-
-    // Keep only the top 5 flights
-    entry[tripType].flights = entry[tripType].flights.slice(0, 5);
 
     if (tripType === 'roundtrips') {
       entry[tripType].typicalPriceRange = item[tripType].typicalPriceRange;
@@ -134,6 +101,28 @@ function cleanFlightData(flights) {
       often_delayed_by_over_30_minutes: true,
     }),
   }));
+}
+
+function processFlights(tripData) {
+  const flights =
+    tripData.outboundFlights?.flatMap((outboundFlight) =>
+      (outboundFlight.returnFlights || []).map((returnFlight) => ({
+        outbound: cleanFlightData(outboundFlight.outboundFlight.flights),
+        return: cleanFlightData(returnFlight.returnFlight.flights),
+        totalPrice: returnFlight.totalPrice,
+        totalDuration:
+          outboundFlight.outboundFlight.total_duration +
+          returnFlight.returnFlight.total_duration,
+      }))
+    ) || [];
+
+  const directFlights = flights.filter(
+    (flight) => flight.outbound.length === 1 && flight.return.length === 1
+  );
+
+  return (directFlights.length > 0 ? directFlights : flights)
+    .sort((a, b) => a.totalPrice - b.totalPrice)
+    .slice(0, 5);
 }
 
 export async function saveToJsonFile(
