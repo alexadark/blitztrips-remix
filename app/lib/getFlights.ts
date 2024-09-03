@@ -13,7 +13,7 @@ const commonParams = {
   hl: 'en',
   currency: 'USD',
 };
-
+let results = [];
 export async function getRoundTripFlights(
   homeTownIataCodes: string[],
   entryCityIataCodes: string[],
@@ -30,7 +30,7 @@ export async function getRoundTripFlights(
   const arrivalIds = entryCityIataCodes.join(',');
   const limit = pLimit(CONCURRENCY_LIMIT);
 
-  const results = await Promise.all(
+  results = await Promise.all(
     dateCombinations.map((dates) =>
       limit(() =>
         processDateCombination(
@@ -154,7 +154,7 @@ export async function getMultiCityFlights(
   const returnDepartureIds = departureCityIataCodes.join(',');
   const limit = pLimit(CONCURRENCY_LIMIT);
 
-  const results = await Promise.all(
+  const multiCityResults = await Promise.all(
     dateCombinations.map((dates) =>
       limit(() =>
         processMultiCityDateCombination(
@@ -169,7 +169,10 @@ export async function getMultiCityFlights(
       )
     )
   );
-
+  results.push(...multiCityResults);
+  // This line filters out any falsy values (null, undefined, etc.) from the results array.
+  // It's likely unnecessary if we're sure all results are valid, and may hide potential issues.
+  // Consider removing this line if all results should be valid, or add explicit error handling.
   const filteredResults = results.filter(Boolean);
 
   // Save raw results to file
