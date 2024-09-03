@@ -1,35 +1,35 @@
 import React from 'react';
 
-// Define types
+// Update the types to match the actual structure
 type Leg = {
+  departure: {
+    airport: string;
+    time: string;
+  };
+  arrival: {
+    airport: string;
+    time: string;
+  };
+  duration: number;
   airline: string;
   airline_logo: string;
   flight_number: string;
-  departure: {
-    time: string;
-    airport: string;
-  };
-  arrival: {
-    time: string;
-    airport: string;
-  };
-  often_delayed_by_over_30_minutes: boolean;
+  often_delayed_by_over_30_minutes?: boolean;
 };
 
 type Flight = {
   outbound: Leg[];
   return: Leg[];
-  totalDuration: number;
   totalPrice: number;
+  totalDuration: number;
 };
 
 type Result = {
   outbound_date: string;
   return_date: string;
-  roundtrips: {
-    flights: Flight[];
-  };
+  roundtrips: null;
   multiCity: {
+    outbound_google_flights_url: string;
     flights: Flight[];
   };
 };
@@ -62,11 +62,14 @@ const FlightOption: React.FC<{ flight: Flight; index: number }> = ({
       </div>
       <div className="text-right">
         <p className="text-lg font-semibold">
-          {Math.floor(flight.totalDuration / 60)}h {flight.totalDuration % 60}m
+          {Math.floor(leg.duration / 60)}h {leg.duration % 60}m
         </p>
         <p className="text-sm text-gray-500">
           {leg.airline} • {leg.flight_number}
         </p>
+        {leg.often_delayed_by_over_30_minutes && (
+          <p className="text-xs text-red-500">Often delayed by 30+ minutes</p>
+        )}
       </div>
     </div>
   );
@@ -76,22 +79,39 @@ const FlightOption: React.FC<{ flight: Flight; index: number }> = ({
       <h3 className="text-xl font-bold">Option {index + 1}</h3>
       <div className="space-y-2">
         <h4 className="text-lg font-semibold">Outbound</h4>
-        {renderLeg(flight.outbound[0], true)}
+        {flight.outbound.map((leg, i) => (
+          <React.Fragment key={i}>
+            {renderLeg(leg, true)}
+            {i < flight.outbound.length - 1 && (
+              <div className="text-center text-sm text-gray-500">Layover</div>
+            )}
+          </React.Fragment>
+        ))}
       </div>
       <div className="space-y-2">
         <h4 className="text-lg font-semibold">Return</h4>
-        {renderLeg(flight.return[0], false)}
+        {flight.return.map((leg, i) => (
+          <React.Fragment key={i}>
+            {renderLeg(leg, false)}
+            {i < flight.return.length - 1 && (
+              <div className="text-center text-sm text-gray-500">Layover</div>
+            )}
+          </React.Fragment>
+        ))}
       </div>
       <div className="text-right">
         <p className="text-2xl font-bold">${flight.totalPrice}</p>
-        <p className="text-sm text-gray-500">round trip</p>
+        <p className="text-sm text-gray-500">
+          Total duration: {Math.floor(flight.totalDuration / 60)}h{' '}
+          {flight.totalDuration % 60}m
+        </p>
       </div>
     </div>
   );
 };
 
 const FlightResult: React.FC<{ result: Result }> = ({ result }) => {
-  const { outbound_date, return_date, roundtrips, multiCity } = result;
+  const { outbound_date, return_date, multiCity } = result;
 
   return (
     <div className="space-y-6">
@@ -99,19 +119,19 @@ const FlightResult: React.FC<{ result: Result }> = ({ result }) => {
         {outbound_date} - {return_date}
       </h2>
       <div className="space-y-6">
-        <h3 className="text-xl font-semibold">Round Trips</h3>
-        {roundtrips.flights.map((flight, index) => (
+        <h3 className="text-xl font-semibold">Multi-City Flights</h3>
+        <a
+          href={multiCity.outbound_google_flights_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-500 hover:underline"
+        >
+          View on Google Flights
+        </a>
+        {multiCity.flights.map((flight, index) => (
           <FlightOption key={index} flight={flight} index={index} />
         ))}
       </div>
-      {multiCity.flights.length > 0 && (
-        <div className="space-y-6">
-          <h3 className="text-xl font-semibold">Multi-City</h3>
-          {multiCity.flights.map((flight, index) => (
-            <FlightOption key={index} flight={flight} index={index} />
-          ))}
-        </div>
-      )}
     </div>
   );
 };
@@ -119,7 +139,7 @@ const FlightResult: React.FC<{ result: Result }> = ({ result }) => {
 export const FlightResults: React.FC<FlightResultsProps> = ({ results }) => {
   return (
     <div className="space-y-12">
-      {results?.map((result, index) => (
+      {results.map((result, index) => (
         <FlightResult key={index} result={result} />
       ))}
     </div>
