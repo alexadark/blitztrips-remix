@@ -8,10 +8,31 @@ import { z } from 'zod';
 import ItineraryForm from '~/components/ItineraryForm';
 import { generateDateCombinations } from '~/lib/helper-functions';
 import { format } from 'date-fns';
-import { useActionData } from '@remix-run/react';
+import { useActionData, useFetcher, Form } from '@remix-run/react';
 import fs from 'fs/promises';
 import { getRoundTripFlights, getMultiCityFlights } from '~/lib/getFlights';
 import { FlightResults } from '~/components/FlightResults';
+import { getJson } from 'serpapi';
+import { useLoaderData } from '@remix-run/react';
+
+const testFlightSearch = async () => {
+  try {
+    const result = await getJson({
+      engine: 'google_flights',
+      departure_id: 'JFK',
+      arrival_id: 'CDG',
+      outbound_date: '2024-10-01',
+      return_date: '2024-10-13',
+      currency: 'USD',
+      hl: 'en',
+      api_key: process.env.SERPAPI_API_KEY,
+    });
+    console.log('result', result);
+    return result;
+  } catch (error) {
+    console.error('Error fetching flight data:', error);
+  }
+};
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
@@ -62,48 +83,41 @@ export const action: ActionFunction = async ({ request }) => {
 
   console.log('cityCodes', cityCodes);
 
-  // Call getRoundTripFlights function
-  const roundTripFlights = await getRoundTripFlights(
-    cityCodes.homeTownIataCodes,
-    cityCodes.entryCityIataCodes,
-    dateCombinations,
-    numAdults,
-    children,
-    infants
-  );
+  // // Call getRoundTripFlights function
+  // const roundTripFlights = await getRoundTripFlights(
+  //   cityCodes.homeTownIataCodes,
+  //   cityCodes.entryCityIataCodes,
+  //   dateCombinations,
+  //   numAdults,
+  //   children,
+  //   infants
+  // );
 
   // Add multi-city flight search
-  const multiCityFlights = await getMultiCityFlights(
-    cityCodes.homeTownIataCodes,
-    cityCodes.entryCityIataCodes,
-    cityCodes.departureCityIataCodes,
-    dateCombinations,
-    numAdults,
-    children,
-    infants
-  );
-  const length = dateCombinations.length;
-  const finalResults = multiCityFlights?.results?.slice(-length);
+  // const multiCityFlights = await getMultiCityFlights(
+  //   cityCodes.homeTownIataCodes,
+  //   cityCodes.entryCityIataCodes,
+  //   cityCodes.departureCityIataCodes,
+  //   dateCombinations,
+  //   numAdults,
+  //   children,
+  //   infants
+  // );
+  // const length = dateCombinations.length;
+  // const finalResults = multiCityFlights?.results?.slice(-length);
 
-  // const flightResults = {
-  //   dateCombinations: dateCombinations.map(([dep, ret]) => [
-  //     format(dep, 'yyyy-MM-dd'),
-  //     format(ret, 'yyyy-MM-dd'),
-  //   ]),
-  //   // roundTripFlights,
+  const finalResults = await testFlightSearch();
+  console.log('finalResults', finalResults);
 
-  // };
-
-  // Save results to a file
-  try {
-    const logContent = JSON.stringify(finalResults, null, 2);
-    await fs.writeFile('flight_search_results.json', logContent);
-    console.log(
-      'Flight search results have been saved to flight_search_results.json'
-    );
-  } catch (error) {
-    console.error('Error writing flight search results to file:', error);
-  }
+  // try {
+  //   const logContent = JSON.stringify(finalResults, null, 2);
+  //   await fs.writeFile('flight_search_results.json', logContent);
+  //   console.log(
+  //     'Flight search results have been saved to flight_search_results.json'
+  //   );
+  // } catch (error) {
+  //   console.error('Error writing flight search results to file:', error);
+  // }
 
   return json({
     homeTown,
@@ -120,6 +134,7 @@ export const action: ActionFunction = async ({ request }) => {
     dateCombinations,
     cityCodes,
     finalResults,
+    test: 'hello',
   });
 };
 
@@ -134,11 +149,13 @@ export default function Index() {
   const data = useActionData();
   console.log('data', data);
 
+  const API_KEY =
+    typeof window === 'undefined' ? process.env.SERPAPI_API_KEY : null;
+
   return (
     <div className="font-sans p-4">
-      <ItineraryForm />
-
-      {data?.finalResults && (
+      <ItineraryForm />{' '}
+      {/* {data?.finalResults && (
         // <div className="mt-8">
         //   <h2 className="text-2xl font-bold mb-4">Flight Results</h2>
         //   <pre className="bg-gray-100">
@@ -146,7 +163,7 @@ export default function Index() {
         //   </pre>
         // </div>
         <FlightResults results={data?.finalResults} />
-      )}
+      )} */}
     </div>
   );
 }
