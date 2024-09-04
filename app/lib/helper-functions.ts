@@ -134,3 +134,42 @@ export async function saveToJsonFile(
   await fs.writeFile(filePath, JSON.stringify(data, null, 2));
   console.log(`Saved results to ${filePath}`);
 }
+
+export function filterAndPrioritizeFlights(flights, typicalPriceRange) {
+  if (!flights || !Array.isArray(flights) || flights.length === 0) {
+    console.warn('No flights data available to filter and prioritize');
+    return [];
+  }
+
+  const directFlights = flights.filter(
+    (flight) => flight.legs && flight.legs.length === 1
+  );
+  const flightsWithLayovers = flights.filter(
+    (flight) => flight.legs && flight.legs.length > 1
+  );
+
+  let prioritizedFlights = directFlights.length > 0 ? directFlights : flights;
+
+  if (
+    typicalPriceRange &&
+    Array.isArray(typicalPriceRange) &&
+    typicalPriceRange.length === 2
+  ) {
+    const [minPrice, maxPrice] = typicalPriceRange.map((price) =>
+      parseFloat(price.replace(/[^0-9.]/g, ''))
+    );
+    const filteredFlights = prioritizedFlights.filter((flight) => {
+      if (!flight.price) return false;
+      const flightPrice = parseFloat(flight.price.replace(/[^0-9.]/g, ''));
+      return (
+        !isNaN(flightPrice) &&
+        flightPrice >= minPrice &&
+        flightPrice <= maxPrice
+      );
+    });
+    prioritizedFlights =
+      filteredFlights.length > 0 ? filteredFlights : prioritizedFlights;
+  }
+
+  return prioritizedFlights;
+}

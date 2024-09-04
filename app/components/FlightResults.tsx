@@ -62,7 +62,7 @@ const FlightOption: React.FC<{ flight: Flight; index: number }> = ({
       </div>
       <div className="text-right">
         <p className="text-lg font-semibold">
-          {Math.floor(flight.totalDuration / 60)}h {flight.totalDuration % 60}m
+          {Math.floor(leg.duration / 60)}h {leg.duration % 60}m
         </p>
         <p className="text-sm text-gray-500">
           {leg.airline} • {leg.flight_number}

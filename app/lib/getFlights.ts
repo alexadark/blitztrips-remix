@@ -1,6 +1,10 @@
 import { getJson } from 'serpapi';
 import { format } from 'date-fns';
-import { reorganizeFlightData, saveToJsonFile } from './helper-functions';
+import {
+  reorganizeFlightData,
+  saveToJsonFile,
+  filterAndPrioritizeFlights,
+} from './helper-functions';
 import pLimit from 'p-limit';
 
 const API_KEY = process.env.SERPAPI_API_KEY;
@@ -76,10 +80,7 @@ async function processDateCombination(
       outboundResults.search_metadata.google_flights_url;
     const typicalPriceRange =
       outboundResults.price_insights?.typical_price_range || null;
-    const outboundFlights = outboundResults.best_flights.slice(
-      0,
-      MAX_OUTBOUND_FLIGHTS
-    );
+    const outboundFlights = outboundResults.best_flights;
 
     const outboundFlightsWithReturns = await Promise.all(
       outboundFlights.map((outboundFlight) =>
@@ -221,7 +222,16 @@ async function processMultiCityDateCombination(
     const outboundResults = await getJson(firstLegParams);
     const outboundGoogleFlightsUrl =
       outboundResults.search_metadata.google_flights_url;
-    const outboundFlights = outboundResults.best_flights;
+    let outboundFlights = [
+      ...outboundResults.best_flights,
+      ...outboundResults.other_flights,
+    ];
+    // console.log('outboundFlights', outboundFlights);
+    outboundFlights = filterAndPrioritizeFlights(
+      outboundFlights,
+      outboundResults.price_insights?.typical_price_range || null
+    );
+    outboundFlights = outboundFlights.slice(0, MAX_OUTBOUND_FLIGHTS);
 
     const dateCombinationResults = {
       multiCity: {
