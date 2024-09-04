@@ -1,4 +1,5 @@
 import React from 'react';
+import { Form } from '@remix-run/react';
 
 // Define types
 type Leg = {
@@ -38,11 +39,13 @@ type FlightResultsProps = {
   results: Result[];
 };
 
-const FlightOption: React.FC<{ flight: Flight; index: number }> = ({
-  flight,
-  index,
-}) => {
-  const renderLeg = (leg: Leg, isOutbound: boolean) => (
+const FlightOption: React.FC<{
+  flight: Flight;
+  dateIndex: number;
+  flightIndex: number;
+  flightType: 'roundtrips' | 'multiCity';
+}> = ({ flight, dateIndex, flightIndex, flightType }) => {
+  const renderLeg = (leg: Leg) => (
     <div className="flex items-center justify-between p-4 bg-white shadow-md rounded-lg">
       <div className="flex items-center space-x-4">
         <img
@@ -72,25 +75,45 @@ const FlightOption: React.FC<{ flight: Flight; index: number }> = ({
   );
 
   return (
-    <div className="space-y-4 border border-gray-200 rounded-lg p-4">
-      <h3 className="text-xl font-bold">Option {index + 1}</h3>
-      <div className="space-y-2">
-        <h4 className="text-lg font-semibold">Outbound</h4>
-        {renderLeg(flight.outbound[0], true)}
+    <div className="space-y-4 border rounded-lg p-4">
+      <div className="flex items-center justify-between">
+        <h3 className="text-xl font-bold">Option {flightIndex + 1}</h3>
+        <input
+          type="checkbox"
+          name="selectedFlights"
+          value={`${dateIndex}-${flightType}-${flightIndex}`}
+          className="w-5 h-5 text-blue-600"
+        />
       </div>
       <div className="space-y-2">
-        <h4 className="text-lg font-semibold">Return</h4>
-        {renderLeg(flight.return[0], false)}
+        <h4 className="font-semibold">Outbound</h4>
+        {flight.outbound.map((leg, i) => (
+          <div key={i}>{renderLeg(leg)}</div>
+        ))}
       </div>
-      <div className="text-right">
-        <p className="text-2xl font-bold">${flight.totalPrice}</p>
-        <p className="text-sm text-gray-500">round trip</p>
+      <div className="space-y-2">
+        <h4 className="font-semibold">Return</h4>
+        {flight.return.map((leg, i) => (
+          <div key={i}>{renderLeg(leg)}</div>
+        ))}
+      </div>
+      <div className="flex justify-between items-center mt-4 pt-4 border-t">
+        <p className="text-lg font-semibold">
+          Total Duration: {Math.floor(flight.totalDuration / 60)}h{' '}
+          {flight.totalDuration % 60}m
+        </p>
+        <p className="text-xl font-bold text-blue-600">
+          ${flight.totalPrice.toFixed(2)}
+        </p>
       </div>
     </div>
   );
 };
 
-const FlightResult: React.FC<{ result: Result }> = ({ result }) => {
+const FlightResult: React.FC<{ result: Result; dateIndex: number }> = ({
+  result,
+  dateIndex,
+}) => {
   const { outbound_date, return_date, roundtrips, multiCity } = result;
 
   return (
@@ -98,30 +121,53 @@ const FlightResult: React.FC<{ result: Result }> = ({ result }) => {
       <h2 className="text-2xl font-bold">
         {outbound_date} - {return_date}
       </h2>
-      <div className="space-y-6">
-        <h3 className="text-xl font-semibold">Round Trips</h3>
-        {roundtrips.flights.map((flight, index) => (
-          <FlightOption key={index} flight={flight} index={index} />
-        ))}
-      </div>
-      {multiCity.flights.length > 0 && (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-6">
-          <h3 className="text-xl font-semibold">Multi-City</h3>
-          {multiCity.flights.map((flight, index) => (
-            <FlightOption key={index} flight={flight} index={index} />
+          <h3 className="text-xl font-semibold">Round Trips</h3>
+          {roundtrips.flights.map((flight, index) => (
+            <FlightOption
+              key={index}
+              flight={flight}
+              dateIndex={dateIndex}
+              flightIndex={index}
+              flightType="roundtrips"
+            />
           ))}
         </div>
-      )}
+        {multiCity.flights.length > 0 && (
+          <div className="space-y-6">
+            <h3 className="text-xl font-semibold">Multi-City</h3>
+            {multiCity.flights.map((flight, index) => (
+              <FlightOption
+                key={index}
+                flight={flight}
+                dateIndex={dateIndex}
+                flightIndex={index}
+                flightType="multiCity"
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
 
 export const FlightResults: React.FC<FlightResultsProps> = ({ results }) => {
   return (
-    <div className="space-y-12">
-      {results?.map((result, index) => (
-        <FlightResult key={index} result={result} />
+    <Form method="post" className="space-y-8">
+      <input type="hidden" name="_action" value="chooseflights" />
+      {results.map((result, index) => (
+        <FlightResult key={index} result={result} dateIndex={index} />
       ))}
-    </div>
+      <div className="flex justify-end">
+        <button
+          type="submit"
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        >
+          Book Selected Flights
+        </button>
+      </div>
+    </Form>
   );
 };

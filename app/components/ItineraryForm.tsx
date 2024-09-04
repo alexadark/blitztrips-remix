@@ -216,6 +216,7 @@ const ItineraryForm: React.FC = () => {
               className="textarea textarea-bordered"
             />
           </div>
+          <input type="hidden" name="_action" value="generateitinerary" />
 
           <div className="mt-6 form-control">
             <button type="submit" className="btn btn-primary">
