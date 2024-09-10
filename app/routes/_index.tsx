@@ -2,7 +2,7 @@ import type { ActionFunction, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Form, useActionData } from '@remix-run/react';
 import ItineraryForm from '~/components/ItineraryForm';
-// import { FlightResults } from '~/components/FlightResults';
+import { FlightResults } from '~/components/FlightResults';
 import { generateObject, generateText } from 'ai';
 import { openai } from '@ai-sdk/openai';
 import { z } from 'zod';
@@ -144,10 +144,10 @@ export default function Index() {
       {data?.finalResults && (
         <div className="mt-8">
           <h2 className="text-2xl font-bold mb-4">Flight Results</h2>
-          {/* <FlightResults results={data.finalResults} /> */}
-          <pre className="bg-gray-100 p-4 rounded-lg overflow-auto max-h-96 text-sm">
+          <FlightResults results={data.finalResults} />
+          {/* <pre className="bg-gray-100 p-4 rounded-lg overflow-auto text-sm">
             {JSON.stringify(data.finalResults, null, 2)}
-          </pre>
+          </pre> */}
         </div>
       )}
 
