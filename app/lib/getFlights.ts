@@ -1,13 +1,11 @@
 import { getJson } from 'serpapi';
 import { format } from 'date-fns';
-import {
-  reorganizeFlightData,
-  saveToJsonFile,
-  filterAndPrioritizeFlights,
-} from './helper-functions';
+import { writeFile } from 'fs/promises';
+import path from 'path';
 
 const API_KEY = process.env.SERPAPI_API_KEY;
-const MAX_OUTBOUND_FLIGHTS = 5; // Limit the number of outbound flights to process
+const MAX_OUTBOUND_FLIGHTS = 5;
+const MAX_RETURN_FLIGHTS = 5;
 
 const commonParams = {
   api_key: API_KEY,
@@ -44,7 +42,7 @@ export async function getRoundTripFlights(
     if (result) results.push(result);
   }
 
-  console.log('Round-trip flights results:', JSON.stringify(results, null, 2));
+  await saveResultsToFile(results, 'roundtrip_flights.json');
   return { results };
 }
 
@@ -72,15 +70,12 @@ async function processDateCombination(
 
   try {
     const outboundResults = await getJson(roundTripParams);
-    console.log(`Got roundtrip outbound for ${outbound_date}`);
+    console.log(`Got roundtrip outbound flights for ${outbound_date}`);
     const outboundGoogleFlightsUrl =
       outboundResults.search_metadata.google_flights_url;
-    const typicalPriceRange =
-      outboundResults.price_insights?.typical_price_range || null;
-    const outboundFlights = outboundResults.best_flights;
-
-    console.log(
-      `Got ${outboundFlights.length} roundtrip outbound flights for ${outbound_date}`
+    const outboundFlights = outboundResults.best_flights.slice(
+      0,
+      MAX_OUTBOUND_FLIGHTS
     );
 
     const outboundFlightsWithReturns = [];
@@ -90,12 +85,12 @@ async function processDateCombination(
         roundTripParams,
         outboundGoogleFlightsUrl
       );
-      console.log(
-        `Got roundtrip return for outbound flight ${i + 1}/${
-          outboundFlights.length
-        } on ${return_date}`
-      );
       outboundFlightsWithReturns.push(processedFlight);
+      console.log(
+        `Processed roundtrip outbound flight ${i + 1}/${
+          outboundFlights.length
+        } for ${outbound_date}`
+      );
     }
 
     return {
@@ -126,7 +121,7 @@ async function processOutboundFlight(
   const allReturnFlights = [
     ...(returnResults.best_flights || []),
     ...(returnResults.other_flights || []),
-  ];
+  ].slice(0, MAX_RETURN_FLIGHTS);
 
   return {
     outboundFlight,
@@ -172,7 +167,7 @@ export async function getMultiCityFlights(
     if (result) results.push(result);
   }
 
-  console.log('Multi-city flights results:', JSON.stringify(results, null, 2));
+  await saveResultsToFile(results, 'multicity_flights.json');
   return { results };
 }
 
@@ -205,28 +200,19 @@ async function processMultiCityDateCombination(
     adults,
     children,
     infants_in_seat: infants,
-    type: '3', // Multi-city
+    type: '3',
     multi_city_json: JSON.stringify(multiCityJson),
   };
 
   try {
     const outboundResults = await getJson(firstLegParams);
-    console.log(`Got multi-city outbound for ${outbound_date}`);
+    console.log(`Got multi-city outbound flights for ${outbound_date}`);
     const outboundGoogleFlightsUrl =
       outboundResults.search_metadata.google_flights_url;
-    let outboundFlights = [
+    const outboundFlights = [
       ...outboundResults.best_flights,
       ...outboundResults.other_flights,
-    ];
-    outboundFlights = filterAndPrioritizeFlights(
-      outboundFlights,
-      outboundResults.price_insights?.typical_price_range || null
-    );
-    outboundFlights = outboundFlights.slice(0, MAX_OUTBOUND_FLIGHTS);
-
-    console.log(
-      `Got ${outboundFlights.length} multi-city outbound flights for ${outbound_date}`
-    );
+    ].slice(0, MAX_OUTBOUND_FLIGHTS);
 
     const dateCombinationResults = {
       outbound_date,
@@ -242,12 +228,12 @@ async function processMultiCityDateCombination(
         firstLegParams,
         outboundGoogleFlightsUrl
       );
-      console.log(
-        `Got multi-city return for outbound flight ${i + 1}/${
-          outboundFlights.length
-        } on ${return_date}`
-      );
       dateCombinationResults.multiCity.flights.push(processedFlight);
+      console.log(
+        `Processed multi-city outbound flight ${i + 1}/${
+          outboundFlights.length
+        } for ${outbound_date}`
+      );
     }
 
     return dateCombinationResults;
@@ -272,11 +258,10 @@ async function processMultiCityOutboundFlight(
 
   const returnGoogleFlightsUrl =
     returnFlights.search_metadata.google_flights_url;
-
   const allReturnFlights = [
     ...(returnFlights.best_flights || []),
     ...(returnFlights.other_flights || []),
-  ];
+  ].slice(0, MAX_RETURN_FLIGHTS);
 
   return {
     outboundFlight,
@@ -289,4 +274,14 @@ async function processMultiCityOutboundFlight(
         outboundFlight.total_duration + returnFlight.total_duration,
     })),
   };
+}
+
+async function saveResultsToFile(results, filename) {
+  try {
+    const resultsFilePath = path.join(process.cwd(), filename);
+    await writeFile(resultsFilePath, JSON.stringify(results, null, 2));
+    console.log(`Results saved to ${resultsFilePath}`);
+  } catch (error) {
+    console.error('Error saving results to file:', error);
+  }
 }
