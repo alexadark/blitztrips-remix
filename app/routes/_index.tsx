@@ -71,7 +71,7 @@ export const action: ActionFunction = async ({ request }) => {
       infants
     );
 
-    // Call getMultiCityFlights function
+    // Add multi-city flight search
     const multiCityFlights = await getMultiCityFlights(
       cityCodes.homeTownIataCodes,
       cityCodes.entryCityIataCodes,
@@ -81,22 +81,12 @@ export const action: ActionFunction = async ({ request }) => {
       children,
       infants
     );
-
-    // Combine round-trip and multi-city results
-    const combinedResults = dateCombinations.map((_, index) => ({
-      outbound_date: roundTripFlights.results[index]?.outbound_date,
-      return_date: roundTripFlights.results[index]?.return_date,
-      roundtrips: roundTripFlights.results[index]?.roundtrips || {
-        flights: [],
-      },
-      multiCity: multiCityFlights.results[index]?.multiCity || { flights: [] },
-    }));
-
-    console.log('Combined results:', JSON.stringify(combinedResults, null, 2));
+    const length = dateCombinations.length;
+    const finalResults = multiCityFlights?.results?.slice(-length);
 
     return json({
       action: 'generateitinerary',
-      finalResults: combinedResults,
+      finalResults,
       // ... other search-related data ...
     });
   } else if (action === 'chooseflights') {
@@ -145,9 +135,6 @@ export default function Index() {
         <div className="mt-8">
           <h2 className="text-2xl font-bold mb-4">Flight Results</h2>
           <FlightResults results={data.finalResults} />
-          {/* <pre className="bg-gray-100 p-4 rounded-lg overflow-auto text-sm">
-            {JSON.stringify(data.finalResults, null, 2)}
-          </pre> */}
         </div>
       )}
 
