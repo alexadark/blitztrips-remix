@@ -10,8 +10,8 @@ import { Form } from '@remix-run/react';
 const ItineraryForm: React.FC = () => {
   const [dateRange, setDateRange] = useState([
     {
-      startDate: new Date(),
-      endDate: new Date(),
+      startDate: new Date(2024, 10, 1), // November 1, 2024
+      endDate: new Date(2024, 10, 14), // November 14, 2024
       key: 'selection',
     },
   ]);
