@@ -5,11 +5,9 @@ import {
   saveToJsonFile,
   filterAndPrioritizeFlights,
 } from './helper-functions';
-import pLimit from 'p-limit';
 
 const API_KEY = process.env.SERPAPI_API_KEY;
 const MAX_OUTBOUND_FLIGHTS = 5; // Limit the number of outbound flights to process
-const CONCURRENCY_LIMIT = 3; // Limit concurrent API calls
 
 const commonParams = {
   api_key: API_KEY,
@@ -17,7 +15,7 @@ const commonParams = {
   hl: 'en',
   currency: 'USD',
 };
-let results = [];
+
 export async function getRoundTripFlights(
   homeTownIataCodes: string[],
   entryCityIataCodes: string[],
@@ -32,24 +30,22 @@ export async function getRoundTripFlights(
 
   const departureIds = homeTownIataCodes.join(',');
   const arrivalIds = entryCityIataCodes.join(',');
-  const limit = pLimit(CONCURRENCY_LIMIT);
+  const results = [];
 
-  results = await Promise.all(
-    dateCombinations.map((dates) =>
-      limit(() =>
-        processDateCombination(
-          dates,
-          departureIds,
-          arrivalIds,
-          adults,
-          children,
-          infants
-        )
-      )
-    )
-  );
+  for (const dates of dateCombinations) {
+    const result = await processDateCombination(
+      dates,
+      departureIds,
+      arrivalIds,
+      adults,
+      children,
+      infants
+    );
+    if (result) results.push(result);
+  }
 
-  return { results: results.filter(Boolean) };
+  console.log('Round-trip flights results:', JSON.stringify(results, null, 2));
+  return { results };
 }
 
 async function processDateCombination(
@@ -76,29 +72,37 @@ async function processDateCombination(
 
   try {
     const outboundResults = await getJson(roundTripParams);
+    console.log(`Got roundtrip outbound for ${outbound_date}`);
     const outboundGoogleFlightsUrl =
       outboundResults.search_metadata.google_flights_url;
     const typicalPriceRange =
       outboundResults.price_insights?.typical_price_range || null;
     const outboundFlights = outboundResults.best_flights;
 
-    const outboundFlightsWithReturns = await Promise.all(
-      outboundFlights.map((outboundFlight) =>
-        processOutboundFlight(
-          outboundFlight,
-          roundTripParams,
-          outboundGoogleFlightsUrl
-        )
-      )
+    console.log(
+      `Got ${outboundFlights.length} roundtrip outbound flights for ${outbound_date}`
     );
 
+    const outboundFlightsWithReturns = [];
+    for (let i = 0; i < outboundFlights.length; i++) {
+      const processedFlight = await processOutboundFlight(
+        outboundFlights[i],
+        roundTripParams,
+        outboundGoogleFlightsUrl
+      );
+      console.log(
+        `Got roundtrip return for outbound flight ${i + 1}/${
+          outboundFlights.length
+        } on ${return_date}`
+      );
+      outboundFlightsWithReturns.push(processedFlight);
+    }
+
     return {
+      outbound_date,
+      return_date,
       roundtrips: {
-        outbound_date,
-        return_date,
-        typicalPriceRange,
-        outboundGoogleFlightsUrl,
-        outboundFlights: outboundFlightsWithReturns,
+        flights: outboundFlightsWithReturns,
       },
     };
   } catch (error) {
@@ -153,36 +157,23 @@ export async function getMultiCityFlights(
   const departureIds = homeTownIataCodes.join(',');
   const arrivalIds = entryCityIataCodes.join(',');
   const returnDepartureIds = departureCityIataCodes.join(',');
-  const limit = pLimit(CONCURRENCY_LIMIT);
+  const results = [];
 
-  const multiCityResults = await Promise.all(
-    dateCombinations.map((dates) =>
-      limit(() =>
-        processMultiCityDateCombination(
-          dates,
-          departureIds,
-          arrivalIds,
-          returnDepartureIds,
-          adults,
-          children,
-          infants
-        )
-      )
-    )
-  );
-  results.push(...multiCityResults);
-  // This line filters out any falsy values (null, undefined, etc.) from the results array.
-  // It's likely unnecessary if we're sure all results are valid, and may hide potential issues.
-  // Consider removing this line if all results should be valid, or add explicit error handling.
-  const filteredResults = results.filter(Boolean);
+  for (const dates of dateCombinations) {
+    const result = await processMultiCityDateCombination(
+      dates,
+      departureIds,
+      arrivalIds,
+      returnDepartureIds,
+      adults,
+      children,
+      infants
+    );
+    if (result) results.push(result);
+  }
 
-  // Save raw results to file
-  await saveToJsonFile(filteredResults, 'rawFlights.json');
-
-  // Reorganize flight data
-  const reorganizedResults = reorganizeFlightData(filteredResults);
-
-  return { results: reorganizedResults };
+  console.log('Multi-city flights results:', JSON.stringify(results, null, 2));
+  return { results };
 }
 
 async function processMultiCityDateCombination(
@@ -220,39 +211,44 @@ async function processMultiCityDateCombination(
 
   try {
     const outboundResults = await getJson(firstLegParams);
+    console.log(`Got multi-city outbound for ${outbound_date}`);
     const outboundGoogleFlightsUrl =
       outboundResults.search_metadata.google_flights_url;
     let outboundFlights = [
       ...outboundResults.best_flights,
       ...outboundResults.other_flights,
     ];
-    // console.log('outboundFlights', outboundFlights);
     outboundFlights = filterAndPrioritizeFlights(
       outboundFlights,
       outboundResults.price_insights?.typical_price_range || null
     );
     outboundFlights = outboundFlights.slice(0, MAX_OUTBOUND_FLIGHTS);
 
+    console.log(
+      `Got ${outboundFlights.length} multi-city outbound flights for ${outbound_date}`
+    );
+
     const dateCombinationResults = {
+      outbound_date,
+      return_date,
       multiCity: {
-        outbound_date,
-        return_date,
-        outboundGoogleFlightsUrl,
-        outboundFlights: [],
+        flights: [],
       },
     };
 
-    const processedOutboundFlights = await Promise.all(
-      outboundFlights.map((outboundFlight) =>
-        processMultiCityOutboundFlight(
-          outboundFlight,
-          firstLegParams,
-          outboundGoogleFlightsUrl
-        )
-      )
-    );
-
-    dateCombinationResults.multiCity.outboundFlights = processedOutboundFlights;
+    for (let i = 0; i < outboundFlights.length; i++) {
+      const processedFlight = await processMultiCityOutboundFlight(
+        outboundFlights[i],
+        firstLegParams,
+        outboundGoogleFlightsUrl
+      );
+      console.log(
+        `Got multi-city return for outbound flight ${i + 1}/${
+          outboundFlights.length
+        } on ${return_date}`
+      );
+      dateCombinationResults.multiCity.flights.push(processedFlight);
+    }
 
     return dateCombinationResults;
   } catch (error) {

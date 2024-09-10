@@ -71,7 +71,7 @@ export const action: ActionFunction = async ({ request }) => {
       infants
     );
 
-    // Add multi-city flight search
+    // Call getMultiCityFlights function
     const multiCityFlights = await getMultiCityFlights(
       cityCodes.homeTownIataCodes,
       cityCodes.entryCityIataCodes,
@@ -81,12 +81,22 @@ export const action: ActionFunction = async ({ request }) => {
       children,
       infants
     );
-    const length = dateCombinations.length;
-    const finalResults = multiCityFlights?.results?.slice(-length);
+
+    // Combine round-trip and multi-city results
+    const combinedResults = dateCombinations.map((_, index) => ({
+      outbound_date: roundTripFlights.results[index]?.outbound_date,
+      return_date: roundTripFlights.results[index]?.return_date,
+      roundtrips: roundTripFlights.results[index]?.roundtrips || {
+        flights: [],
+      },
+      multiCity: multiCityFlights.results[index]?.multiCity || { flights: [] },
+    }));
+
+    console.log('Combined results:', JSON.stringify(combinedResults, null, 2));
 
     return json({
       action: 'generateitinerary',
-      finalResults,
+      finalResults: combinedResults,
       // ... other search-related data ...
     });
   } else if (action === 'chooseflights') {
