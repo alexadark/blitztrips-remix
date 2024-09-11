@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-// import { searchFlights } from '@/app/actions/searchFlights';
-// import { generateItinerary } from '@/app/actions/generateItinerary';
 import { addDays, startOfDay } from 'date-fns';
 import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main style file
@@ -11,18 +9,15 @@ import { Form } from '@remix-run/react';
 const ItineraryForm: React.FC = () => {
   const [dateRange, setDateRange] = useState([
     {
-      startDate: new Date(2024, 11, 1), // November 1, 2024
-      endDate: new Date(2024, 11, 14), // November 14, 2024
+      startDate: null,
+      endDate: null,
       key: 'selection',
     },
   ]);
 
   const adjustDate = (date: Date | null) => {
     if (!date) return '';
-    const utcDate = new Date(
-      Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
-    );
-    const adjustedDate = addDays(utcDate, 1);
+    const adjustedDate = addDays(startOfDay(date), 1);
     return adjustedDate.toISOString();
   };
 
