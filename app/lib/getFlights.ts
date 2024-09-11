@@ -1,5 +1,5 @@
 import { getJson } from 'serpapi';
-import { format } from 'date-fns';
+import { formatInTimeZone as format } from 'date-fns-tz';
 import { writeFile } from 'fs/promises';
 import path from 'path';
 import {
@@ -18,11 +18,13 @@ const commonParams = {
   hl: 'en',
   currency: 'USD',
 };
+const timeZone = 'UTC';
 let results = [];
+
 export async function getRoundTripFlights(
   homeTownIataCodes: string[],
   entryCityIataCodes: string[],
-  dateCombinations: [Date, Date][],
+  dateCombinations: [string, string][],
   adults: number,
   children: number,
   infants: number
@@ -51,15 +53,13 @@ export async function getRoundTripFlights(
 }
 
 async function processDateCombination(
-  [departureDate, returnDate]: [Date, Date],
+  [outbound_date, return_date]: [string, string],
   departureIds: string,
   arrivalIds: string,
   adults: number,
   children: number,
   infants: number
 ) {
-  const outbound_date = format(departureDate, 'yyyy-MM-dd');
-  const return_date = format(returnDate, 'yyyy-MM-dd');
   const roundTripParams = {
     ...commonParams,
     adults,
@@ -185,8 +185,8 @@ async function processMultiCityDateCombination(
   children: number,
   infants: number
 ) {
-  const outbound_date = format(departureDate, 'yyyy-MM-dd');
-  const return_date = format(returnDate, 'yyyy-MM-dd');
+  const outbound_date = format(departureDate, timeZone, 'yyyy-MM-dd');
+  const return_date = format(returnDate, timeZone, 'yyyy-MM-dd');
   const multiCityJson = [
     {
       departure_id: departureIds,

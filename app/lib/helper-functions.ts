@@ -5,20 +5,21 @@ export function generateDateCombinations(
   startDate: Date,
   endDate: Date,
   tripDuration: number
-): [Date, Date][] {
-  const combinations: [Date, Date][] = [];
+): [string, string][] {
+  const combinations: [string, string][] = [];
   let currentDate = new Date(startDate);
+  currentDate.setHours(0, 0, 0, 0);
 
-  while (
-    currentDate <=
-    new Date(endDate.getTime() - tripDuration * 24 * 60 * 60 * 1000)
-  ) {
-    const departureDate = new Date(currentDate);
-    const returnDate = new Date(
-      departureDate.getTime() + tripDuration * 24 * 60 * 60 * 1000
+  const endDateLocal = new Date(endDate);
+  endDateLocal.setHours(23, 59, 59, 999);
+
+  while (currentDate <= endDateLocal) {
+    const departureDate = formatDateToLocalString(currentDate);
+    const returnDate = formatDateToLocalString(
+      new Date(currentDate.getTime() + tripDuration * 24 * 60 * 60 * 1000)
     );
 
-    if (returnDate <= endDate) {
+    if (new Date(returnDate) <= endDateLocal) {
       combinations.push([departureDate, returnDate]);
     }
 
@@ -26,6 +27,13 @@ export function generateDateCombinations(
   }
 
   return combinations;
+}
+
+function formatDateToLocalString(date: Date): string {
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, '0');
+  return `${year}-${month}-${day}`;
 }
 
 export const formatDuration = (minutes?: number) => {
