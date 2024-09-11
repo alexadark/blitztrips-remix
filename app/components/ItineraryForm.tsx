@@ -10,32 +10,16 @@ import { Form } from '@remix-run/react';
 const ItineraryForm: React.FC = () => {
   const [dateRange, setDateRange] = useState([
     {
-      startDate: new Date(Date.UTC(2024, 11, 1)), // November 1, 2024 (month is 0-indexed)
-      endDate: new Date(Date.UTC(2024, 11, 14)), // November 14, 2024
+      startDate: new Date(2024, 11, 1), // November 1, 2024
+      endDate: new Date(2024, 11, 14), // November 14, 2024
       key: 'selection',
     },
   ]);
 
-  const handleDateChange = (item: any) => {
-    setDateRange([
-      {
-        startDate: new Date(
-          Date.UTC(
-            item.selection.startDate.getFullYear(),
-            item.selection.startDate.getMonth(),
-            item.selection.startDate.getDate()
-          )
-        ),
-        endDate: new Date(
-          Date.UTC(
-            item.selection.endDate.getFullYear(),
-            item.selection.endDate.getMonth(),
-            item.selection.endDate.getDate()
-          )
-        ),
-        key: 'selection',
-      },
-    ]);
+  const adjustDate = (date: Date) => {
+    const newDate = new Date(date);
+    newDate.setDate(newDate.getDate() + 1);
+    return newDate;
   };
 
   return (
@@ -215,14 +199,18 @@ const ItineraryForm: React.FC = () => {
             </label>
             <DateRange
               editableDateInputs={true}
-              onChange={handleDateChange}
+              onChange={(item) => setDateRange([item.selection])}
               moveRangeOnFirstSelection={false}
               ranges={dateRange}
             />
             <input
               type="hidden"
               name="travelDates"
-              value={`${dateRange[0].startDate.toISOString()} to ${dateRange[0].endDate.toISOString()}`}
+              value={`${adjustDate(
+                dateRange[0].startDate
+              ).toISOString()} to ${adjustDate(
+                dateRange[0].endDate
+              ).toISOString()}`}
             />
           </div>
 
