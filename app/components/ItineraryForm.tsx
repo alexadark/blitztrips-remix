@@ -19,7 +19,10 @@ const ItineraryForm: React.FC = () => {
 
   const adjustDate = (date: Date | null) => {
     if (!date) return '';
-    const adjustedDate = addDays(startOfDay(date), 1);
+    const utcDate = new Date(
+      Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
+    );
+    const adjustedDate = addDays(utcDate, 1);
     return adjustedDate.toISOString();
   };
 
