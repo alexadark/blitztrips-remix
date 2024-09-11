@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // import { searchFlights } from '@/app/actions/searchFlights';
 // import { generateItinerary } from '@/app/actions/generateItinerary';
+import { addDays, startOfDay } from 'date-fns';
 import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
@@ -16,11 +17,17 @@ const ItineraryForm: React.FC = () => {
     },
   ]);
 
-  const adjustDate = (date: Date) => {
-    const newDate = new Date(date);
-    newDate.setDate(newDate.getDate() + 1);
-    return newDate;
+  const adjustDate = (date: Date | null) => {
+    if (!date) return '';
+    const adjustedDate = addDays(startOfDay(date), 1);
+    return adjustedDate.toISOString();
   };
+
+  // const adjustDate = (date: Date) => {
+  //   const newDate = new Date(date);
+  //   newDate.setDate(newDate.getDate() + 1);
+  //   return newDate;
+  // };
 
   return (
     <>
@@ -206,11 +213,9 @@ const ItineraryForm: React.FC = () => {
             <input
               type="hidden"
               name="travelDates"
-              value={`${adjustDate(
-                dateRange[0].startDate
-              ).toISOString()} to ${adjustDate(
+              value={`${adjustDate(dateRange[0].startDate)} to ${adjustDate(
                 dateRange[0].endDate
-              ).toISOString()}`}
+              )}`}
             />
           </div>
 
