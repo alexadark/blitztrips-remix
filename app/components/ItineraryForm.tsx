@@ -228,7 +228,7 @@ const ItineraryForm: React.FC = () => {
           <input
             type="hidden"
             name="travelDates"
-            value={`${formatDate(startDate)} to ${formatDate(endDate)}`}
+            value={`${startDate} to ${endDate}`}
           />
 
           <div className="form-control">

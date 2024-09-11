@@ -95,6 +95,7 @@ export const action: ActionFunction = async ({ request }) => {
       finalResults,
       dateCombinations,
       humanDateCombinations,
+      travelDates,
       // ... other search-related data ...
     });
   } else if (action === 'chooseflights') {
