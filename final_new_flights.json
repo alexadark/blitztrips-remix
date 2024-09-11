@@ -26,20 +26,20 @@
             {
               "departure": {
                 "airport": "MAD",
-                "time": "2024-11-13 10:45"
+                "time": "2024-11-13 12:30"
               },
               "arrival": {
                 "airport": "JFK",
-                "time": "2024-11-13 13:00"
+                "time": "2024-11-13 15:15"
               },
-              "duration": 495,
-              "airline": "American",
-              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AA.png",
-              "flight_number": "AA 95"
+              "duration": 525,
+              "airline": "Iberia",
+              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/IB.png",
+              "flight_number": "IB 211"
             }
           ],
           "totalPrice": 585,
-          "totalDuration": 930
+          "totalDuration": 960
         },
         {
           "outbound": [
@@ -98,20 +98,20 @@
             {
               "departure": {
                 "airport": "MAD",
-                "time": "2024-11-13 12:30"
+                "time": "2024-11-13 10:45"
               },
               "arrival": {
                 "airport": "JFK",
-                "time": "2024-11-13 15:15"
+                "time": "2024-11-13 13:00"
               },
-              "duration": 525,
-              "airline": "Iberia",
-              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/IB.png",
-              "flight_number": "IB 211"
+              "duration": 495,
+              "airline": "American",
+              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AA.png",
+              "flight_number": "AA 95"
             }
           ],
           "totalPrice": 623,
-          "totalDuration": 960
+          "totalDuration": 930
         },
         {
           "outbound": [
@@ -229,8 +229,46 @@
               "often_delayed_by_over_30_minutes": true
             }
           ],
-          "totalPrice": 906,
+          "totalPrice": 826,
           "totalDuration": 1030
+        },
+        {
+          "outbound": [
+            {
+              "departure": {
+                "airport": "EWR",
+                "time": "2024-11-01 20:50"
+              },
+              "arrival": {
+                "airport": "MAD",
+                "time": "2024-11-02 09:15"
+              },
+              "duration": 445,
+              "airline": "United",
+              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UA.png",
+              "flight_number": "UA 51",
+              "often_delayed_by_over_30_minutes": true
+            }
+          ],
+          "return": [
+            {
+              "departure": {
+                "airport": "FCO",
+                "time": "2024-11-13 10:30"
+              },
+              "arrival": {
+                "airport": "EWR",
+                "time": "2024-11-13 14:45"
+              },
+              "duration": 615,
+              "airline": "United",
+              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UA.png",
+              "flight_number": "UA 41",
+              "often_delayed_by_over_30_minutes": true
+            }
+          ],
+          "totalPrice": 841,
+          "totalDuration": 1060
         },
         {
           "outbound": [
@@ -262,11 +300,10 @@
               "duration": 605,
               "airline": "Delta",
               "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/DL.png",
-              "flight_number": "DL 183",
-              "often_delayed_by_over_30_minutes": true
+              "flight_number": "DL 183"
             }
           ],
-          "totalPrice": 972,
+          "totalPrice": 971,
           "totalDuration": 1035
         },
         {
@@ -274,53 +311,16 @@
             {
               "departure": {
                 "airport": "JFK",
-                "time": "2024-11-01 23:05"
+                "time": "2024-11-01 18:50"
               },
               "arrival": {
                 "airport": "MAD",
-                "time": "2024-11-02 11:10"
+                "time": "2024-11-02 07:00"
               },
-              "duration": 425,
-              "airline": "Air Europa",
-              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UX.png",
-              "flight_number": "UX 92"
-            }
-          ],
-          "return": [
-            {
-              "departure": {
-                "airport": "FCO",
-                "time": "2024-11-13 14:50"
-              },
-              "arrival": {
-                "airport": "JFK",
-                "time": "2024-11-13 18:55"
-              },
-              "duration": 605,
-              "airline": "ITA",
-              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AZ.png",
-              "flight_number": "AZ 610",
-              "often_delayed_by_over_30_minutes": true
-            }
-          ],
-          "totalPrice": 1327,
-          "totalDuration": 1030
-        },
-        {
-          "outbound": [
-            {
-              "departure": {
-                "airport": "JFK",
-                "time": "2024-11-01 23:05"
-              },
-              "arrival": {
-                "airport": "MAD",
-                "time": "2024-11-02 11:10"
-              },
-              "duration": 425,
-              "airline": "Air Europa",
-              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UX.png",
-              "flight_number": "UX 92"
+              "duration": 430,
+              "airline": "Delta",
+              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/DL.png",
+              "flight_number": "DL 126"
             }
           ],
           "return": [
@@ -340,45 +340,45 @@
               "often_delayed_by_over_30_minutes": true
             }
           ],
-          "totalPrice": 1327,
-          "totalDuration": 1025
+          "totalPrice": 1276,
+          "totalDuration": 1030
         },
         {
           "outbound": [
             {
               "departure": {
                 "airport": "JFK",
-                "time": "2024-11-01 23:05"
+                "time": "2024-11-01 18:50"
               },
               "arrival": {
                 "airport": "MAD",
-                "time": "2024-11-02 11:10"
+                "time": "2024-11-02 07:00"
               },
-              "duration": 425,
-              "airline": "Air Europa",
-              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UX.png",
-              "flight_number": "UX 92"
+              "duration": 430,
+              "airline": "Delta",
+              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/DL.png",
+              "flight_number": "DL 126"
             }
           ],
           "return": [
             {
               "departure": {
                 "airport": "FCO",
-                "time": "2024-11-13 09:20"
+                "time": "2024-11-13 14:50"
               },
               "arrival": {
                 "airport": "JFK",
-                "time": "2024-11-13 13:25"
+                "time": "2024-11-13 18:55"
               },
               "duration": 605,
-              "airline": "Delta",
-              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/DL.png",
-              "flight_number": "DL 183",
+              "airline": "ITA",
+              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AZ.png",
+              "flight_number": "AZ 610",
               "often_delayed_by_over_30_minutes": true
             }
           ],
-          "totalPrice": 1525,
-          "totalDuration": 1030
+          "totalPrice": 1276,
+          "totalDuration": 1035
         }
       ]
     }
@@ -389,6 +389,78 @@
     "roundtrips": {
       "outbound_google_flights_url": "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhowEgoyMDI0LTExLTAyagcIARIDSkZLagcIARIDTEdBagcIARIDRVdScgcIARIDTUFEGjASCjIwMjQtMTEtMTRqBwgBEgNNQURyBwgBEgNKRktyBwgBEgNMR0FyBwgBEgNFV1JCAQFIAXABmAEB",
       "flights": [
+        {
+          "outbound": [
+            {
+              "departure": {
+                "airport": "JFK",
+                "time": "2024-11-02 18:00"
+              },
+              "arrival": {
+                "airport": "MAD",
+                "time": "2024-11-03 06:05"
+              },
+              "duration": 425,
+              "airline": "Iberia",
+              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/IB.png",
+              "flight_number": "IB 212"
+            }
+          ],
+          "return": [
+            {
+              "departure": {
+                "airport": "MAD",
+                "time": "2024-11-14 10:45"
+              },
+              "arrival": {
+                "airport": "JFK",
+                "time": "2024-11-14 13:00"
+              },
+              "duration": 495,
+              "airline": "American",
+              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AA.png",
+              "flight_number": "AA 95"
+            }
+          ],
+          "totalPrice": 706,
+          "totalDuration": 920
+        },
+        {
+          "outbound": [
+            {
+              "departure": {
+                "airport": "JFK",
+                "time": "2024-11-02 18:00"
+              },
+              "arrival": {
+                "airport": "MAD",
+                "time": "2024-11-03 06:05"
+              },
+              "duration": 425,
+              "airline": "Iberia",
+              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/IB.png",
+              "flight_number": "IB 212"
+            }
+          ],
+          "return": [
+            {
+              "departure": {
+                "airport": "MAD",
+                "time": "2024-11-14 16:20"
+              },
+              "arrival": {
+                "airport": "JFK",
+                "time": "2024-11-14 19:10"
+              },
+              "duration": 530,
+              "airline": "Iberia",
+              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/IB.png",
+              "flight_number": "IB 325"
+            }
+          ],
+          "totalPrice": 706,
+          "totalDuration": 955
+        },
         {
           "outbound": [
             {
@@ -467,78 +539,6 @@
             {
               "departure": {
                 "airport": "JFK",
-                "time": "2024-11-02 18:00"
-              },
-              "arrival": {
-                "airport": "MAD",
-                "time": "2024-11-03 06:05"
-              },
-              "duration": 425,
-              "airline": "Iberia",
-              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/IB.png",
-              "flight_number": "IB 212"
-            }
-          ],
-          "return": [
-            {
-              "departure": {
-                "airport": "MAD",
-                "time": "2024-11-14 10:45"
-              },
-              "arrival": {
-                "airport": "JFK",
-                "time": "2024-11-14 13:00"
-              },
-              "duration": 495,
-              "airline": "American",
-              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AA.png",
-              "flight_number": "AA 95"
-            }
-          ],
-          "totalPrice": 771,
-          "totalDuration": 920
-        },
-        {
-          "outbound": [
-            {
-              "departure": {
-                "airport": "JFK",
-                "time": "2024-11-02 18:00"
-              },
-              "arrival": {
-                "airport": "MAD",
-                "time": "2024-11-03 06:05"
-              },
-              "duration": 425,
-              "airline": "Iberia",
-              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/IB.png",
-              "flight_number": "IB 212"
-            }
-          ],
-          "return": [
-            {
-              "departure": {
-                "airport": "MAD",
-                "time": "2024-11-14 16:20"
-              },
-              "arrival": {
-                "airport": "JFK",
-                "time": "2024-11-14 19:10"
-              },
-              "duration": 530,
-              "airline": "Iberia",
-              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/IB.png",
-              "flight_number": "IB 325"
-            }
-          ],
-          "totalPrice": 816,
-          "totalDuration": 955
-        },
-        {
-          "outbound": [
-            {
-              "departure": {
-                "airport": "JFK",
                 "time": "2024-11-02 18:50"
               },
               "arrival": {
@@ -567,7 +567,7 @@
               "flight_number": "IB 325"
             }
           ],
-          "totalPrice": 6453,
+          "totalPrice": 6458,
           "totalDuration": 960
         }
       ],
@@ -656,44 +656,6 @@
           "outbound": [
             {
               "departure": {
-                "airport": "EWR",
-                "time": "2024-11-02 20:50"
-              },
-              "arrival": {
-                "airport": "MAD",
-                "time": "2024-11-03 09:15"
-              },
-              "duration": 445,
-              "airline": "United",
-              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UA.png",
-              "flight_number": "UA 51",
-              "often_delayed_by_over_30_minutes": true
-            }
-          ],
-          "return": [
-            {
-              "departure": {
-                "airport": "FCO",
-                "time": "2024-11-14 10:30"
-              },
-              "arrival": {
-                "airport": "EWR",
-                "time": "2024-11-14 14:45"
-              },
-              "duration": 615,
-              "airline": "United",
-              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UA.png",
-              "flight_number": "UA 41",
-              "often_delayed_by_over_30_minutes": true
-            }
-          ],
-          "totalPrice": 745,
-          "totalDuration": 1060
-        },
-        {
-          "outbound": [
-            {
-              "departure": {
                 "airport": "JFK",
                 "time": "2024-11-02 18:50"
               },
@@ -724,7 +686,7 @@
               "often_delayed_by_over_30_minutes": true
             }
           ],
-          "totalPrice": 830,
+          "totalPrice": 826,
           "totalDuration": 1030
         },
         {
@@ -757,12 +719,49 @@
               "duration": 605,
               "airline": "Delta",
               "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/DL.png",
-              "flight_number": "DL 183",
+              "flight_number": "DL 183"
+            }
+          ],
+          "totalPrice": 826,
+          "totalDuration": 1035
+        },
+        {
+          "outbound": [
+            {
+              "departure": {
+                "airport": "EWR",
+                "time": "2024-11-02 20:50"
+              },
+              "arrival": {
+                "airport": "MAD",
+                "time": "2024-11-03 09:15"
+              },
+              "duration": 445,
+              "airline": "United",
+              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UA.png",
+              "flight_number": "UA 51",
               "often_delayed_by_over_30_minutes": true
             }
           ],
-          "totalPrice": 906,
-          "totalDuration": 1035
+          "return": [
+            {
+              "departure": {
+                "airport": "FCO",
+                "time": "2024-11-14 10:30"
+              },
+              "arrival": {
+                "airport": "EWR",
+                "time": "2024-11-14 14:45"
+              },
+              "duration": 615,
+              "airline": "United",
+              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UA.png",
+              "flight_number": "UA 41",
+              "often_delayed_by_over_30_minutes": true
+            }
+          ],
+          "totalPrice": 877,
+          "totalDuration": 1060
         }
       ]
     }

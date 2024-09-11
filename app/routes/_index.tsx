@@ -46,6 +46,12 @@ export const action: ActionFunction = async ({ request }) => {
       endDate,
       tripDuration
     );
+    const humanDateCombinations = dateCombinations.map((combination) => {
+      return {
+        departureDate: format(combination[0], 'MMM dd, yyyy'),
+        returnDate: format(combination[1], 'MMM dd, yyyy'),
+      };
+    });
 
     const { object: cityCodes } = await generateObject({
       system: `you're an airport search engine and you know all the airport codes for all the world`,
@@ -87,6 +93,8 @@ export const action: ActionFunction = async ({ request }) => {
     return json({
       action: 'generateitinerary',
       finalResults,
+      dateCombinations,
+      humanDateCombinations,
       // ... other search-related data ...
     });
   } else if (action === 'chooseflights') {
@@ -123,6 +131,7 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   const data = useActionData();
+  console.log('data', data);
 
   return (
     <div className="font-sans p-4">
