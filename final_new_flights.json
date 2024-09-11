@@ -311,16 +311,16 @@
             {
               "departure": {
                 "airport": "JFK",
-                "time": "2024-11-01 18:50"
+                "time": "2024-11-01 21:55"
               },
               "arrival": {
                 "airport": "MAD",
-                "time": "2024-11-02 07:00"
+                "time": "2024-11-02 10:10"
               },
-              "duration": 430,
-              "airline": "Delta",
-              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/DL.png",
-              "flight_number": "DL 126"
+              "duration": 435,
+              "airline": "Iberia",
+              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/IB.png",
+              "flight_number": "IB 326"
             }
           ],
           "return": [
@@ -340,24 +340,24 @@
               "often_delayed_by_over_30_minutes": true
             }
           ],
-          "totalPrice": 1276,
-          "totalDuration": 1030
+          "totalPrice": 1505,
+          "totalDuration": 1035
         },
         {
           "outbound": [
             {
               "departure": {
                 "airport": "JFK",
-                "time": "2024-11-01 18:50"
+                "time": "2024-11-01 21:55"
               },
               "arrival": {
                 "airport": "MAD",
-                "time": "2024-11-02 07:00"
+                "time": "2024-11-02 10:10"
               },
-              "duration": 430,
-              "airline": "Delta",
-              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/DL.png",
-              "flight_number": "DL 126"
+              "duration": 435,
+              "airline": "Iberia",
+              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/IB.png",
+              "flight_number": "IB 326"
             }
           ],
           "return": [
@@ -377,8 +377,8 @@
               "often_delayed_by_over_30_minutes": true
             }
           ],
-          "totalPrice": 1276,
-          "totalDuration": 1035
+          "totalPrice": 1505,
+          "totalDuration": 1040
         }
       ]
     }
@@ -657,6 +657,42 @@
             {
               "departure": {
                 "airport": "JFK",
+                "time": "2024-11-02 23:05"
+              },
+              "arrival": {
+                "airport": "MAD",
+                "time": "2024-11-03 11:10"
+              },
+              "duration": 425,
+              "airline": "Air Europa",
+              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UX.png",
+              "flight_number": "UX 92"
+            }
+          ],
+          "return": [
+            {
+              "departure": {
+                "airport": "FCO",
+                "time": "2024-11-14 18:25"
+              },
+              "arrival": {
+                "airport": "JFK",
+                "time": "2024-11-14 22:00"
+              },
+              "duration": 575,
+              "airline": "Norse Atlantic Airways",
+              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/N0.png",
+              "flight_number": "N0 401"
+            }
+          ],
+          "totalPrice": 673,
+          "totalDuration": 1000
+        },
+        {
+          "outbound": [
+            {
+              "departure": {
+                "airport": "JFK",
                 "time": "2024-11-02 18:50"
               },
               "arrival": {
@@ -724,44 +760,6 @@
           ],
           "totalPrice": 826,
           "totalDuration": 1035
-        },
-        {
-          "outbound": [
-            {
-              "departure": {
-                "airport": "EWR",
-                "time": "2024-11-02 20:50"
-              },
-              "arrival": {
-                "airport": "MAD",
-                "time": "2024-11-03 09:15"
-              },
-              "duration": 445,
-              "airline": "United",
-              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UA.png",
-              "flight_number": "UA 51",
-              "often_delayed_by_over_30_minutes": true
-            }
-          ],
-          "return": [
-            {
-              "departure": {
-                "airport": "FCO",
-                "time": "2024-11-14 10:30"
-              },
-              "arrival": {
-                "airport": "EWR",
-                "time": "2024-11-14 14:45"
-              },
-              "duration": 615,
-              "airline": "United",
-              "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UA.png",
-              "flight_number": "UA 41",
-              "often_delayed_by_over_30_minutes": true
-            }
-          ],
-          "totalPrice": 877,
-          "totalDuration": 1060
         }
       ]
     }

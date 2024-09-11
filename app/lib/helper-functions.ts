@@ -2,38 +2,32 @@ import { promises as fs } from 'fs';
 import path from 'path';
 
 export function generateDateCombinations(
-  startDate: Date,
-  endDate: Date,
+  startDate: string,
+  endDate: string,
   tripDuration: number
 ): [string, string][] {
   const combinations: [string, string][] = [];
-  let currentDate = new Date(startDate);
-  currentDate.setHours(0, 0, 0, 0);
+  let currentDate = new Date(startDate + 'T00:00:00Z');
+  const endDateObj = new Date(endDate + 'T23:59:59Z');
 
-  const endDateLocal = new Date(endDate);
-  endDateLocal.setHours(23, 59, 59, 999);
-
-  while (currentDate <= endDateLocal) {
-    const departureDate = formatDateToLocalString(currentDate);
-    const returnDate = formatDateToLocalString(
+  while (currentDate <= endDateObj) {
+    const departureDate = formatDateToISOString(currentDate);
+    const returnDate = formatDateToISOString(
       new Date(currentDate.getTime() + tripDuration * 24 * 60 * 60 * 1000)
     );
 
-    if (new Date(returnDate) <= endDateLocal) {
+    if (new Date(returnDate) <= endDateObj) {
       combinations.push([departureDate, returnDate]);
     }
 
-    currentDate.setDate(currentDate.getDate() + 1);
+    currentDate.setUTCDate(currentDate.getUTCDate() + 1);
   }
 
   return combinations;
 }
 
-function formatDateToLocalString(date: Date): string {
-  const year = date.getFullYear();
-  const month = (date.getMonth() + 1).toString().padStart(2, '0');
-  const day = date.getDate().toString().padStart(2, '0');
-  return `${year}-${month}-${day}`;
+function formatDateToISOString(date: Date): string {
+  return date.toISOString().split('T')[0];
 }
 
 export const formatDuration = (minutes?: number) => {

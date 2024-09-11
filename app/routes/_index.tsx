@@ -36,22 +36,23 @@ export const action: ActionFunction = async ({ request }) => {
 
     const [startDateStr, endDateStr] = travelDates.split(' to ');
 
-    // Convert string dates to Date objects
-    const startDate = new Date(startDateStr);
-    const endDate = new Date(endDateStr);
+    // Format dates as 'YYYY-MM-DD' strings
+    const startDate = format(new Date(startDateStr), 'yyyy-MM-dd');
+    const endDate = format(new Date(endDateStr), 'yyyy-MM-dd');
 
-    // Generate date combinations
+    // Generate date combinations using the formatted date strings
     const dateCombinations = generateDateCombinations(
       startDate,
       endDate,
       tripDuration
     );
-    const humanDateCombinations = dateCombinations.map((combination) => {
-      return {
-        departureDate: format(combination[0], 'MMM dd, yyyy'),
-        returnDate: format(combination[1], 'MMM dd, yyyy'),
-      };
-    });
+
+    const humanDateCombinations = dateCombinations.map(
+      ([departure, returnDate]) => ({
+        departureDate: format(new Date(departure), 'MMM dd, yyyy'),
+        returnDate: format(new Date(returnDate), 'MMM dd, yyyy'),
+      })
+    );
 
     const { object: cityCodes } = await generateObject({
       system: `you're an airport search engine and you know all the airport codes for all the world`,

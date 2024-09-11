@@ -54,7 +54,7 @@
             "price": 585,
             "type": "Round trip",
             "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/IB.png",
-            "departure_token": "WyJDalJJTldseU1XZG9WMHRoTUdkQlF6UXpUWGRDUnkwdExTMHRMUzB0TFMxMGJIZHVNMEZCUVVGQlIySm9Xa1ZSU0ZCU09YRkJFZ1ZKUWpNeU5ob0xDTkxJQXhBQ0dnTlZVMFE0SEhEU3lBTT0iLFtbIkpGSyIsIjIwMjQtMTEtMDEiLCJNQUQiLG51bGwsIklCIiwiMzI2Il1dXQ=="
+            "departure_token": "WyJDalJJT1ZaSVJGVjFjSEphVFRCQlFqUlBUVUZDUnkwdExTMHRMUzB0Y0daaWFXMHhOa0ZCUVVGQlIySm9aR05WUWpaTmJtbEJFZ1ZKUWpNeU5ob0xDTkxJQXhBQ0dnTlZVMFE0SEhEU3lBTT0iLFtbIkpGSyIsIjIwMjQtMTEtMDEiLCJNQUQiLG51bGwsIklCIiwiMzI2Il1dXQ=="
           },
           "outbound_google_flights_url": "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhowEgoyMDI0LTExLTAxagcIARIDSkZLagcIARIDTEdBagcIARIDRVdScgcIARIDTUFEGjASCjIwMjQtMTEtMTNqBwgBEgNNQURyBwgBEgNKRktyBwgBEgNMR0FyBwgBEgNFV1JCAQFIAXABmAEB",
           "return_google_flights_url": "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhpREgoyMDI0LTExLTAxIh8KA0pGSxIKMjAyNC0xMS0wMRoDTUFEKgJJQjIDMzI2agcIARIDSkZLagcIARIDTEdBagcIARIDRVdScgcIARIDTUFEGjASCjIwMjQtMTEtMTNqBwgBEgNNQURyBwgBEgNKRktyBwgBEgNMR0FyBwgBEgNFV1JCAQFIAXABmAEB",
@@ -103,7 +103,7 @@
                 "price": 585,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/IB.png",
-                "booking_token": "WyJDalJJWjJGRFdWUnZXR3hyTXpCQlJFVkNaM2RDUnkwdExTMHRMUzB0TFhaMGJXd3hOVUZCUVVGQlIySm9Xa1ZaVDFGTWMzbEJFZ1ZKUWpJeE1Sb0xDTkxJQXhBQ0dnTlZVMFE0SEhEU3lBTT0iLFtbIkpGSyIsIjIwMjQtMTEtMDEiLCJNQUQiLG51bGwsIklCIiwiMzI2Il1dLFtbIk1BRCIsIjIwMjQtMTEtMTMiLCJKRksiLG51bGwsIklCIiwiMjExIl1dXQ=="
+                "booking_token": "WyJDalJJWTJkTWVFcFVSMTh6VkVGQlExQkZURkZDUnkwdExTMHRMUzB0TFMxNWJIQmlNMEZCUVVGQlIySm9aR05aUTJsdlVUWkJFZ2RKUWpJeE1TTXhHZ3NJMHNnREVBSWFBMVZUUkRnY2NOTElBdz09IixbWyJKRksiLCIyMDI0LTExLTAxIiwiTUFEIixudWxsLCJJQiIsIjMyNiJdXSxbWyJNQUQiLCIyMDI0LTExLTEzIiwiSkZLIixudWxsLCJJQiIsIjIxMSJdXV0="
               },
               "totalPrice": 585,
               "totalDuration": 960
@@ -152,7 +152,7 @@
                 "price": 585,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/IB.png",
-                "booking_token": "WyJDalJJWjJGRFdWUnZXR3hyTXpCQlJFVkNaM2RDUnkwdExTMHRMUzB0TFhaMGJXd3hOVUZCUVVGQlIySm9Xa1ZaVDFGTWMzbEJFZ1ZKUWpNeU5Sb0xDTkxJQXhBQ0dnTlZVMFE0SEhEU3lBTT0iLFtbIkpGSyIsIjIwMjQtMTEtMDEiLCJNQUQiLG51bGwsIklCIiwiMzI2Il1dLFtbIk1BRCIsIjIwMjQtMTEtMTMiLCJKRksiLG51bGwsIklCIiwiMzI1Il1dXQ=="
+                "booking_token": "WyJDalJJWTJkTWVFcFVSMTh6VkVGQlExQkZURkZDUnkwdExTMHRMUzB0TFMxNWJIQmlNMEZCUVVGQlIySm9aR05aUTJsdlVUWkJFZ2RKUWpNeU5TTXhHZ3NJMHNnREVBSWFBMVZUUkRnY2NOTElBdz09IixbWyJKRksiLCIyMDI0LTExLTAxIiwiTUFEIixudWxsLCJJQiIsIjMyNiJdXSxbWyJNQUQiLCIyMDI0LTExLTEzIiwiSkZLIixudWxsLCJJQiIsIjMyNSJdXV0="
               },
               "totalPrice": 585,
               "totalDuration": 965
@@ -201,7 +201,7 @@
                 "price": 623,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AA.png",
-                "booking_token": "WyJDalJJWjJGRFdWUnZXR3hyTXpCQlJFVkNaM2RDUnkwdExTMHRMUzB0TFhaMGJXd3hOVUZCUVVGQlIySm9Xa1ZaVDFGTWMzbEJFZ1JCUVRrMUdnc0lxdVlERUFJYUExVlRSRGdjY0tybUF3PT0iLFtbIkpGSyIsIjIwMjQtMTEtMDEiLCJNQUQiLG51bGwsIklCIiwiMzI2Il1dLFtbIk1BRCIsIjIwMjQtMTEtMTMiLCJKRksiLG51bGwsIkFBIiwiOTUiXV1d"
+                "booking_token": "WyJDalJJWTJkTWVFcFVSMTh6VkVGQlExQkZURkZDUnkwdExTMHRMUzB0TFMxNWJIQmlNMEZCUVVGQlIySm9aR05aUTJsdlVUWkJFZ1pCUVRrMUl6RWFDd2lxNWdNUUFob0RWVk5FT0J4d3F1WUQiLFtbIkpGSyIsIjIwMjQtMTEtMDEiLCJNQUQiLG51bGwsIklCIiwiMzI2Il1dLFtbIk1BRCIsIjIwMjQtMTEtMTMiLCJKRksiLG51bGwsIkFBIiwiOTUiXV1d"
               },
               "totalPrice": 623,
               "totalDuration": 930
@@ -251,7 +251,7 @@
             "price": 685,
             "type": "Round trip",
             "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UX.png",
-            "departure_token": "WyJDalJJTldseU1XZG9WMHRoTUdkQlF6UXpUWGRDUnkwdExTMHRMUzB0TFMxMGJIZHVNMEZCUVVGQlIySm9Xa1ZSU0ZCU09YRkJFZ1JWV0RreUdnc0k0cFlFRUFJYUExVlRSRGdjY09LV0JBPT0iLFtbIkpGSyIsIjIwMjQtMTEtMDEiLCJNQUQiLG51bGwsIlVYIiwiOTIiXV1d"
+            "departure_token": "WyJDalJJT1ZaSVJGVjFjSEphVFRCQlFqUlBUVUZDUnkwdExTMHRMUzB0Y0daaWFXMHhOa0ZCUVVGQlIySm9aR05WUWpaTmJtbEJFZ1JWV0RreUdnc0k0cFlFRUFJYUExVlRSRGdjY09LV0JBPT0iLFtbIkpGSyIsIjIwMjQtMTEtMDEiLCJNQUQiLG51bGwsIlVYIiwiOTIiXV1d"
           },
           "outbound_google_flights_url": "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhowEgoyMDI0LTExLTAxagcIARIDSkZLagcIARIDTEdBagcIARIDRVdScgcIARIDTUFEGjASCjIwMjQtMTEtMTNqBwgBEgNNQURyBwgBEgNKRktyBwgBEgNMR0FyBwgBEgNFV1JCAQFIAXABmAEB",
           "return_google_flights_url": "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhpQEgoyMDI0LTExLTAxIh4KA0pGSxIKMjAyNC0xMS0wMRoDTUFEKgJVWDICOTJqBwgBEgNKRktqBwgBEgNMR0FqBwgBEgNFV1JyBwgBEgNNQUQaMBIKMjAyNC0xMS0xM2oHCAESA01BRHIHCAESA0pGS3IHCAESA0xHQXIHCAESA0VXUkIBAUgBcAGYAQE=",
@@ -299,7 +299,7 @@
                 "price": 685,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UX.png",
-                "booking_token": "WyJDalJJUkZGSkxXcFRWVGxMVmsxQlF6ZEVXSGRDUnkwdExTMHRMUzB0TFhaM2FtOHhPRUZCUVVGQlIySm9Xa1Z2UlhWaGVrTkJFZ1JWV0RreEdnc0k0cFlFRUFJYUExVlRSRGdjY09LV0JBPT0iLFtbIkpGSyIsIjIwMjQtMTEtMDEiLCJNQUQiLG51bGwsIlVYIiwiOTIiXV0sW1siTUFEIiwiMjAyNC0xMS0xMyIsIkpGSyIsbnVsbCwiVVgiLCI5MSJdXV0="
+                "booking_token": "WyJDalJJVjBNeldDMUJlV3cwZVVsQlF6ZzJMV2RDUnkwdExTMHRMUzB0TFhaM2MzY3hNMEZCUVVGQlIySm9aR05yUTFOTlJrVkJFZ1JWV0RreEdnc0k0cFlFRUFJYUExVlRSRGdjY09LV0JBPT0iLFtbIkpGSyIsIjIwMjQtMTEtMDEiLCJNQUQiLG51bGwsIlVYIiwiOTIiXV0sW1siTUFEIiwiMjAyNC0xMS0xMyIsIkpGSyIsbnVsbCwiVVgiLCI5MSJdXV0="
               },
               "totalPrice": 685,
               "totalDuration": 920
@@ -346,7 +346,7 @@
                 "price": 1564,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/DL.png",
-                "booking_token": "WyJDalJJUkZGSkxXcFRWVGxMVmsxQlF6ZEVXSGRDUnkwdExTMHRMUzB0TFhaM2FtOHhPRUZCUVVGQlIySm9Xa1Z2UlhWaGVrTkJFZ1ZFVERFeU54b0xDSnpGQ1JBQ0dnTlZVMFE0SEhDY3hRaz0iLFtbIkpGSyIsIjIwMjQtMTEtMDEiLCJNQUQiLG51bGwsIlVYIiwiOTIiXV0sW1siTUFEIiwiMjAyNC0xMS0xMyIsIkpGSyIsbnVsbCwiREwiLCIxMjciXV1d"
+                "booking_token": "WyJDalJJVjBNeldDMUJlV3cwZVVsQlF6ZzJMV2RDUnkwdExTMHRMUzB0TFhaM2MzY3hNMEZCUVVGQlIySm9aR05yUTFOTlJrVkJFZ1ZFVERFeU54b0xDSnpGQ1JBQ0dnTlZVMFE0SEhDY3hRaz0iLFtbIkpGSyIsIjIwMjQtMTEtMDEiLCJNQUQiLG51bGwsIlVYIiwiOTIiXV0sW1siTUFEIiwiMjAyNC0xMS0xMyIsIkpGSyIsbnVsbCwiREwiLCIxMjciXV1d"
               },
               "totalPrice": 1564,
               "totalDuration": 950
@@ -425,7 +425,7 @@
                 "price": 5388,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AF.png",
-                "booking_token": "WyJDalJJUkZGSkxXcFRWVGxMVmsxQlF6ZEVXSGRDUnkwdExTMHRMUzB0TFhaM2FtOHhPRUZCUVVGQlIySm9Xa1Z2UlhWaGVrTkJFZ3RCUmpFMk1ERjhRVVl4TWhvTENLYnhJQkFDR2dOVlUwUTRISENtOFNBPSIsW1siSkZLIiwiMjAyNC0xMS0wMSIsIk1BRCIsbnVsbCwiVVgiLCI5MiJdXSxbWyJNQUQiLCIyMDI0LTExLTEzIiwiQ0RHIixudWxsLCJBRiIsIjE2MDEiXSxbIkNERyIsIjIwMjQtMTEtMTMiLCJKRksiLG51bGwsIkFGIiwiMTIiXV1d"
+                "booking_token": "WyJDalJJVjBNeldDMUJlV3cwZVVsQlF6ZzJMV2RDUnkwdExTMHRMUzB0TFhaM2MzY3hNMEZCUVVGQlIySm9aR05yUTFOTlJrVkJFZ3RCUmpFMk1ERjhRVVl4TWhvTENLYnhJQkFDR2dOVlUwUTRISENtOFNBPSIsW1siSkZLIiwiMjAyNC0xMS0wMSIsIk1BRCIsbnVsbCwiVVgiLCI5MiJdXSxbWyJNQUQiLCIyMDI0LTExLTEzIiwiQ0RHIixudWxsLCJBRiIsIjE2MDEiXSxbIkNERyIsIjIwMjQtMTEtMTMiLCJKRksiLG51bGwsIkFGIiwiMTIiXV1d"
               },
               "totalPrice": 5388,
               "totalDuration": 1175
@@ -478,7 +478,7 @@
             "price": 736,
             "type": "Round trip",
             "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/DL.png",
-            "departure_token": "WyJDalJJTldseU1XZG9WMHRoTUdkQlF6UXpUWGRDUnkwdExTMHRMUzB0TFMxMGJIZHVNMEZCUVVGQlIySm9Xa1ZSU0ZCU09YRkJFZ1ZFVERFeU5ob0xDTTYrQkJBQ0dnTlZVMFE0SEhET3ZnUT0iLFtbIkpGSyIsIjIwMjQtMTEtMDEiLCJNQUQiLG51bGwsIkRMIiwiMTI2Il1dXQ=="
+            "departure_token": "WyJDalJJT1ZaSVJGVjFjSEphVFRCQlFqUlBUVUZDUnkwdExTMHRMUzB0Y0daaWFXMHhOa0ZCUVVGQlIySm9aR05WUWpaTmJtbEJFZ1ZFVERFeU5ob0xDTTYrQkJBQ0dnTlZVMFE0SEhET3ZnUT0iLFtbIkpGSyIsIjIwMjQtMTEtMDEiLCJNQUQiLG51bGwsIkRMIiwiMTI2Il1dXQ=="
           },
           "outbound_google_flights_url": "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhowEgoyMDI0LTExLTAxagcIARIDSkZLagcIARIDTEdBagcIARIDRVdScgcIARIDTUFEGjASCjIwMjQtMTEtMTNqBwgBEgNNQURyBwgBEgNKRktyBwgBEgNMR0FyBwgBEgNFV1JCAQFIAXABmAEB",
           "return_google_flights_url": "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhpREgoyMDI0LTExLTAxIh8KA0pGSxIKMjAyNC0xMS0wMRoDTUFEKgJETDIDMTI2agcIARIDSkZLagcIARIDTEdBagcIARIDRVdScgcIARIDTUFEGjASCjIwMjQtMTEtMTNqBwgBEgNNQURyBwgBEgNKRktyBwgBEgNMR0FyBwgBEgNFV1JCAQFIAXABmAEB",
@@ -528,7 +528,7 @@
                 "price": 736,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/DL.png",
-                "booking_token": "WyJDalJJZUZsck5tOU1PVGRaZFUxQlJHWnhWMmRDUnkwdExTMHRMUzB0YjJ0aVptY3lNRUZCUVVGQlIySm9Xa1YzVDB4cGR6UkJFZ2RFVERFeU55TXhHZ3NJenI0RUVBSWFBMVZUUkRnY2NNNitCQT09IixbWyJKRksiLCIyMDI0LTExLTAxIiwiTUFEIixudWxsLCJETCIsIjEyNiJdXSxbWyJNQUQiLCIyMDI0LTExLTEzIiwiSkZLIixudWxsLCJETCIsIjEyNyJdXV0="
+                "booking_token": "WyJDalJJYVhsNmVqQnJTMDFpTmxsQlFqUm1RMmRDUnkwdExTMHRMUzB0TFhCcWIzQXlNRUZCUVVGQlIySm9aR056VDFsSk5tOUJFZ1ZFVERFeU54b0xDTTYrQkJBQ0dnTlZVMFE0SEhET3ZnUT0iLFtbIkpGSyIsIjIwMjQtMTEtMDEiLCJNQUQiLG51bGwsIkRMIiwiMTI2Il1dLFtbIk1BRCIsIjIwMjQtMTEtMTMiLCJKRksiLG51bGwsIkRMIiwiMTI3Il1dXQ=="
               },
               "totalPrice": 736,
               "totalDuration": 955
@@ -610,7 +610,7 @@
                 "price": 768,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/KL.png",
-                "booking_token": "WyJDalJJZUZsck5tOU1PVGRaZFUxQlJHWnhWMmRDUnkwdExTMHRMUzB0YjJ0aVptY3lNRUZCUVVGQlIySm9Xa1YzVDB4cGR6UkJFZzVMVERFMU1EUjhTMHcyTkRNak1Sb0xDTVRYQkJBQ0dnTlZVMFE0SEhERTF3UT0iLFtbIkpGSyIsIjIwMjQtMTEtMDEiLCJNQUQiLG51bGwsIkRMIiwiMTI2Il1dLFtbIk1BRCIsIjIwMjQtMTEtMTMiLCJBTVMiLG51bGwsIktMIiwiMTUwNCJdLFsiQU1TIiwiMjAyNC0xMS0xMyIsIkpGSyIsbnVsbCwiS0wiLCI2NDMiXV1d"
+                "booking_token": "WyJDalJJYVhsNmVqQnJTMDFpTmxsQlFqUm1RMmRDUnkwdExTMHRMUzB0TFhCcWIzQXlNRUZCUVVGQlIySm9aR056VDFsSk5tOUJFZ3hMVERFMU1EUjhTMHcyTkRNYUN3akUxd1FRQWhvRFZWTkVPQnh3eE5jRSIsW1siSkZLIiwiMjAyNC0xMS0wMSIsIk1BRCIsbnVsbCwiREwiLCIxMjYiXV0sW1siTUFEIiwiMjAyNC0xMS0xMyIsIkFNUyIsbnVsbCwiS0wiLCIxNTA0Il0sWyJBTVMiLCIyMDI0LTExLTEzIiwiSkZLIixudWxsLCJLTCIsIjY0MyJdXV0="
               },
               "totalPrice": 768,
               "totalDuration": 1170
@@ -692,7 +692,7 @@
                 "price": 772,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AF.png",
-                "booking_token": "WyJDalJJZUZsck5tOU1PVGRaZFUxQlJHWnhWMmRDUnkwdExTMHRMUzB0YjJ0aVptY3lNRUZCUVVGQlIySm9Xa1YzVDB4cGR6UkJFZ3BCUmpFek1ERjhRVVk0R2dzSWh0c0VFQUlhQTFWVFJEZ2NjSWJiQkE9PSIsW1siSkZLIiwiMjAyNC0xMS0wMSIsIk1BRCIsbnVsbCwiREwiLCIxMjYiXV0sW1siTUFEIiwiMjAyNC0xMS0xMyIsIkNERyIsbnVsbCwiQUYiLCIxMzAxIl0sWyJDREciLCIyMDI0LTExLTEzIiwiSkZLIixudWxsLCJBRiIsIjgiXV1d"
+                "booking_token": "WyJDalJJYVhsNmVqQnJTMDFpTmxsQlFqUm1RMmRDUnkwdExTMHRMUzB0TFhCcWIzQXlNRUZCUVVGQlIySm9aR056VDFsSk5tOUJFZ3BCUmpFek1ERjhRVVk0R2dzSWh0c0VFQUlhQTFWVFJEZ2NjSWJiQkE9PSIsW1siSkZLIiwiMjAyNC0xMS0wMSIsIk1BRCIsbnVsbCwiREwiLCIxMjYiXV0sW1siTUFEIiwiMjAyNC0xMS0xMyIsIkNERyIsbnVsbCwiQUYiLCIxMzAxIl0sWyJDREciLCIyMDI0LTExLTEzIiwiSkZLIixudWxsLCJBRiIsIjgiXV1d"
               },
               "totalPrice": 772,
               "totalDuration": 1195
@@ -737,12 +737,12 @@
                   "typical_for_this_route": 484000,
                   "difference_percent": -24
                 },
-                "price": 1637,
+                "price": 1588,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UX.png",
-                "booking_token": "WyJDalJJZUZsck5tOU1PVGRaZFUxQlJHWnhWMmRDUnkwdExTMHRMUzB0YjJ0aVptY3lNRUZCUVVGQlIySm9Xa1YzVDB4cGR6UkJFZ1pWV0RreEl6RWFDd2pDL2drUUFob0RWVk5FT0J4d3d2NEoiLFtbIkpGSyIsIjIwMjQtMTEtMDEiLCJNQUQiLG51bGwsIkRMIiwiMTI2Il1dLFtbIk1BRCIsIjIwMjQtMTEtMTMiLCJKRksiLG51bGwsIlVYIiwiOTEiXV1d"
+                "booking_token": "WyJDalJJYVhsNmVqQnJTMDFpTmxsQlFqUm1RMmRDUnkwdExTMHRMUzB0TFhCcWIzQXlNRUZCUVVGQlIySm9aR056VDFsSk5tOUJFZ1JWV0RreEdnc0lsTmdKRUFJYUExVlRSRGdjY0pUWUNRPT0iLFtbIkpGSyIsIjIwMjQtMTEtMDEiLCJNQUQiLG51bGwsIkRMIiwiMTI2Il1dLFtbIk1BRCIsIjIwMjQtMTEtMTMiLCJKRksiLG51bGwsIlVYIiwiOTEiXV1d"
               },
-              "totalPrice": 1637,
+              "totalPrice": 1588,
               "totalDuration": 925
             },
             {
@@ -787,7 +787,7 @@
                 "price": 6458,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/IB.png",
-                "booking_token": "WyJDalJJZUZsck5tOU1PVGRaZFUxQlJHWnhWMmRDUnkwdExTMHRMUzB0YjJ0aVptY3lNRUZCUVVGQlIySm9Xa1YzVDB4cGR6UkJFZ1ZKUWpJeE1Sb0xDUGEwSnhBQ0dnTlZVMFE0SEhEMnRDYz0iLFtbIkpGSyIsIjIwMjQtMTEtMDEiLCJNQUQiLG51bGwsIkRMIiwiMTI2Il1dLFtbIk1BRCIsIjIwMjQtMTEtMTMiLCJKRksiLG51bGwsIklCIiwiMjExIl1dXQ=="
+                "booking_token": "WyJDalJJYVhsNmVqQnJTMDFpTmxsQlFqUm1RMmRDUnkwdExTMHRMUzB0TFhCcWIzQXlNRUZCUVVGQlIySm9aR056VDFsSk5tOUJFZ1ZKUWpJeE1Sb0xDUGEwSnhBQ0dnTlZVMFE0SEhEMnRDYz0iLFtbIkpGSyIsIjIwMjQtMTEtMDEiLCJNQUQiLG51bGwsIkRMIiwiMTI2Il1dLFtbIk1BRCIsIjIwMjQtMTEtMTMiLCJKRksiLG51bGwsIklCIiwiMjExIl1dXQ=="
               },
               "totalPrice": 6458,
               "totalDuration": 955
@@ -834,7 +834,7 @@
                 "price": 6458,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/IB.png",
-                "booking_token": "WyJDalJJZUZsck5tOU1PVGRaZFUxQlJHWnhWMmRDUnkwdExTMHRMUzB0YjJ0aVptY3lNRUZCUVVGQlIySm9Xa1YzVDB4cGR6UkJFZ1ZKUWpNeU5Sb0xDUGEwSnhBQ0dnTlZVMFE0SEhEMnRDYz0iLFtbIkpGSyIsIjIwMjQtMTEtMDEiLCJNQUQiLG51bGwsIkRMIiwiMTI2Il1dLFtbIk1BRCIsIjIwMjQtMTEtMTMiLCJKRksiLG51bGwsIklCIiwiMzI1Il1dXQ=="
+                "booking_token": "WyJDalJJYVhsNmVqQnJTMDFpTmxsQlFqUm1RMmRDUnkwdExTMHRMUzB0TFhCcWIzQXlNRUZCUVVGQlIySm9aR056VDFsSk5tOUJFZ1ZKUWpNeU5Sb0xDUGEwSnhBQ0dnTlZVMFE0SEhEMnRDYz0iLFtbIkpGSyIsIjIwMjQtMTEtMDEiLCJNQUQiLG51bGwsIkRMIiwiMTI2Il1dLFtbIk1BRCIsIjIwMjQtMTEtMTMiLCJKRksiLG51bGwsIklCIiwiMzI1Il1dXQ=="
               },
               "totalPrice": 6458,
               "totalDuration": 960
@@ -928,7 +928,7 @@
             "price": 561,
             "type": "Round trip",
             "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/TP.png",
-            "departure_token": "WyJDalJJVjBNeldDMUJlV3cwZVVsQlEzZGFXbmRDUnkwdExTMHRMUzB0TFhaM2MzY3hNMEZCUVVGQlIySm9Xa1pCVDA4emFVVkJFZ3hVVURJeE1IeFVVREV3TVRRYUN3anl0UU1RQWhvRFZWTkVPQnh3OHJVRCIsW1siSkZLIiwiMjAyNC0xMS0wMiIsIkxJUyIsbnVsbCwiVFAiLCIyMTAiXSxbIkxJUyIsIjIwMjQtMTEtMDMiLCJNQUQiLG51bGwsIlRQIiwiMTAxNCJdXV0="
+            "departure_token": "WyJDalJJVG5abGRHNW5OMmRxWkZWQlJUUjNTbEZDUnkwdExTMHRMUzB0ZDJaaVpHWXhPVUZCUVVGQlIySm9aR000UkdRd2NEaEJFZ3hVVURJeE1IeFVVREV3TVRRYUN3anl0UU1RQWhvRFZWTkVPQnh3OHJVRCIsW1siSkZLIiwiMjAyNC0xMS0wMiIsIkxJUyIsbnVsbCwiVFAiLCIyMTAiXSxbIkxJUyIsIjIwMjQtMTEtMDMiLCJNQUQiLG51bGwsIlRQIiwiMTAxNCJdXV0="
           },
           "outbound_google_flights_url": "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhowEgoyMDI0LTExLTAyagcIARIDSkZLagcIARIDTEdBagcIARIDRVdScgcIARIDTUFEGjASCjIwMjQtMTEtMTRqBwgBEgNNQURyBwgBEgNKRktyBwgBEgNMR0FyBwgBEgNFV1JCAQFIAXABmAEB",
           "return_google_flights_url": "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhpzEgoyMDI0LTExLTAyIh8KA0pGSxIKMjAyNC0xMS0wMhoDTElTKgJUUDIDMjEwIiAKA0xJUxIKMjAyNC0xMS0wMxoDTUFEKgJUUDIEMTAxNGoHCAESA0pGS2oHCAESA0xHQWoHCAESA0VXUnIHCAESA01BRBowEgoyMDI0LTExLTE0agcIARIDTUFEcgcIARIDSkZLcgcIARIDTEdBcgcIARIDRVdSQgEBSAFwAZgBAQ==",
@@ -1003,7 +1003,7 @@
                 "price": 561,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/TP.png",
-                "booking_token": "WyJDalJJWDFCNFdtdFJSbTF6ZUZsQlFqTnBkRkZDUnkwdExTMHRMUzB0TFhCbVltUjFORUZCUVVGQlIySm9Xa1pKU3psSVEwZEJFZzVVVURFd01UVjhWRkF5TURrak1Sb0xDUEsxQXhBQ0dnTlZVMFE0SEhEeXRRTT0iLFtbIkpGSyIsIjIwMjQtMTEtMDIiLCJMSVMiLG51bGwsIlRQIiwiMjEwIl0sWyJMSVMiLCIyMDI0LTExLTAzIiwiTUFEIixudWxsLCJUUCIsIjEwMTQiXV0sW1siTUFEIiwiMjAyNC0xMS0xNCIsIkxJUyIsbnVsbCwiVFAiLCIxMDE1Il0sWyJMSVMiLCIyMDI0LTExLTE0IiwiSkZLIixudWxsLCJUUCIsIjIwOSJdXV0="
+                "booking_token": "WyJDalJJUjNKSFEzTnNTVTR3ZGpoQlJHVkZPRkZDUnkwdExTMHRMUzB0TFMxMmRIRm1NVUZCUVVGQlIySm9aR1JCVEZoMlFYbEJFZzVVVURFd01UVjhWRkF5TURrak1Sb0xDUEsxQXhBQ0dnTlZVMFE0SEhEeXRRTT0iLFtbIkpGSyIsIjIwMjQtMTEtMDIiLCJMSVMiLG51bGwsIlRQIiwiMjEwIl0sWyJMSVMiLCIyMDI0LTExLTAzIiwiTUFEIixudWxsLCJUUCIsIjEwMTQiXV0sW1siTUFEIiwiMjAyNC0xMS0xNCIsIkxJUyIsbnVsbCwiVFAiLCIxMDE1Il0sWyJMSVMiLCIyMDI0LTExLTE0IiwiSkZLIixudWxsLCJUUCIsIjIwOSJdXV0="
               },
               "totalPrice": 561,
               "totalDuration": 1275
@@ -1076,7 +1076,7 @@
                 "price": 599,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-                "booking_token": "WyJDalJJWDFCNFdtdFJSbTF6ZUZsQlFqTnBkRkZDUnkwdExTMHRMUzB0TFhCbVltUjFORUZCUVVGQlIySm9Xa1pKU3psSVEwZEJFZ3BCV2pZeGZFNHdOREF4R2dzSXp0TURFQUlhQTFWVFJEZ2NjTTdUQXc9PSIsW1siSkZLIiwiMjAyNC0xMS0wMiIsIkxJUyIsbnVsbCwiVFAiLCIyMTAiXSxbIkxJUyIsIjIwMjQtMTEtMDMiLCJNQUQiLG51bGwsIlRQIiwiMTAxNCJdXSxbWyJNQUQiLCIyMDI0LTExLTE0IiwiRkNPIixudWxsLCJBWiIsIjYxIl0sWyJGQ08iLCIyMDI0LTExLTE0IiwiSkZLIixudWxsLCJOMCIsIjQwMSJdXV0="
+                "booking_token": "WyJDalJJUjNKSFEzTnNTVTR3ZGpoQlJHVkZPRkZDUnkwdExTMHRMUzB0TFMxMmRIRm1NVUZCUVVGQlIySm9aR1JCVEZoMlFYbEJFZ3BCV2pZeGZFNHdOREF4R2dzSXg5TURFQUlhQTFWVFJEZ2NjTWZUQXc9PSIsW1siSkZLIiwiMjAyNC0xMS0wMiIsIkxJUyIsbnVsbCwiVFAiLCIyMTAiXSxbIkxJUyIsIjIwMjQtMTEtMDMiLCJNQUQiLG51bGwsIlRQIiwiMTAxNCJdXSxbWyJNQUQiLCIyMDI0LTExLTE0IiwiRkNPIixudWxsLCJBWiIsIjYxIl0sWyJGQ08iLCIyMDI0LTExLTE0IiwiSkZLIixudWxsLCJOMCIsIjQwMSJdXV0="
               },
               "totalPrice": 599,
               "totalDuration": 1575
@@ -1088,163 +1088,41 @@
                     "departure_airport": {
                       "name": "Adolfo Suárez Madrid–Barajas Airport",
                       "id": "MAD",
-                      "time": "2024-11-14 13:05"
+                      "time": "2024-11-14 16:20"
                     },
                     "arrival_airport": {
-                      "name": "Leonardo da Vinci–Fiumicino Airport",
-                      "id": "FCO",
-                      "time": "2024-11-14 15:30"
+                      "name": "John F. Kennedy International Airport",
+                      "id": "JFK",
+                      "time": "2024-11-14 19:10"
                     },
-                    "duration": 145,
+                    "duration": 530,
                     "airline": "Iberia",
                     "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/IB.png",
                     "travel_class": "Economy",
-                    "flight_number": "IB 651",
-                    "legroom": "28 in",
-                    "extensions": [
-                      "Below average legroom (28 in)",
-                      "In-seat USB outlet",
-                      "Carbon emissions estimate: 122 kg"
-                    ]
-                  },
-                  {
-                    "departure_airport": {
-                      "name": "Leonardo da Vinci–Fiumicino Airport",
-                      "id": "FCO",
-                      "time": "2024-11-14 18:25"
-                    },
-                    "arrival_airport": {
-                      "name": "John F. Kennedy International Airport",
-                      "id": "JFK",
-                      "time": "2024-11-14 22:00"
-                    },
-                    "duration": 575,
-                    "airline": "Norse Atlantic Airways",
-                    "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/N0.png",
-                    "travel_class": "Economy",
-                    "flight_number": "N0 401",
+                    "flight_number": "IB 325",
                     "legroom": "31 in",
                     "extensions": [
                       "Average legroom (31 in)",
+                      "Wi-Fi for a fee",
                       "In-seat power & USB outlets",
                       "On-demand video",
-                      "Carbon emissions estimate: 504 kg"
+                      "Carbon emissions estimate: 509 kg"
                     ]
                   }
                 ],
-                "layovers": [
-                  {
-                    "duration": 175,
-                    "name": "Leonardo da Vinci–Fiumicino Airport",
-                    "id": "FCO"
-                  }
-                ],
-                "total_duration": 895,
+                "total_duration": 530,
                 "carbon_emissions": {
-                  "this_flight": 627000,
+                  "this_flight": 510000,
                   "typical_for_this_route": 484000,
-                  "difference_percent": 30
+                  "difference_percent": 5
                 },
-                "price": 639,
+                "price": 831,
                 "type": "Round trip",
-                "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-                "booking_token": "WyJDalJJWDFCNFdtdFJSbTF6ZUZsQlFqTnBkRkZDUnkwdExTMHRMUzB0TFhCbVltUjFORUZCUVVGQlIySm9Xa1pKU3psSVEwZEJFZ3RKUWpZMU1YeE9NRFF3TVJvTENOYnlBeEFDR2dOVlUwUTRISERXOGdNPSIsW1siSkZLIiwiMjAyNC0xMS0wMiIsIkxJUyIsbnVsbCwiVFAiLCIyMTAiXSxbIkxJUyIsIjIwMjQtMTEtMDMiLCJNQUQiLG51bGwsIlRQIiwiMTAxNCJdXSxbWyJNQUQiLCIyMDI0LTExLTE0IiwiRkNPIixudWxsLCJJQiIsIjY1MSJdLFsiRkNPIiwiMjAyNC0xMS0xNCIsIkpGSyIsbnVsbCwiTjAiLCI0MDEiXV1d"
+                "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/IB.png",
+                "booking_token": "WyJDalJJUjNKSFEzTnNTVTR3ZGpoQlJHVkZPRkZDUnkwdExTMHRMUzB0TFMxMmRIRm1NVUZCUVVGQlIySm9aR1JCVEZoMlFYbEJFZ1ZKUWpNeU5Sb0xDTnFJQlJBQ0dnTlZVMFE0SEhEYWlBVT0iLFtbIkpGSyIsIjIwMjQtMTEtMDIiLCJMSVMiLG51bGwsIlRQIiwiMjEwIl0sWyJMSVMiLCIyMDI0LTExLTAzIiwiTUFEIixudWxsLCJUUCIsIjEwMTQiXV0sW1siTUFEIiwiMjAyNC0xMS0xNCIsIkpGSyIsbnVsbCwiSUIiLCIzMjUiXV1d"
               },
-              "totalPrice": 639,
-              "totalDuration": 1500
-            },
-            {
-              "returnFlight": {
-                "flights": [
-                  {
-                    "departure_airport": {
-                      "name": "Adolfo Suárez Madrid–Barajas Airport",
-                      "id": "MAD",
-                      "time": "2024-11-14 11:25"
-                    },
-                    "arrival_airport": {
-                      "name": "Humberto Delgado Airport",
-                      "id": "LIS",
-                      "time": "2024-11-14 11:50"
-                    },
-                    "duration": 85,
-                    "airline": "Vueling",
-                    "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/VY.png",
-                    "travel_class": "Economy",
-                    "flight_number": "VY 5071",
-                    "legroom": "28 in",
-                    "extensions": [
-                      "Below average legroom (28 in)",
-                      "Wi-Fi for a fee",
-                      "In-seat USB outlet"
-                    ]
-                  },
-                  {
-                    "departure_airport": {
-                      "name": "Humberto Delgado Airport",
-                      "id": "LIS",
-                      "time": "2024-11-14 14:05"
-                    },
-                    "arrival_airport": {
-                      "name": "Aeroporto João Paulo II",
-                      "id": "PDL",
-                      "time": "2024-11-14 15:35"
-                    },
-                    "duration": 150,
-                    "airline": "Azores Airlines",
-                    "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/S4.png",
-                    "travel_class": "Economy",
-                    "flight_number": "S4 125",
-                    "legroom": "31 in",
-                    "extensions": [
-                      "Average legroom (31 in)",
-                      "In-seat power & USB outlets",
-                      "Stream media to your device",
-                      "Carbon emissions estimate: 131 kg"
-                    ],
-                    "often_delayed_by_over_30_min": true
-                  },
-                  {
-                    "departure_airport": {
-                      "name": "Aeroporto João Paulo II",
-                      "id": "PDL",
-                      "time": "2024-11-14 17:20"
-                    },
-                    "arrival_airport": {
-                      "name": "John F. Kennedy International Airport",
-                      "id": "JFK",
-                      "time": "2024-11-14 19:55"
-                    },
-                    "duration": 395,
-                    "airline": "Azores Airlines",
-                    "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/S4.png",
-                    "travel_class": "Economy",
-                    "flight_number": "S4 267"
-                  }
-                ],
-                "layovers": [
-                  {
-                    "duration": 135,
-                    "name": "Humberto Delgado Airport",
-                    "id": "LIS"
-                  },
-                  {
-                    "duration": 105,
-                    "name": "Aeroporto João Paulo II",
-                    "id": "PDL"
-                  }
-                ],
-                "total_duration": 870,
-                "carbon_emissions": {
-                  "typical_for_this_route": 484000
-                },
-                "price": 796,
-                "type": "Round trip",
-                "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-                "booking_token": "WyJDalJJWDFCNFdtdFJSbTF6ZUZsQlFqTnBkRkZDUnkwdExTMHRMUzB0TFhCbVltUjFORUZCUVVGQlIySm9Xa1pKU3psSVEwZEJFaEpXV1RVd056RjhVelF4TWpWOFV6UXlOamNhQ3dpWDdRUVFBaG9EVlZORU9CeHdsKzBFIixbWyJKRksiLCIyMDI0LTExLTAyIiwiTElTIixudWxsLCJUUCIsIjIxMCJdLFsiTElTIiwiMjAyNC0xMS0wMyIsIk1BRCIsbnVsbCwiVFAiLCIxMDE0Il1dLFtbIk1BRCIsIjIwMjQtMTEtMTQiLCJMSVMiLG51bGwsIlZZIiwiNTA3MSJdLFsiTElTIiwiMjAyNC0xMS0xNCIsIlBETCIsbnVsbCwiUzQiLCIxMjUiXSxbIlBETCIsIjIwMjQtMTEtMTQiLCJKRksiLG51bGwsIlM0IiwiMjY3Il1dXQ=="
-              },
-              "totalPrice": 796,
-              "totalDuration": 1475
+              "totalPrice": 831,
+              "totalDuration": 1135
             }
           ]
         },
@@ -1321,7 +1199,7 @@
             "price": 575,
             "type": "Round trip",
             "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AA.png",
-            "departure_token": "WyJDalJJVjBNeldDMUJlV3cwZVVsQlEzZGFXbmRDUnkwdExTMHRMUzB0TFhaM2MzY3hNMEZCUVVGQlIySm9Xa1pCVDA4emFVVkJFZ3hCUVRFek16bDhRVUUzTkRnYUN3aWN3UU1RQWhvRFZWTkVPQnh3bk1FRCIsW1siSkZLIiwiMjAyNC0xMS0wMiIsIkNMVCIsbnVsbCwiQUEiLCIxMzM5Il0sWyJDTFQiLCIyMDI0LTExLTAyIiwiTUFEIixudWxsLCJBQSIsIjc0OCJdXV0="
+            "departure_token": "WyJDalJJVG5abGRHNW5OMmRxWkZWQlJUUjNTbEZDUnkwdExTMHRMUzB0ZDJaaVpHWXhPVUZCUVVGQlIySm9aR000UkdRd2NEaEJFZ3hCUVRFek16bDhRVUUzTkRnYUN3aWN3UU1RQWhvRFZWTkVPQnh3bk1FRCIsW1siSkZLIiwiMjAyNC0xMS0wMiIsIkNMVCIsbnVsbCwiQUEiLCIxMzM5Il0sWyJDTFQiLCIyMDI0LTExLTAyIiwiTUFEIixudWxsLCJBQSIsIjc0OCJdXV0="
           },
           "outbound_google_flights_url": "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhowEgoyMDI0LTExLTAyagcIARIDSkZLagcIARIDTEdBagcIARIDRVdScgcIARIDTUFEGjASCjIwMjQtMTEtMTRqBwgBEgNNQURyBwgBEgNKRktyBwgBEgNMR0FyBwgBEgNFV1JCAQFIAXABmAEB",
           "return_google_flights_url": "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhpzEgoyMDI0LTExLTAyIiAKA0pGSxIKMjAyNC0xMS0wMhoDQ0xUKgJBQTIEMTMzOSIfCgNDTFQSCjIwMjQtMTEtMDIaA01BRCoCQUEyAzc0OGoHCAESA0pGS2oHCAESA0xHQWoHCAESA0VXUnIHCAESA01BRBowEgoyMDI0LTExLTE0agcIARIDTUFEcgcIARIDSkZLcgcIARIDTEdBcgcIARIDRVdSQgEBSAFwAZgBAQ==",
@@ -1368,7 +1246,7 @@
                 "price": 575,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AA.png",
-                "booking_token": "WyJDalJJWjJGRFdWUnZXR3hyTXpCQlJFVkVRMmRDUnkwdExTMHRMUzB0TFhaMGJXd3hOVUZCUVVGQlIySm9Xa1pWUVdaYU5EQkJFZ1pCUVRrMUl6RWFDd2ljd1FNUUFob0RWVk5FT0J4d25NRUQiLFtbIkpGSyIsIjIwMjQtMTEtMDIiLCJDTFQiLG51bGwsIkFBIiwiMTMzOSJdLFsiQ0xUIiwiMjAyNC0xMS0wMiIsIk1BRCIsbnVsbCwiQUEiLCI3NDgiXV0sW1siTUFEIiwiMjAyNC0xMS0xNCIsIkpGSyIsbnVsbCwiQUEiLCI5NSJdXV0="
+                "booking_token": "WyJDalJJUVY4MmRHTkhiRXQ0T1ZsQlJrSlRURkZDUnkwdExTMHRMUzB0YjNsamFXc3hOa0ZCUVVGQlIySm9aR1JOUjA5cU56QkJFZ1JCUVRrMUdnc0luTUVERUFJYUExVlRSRGdjY0p6QkF3PT0iLFtbIkpGSyIsIjIwMjQtMTEtMDIiLCJDTFQiLG51bGwsIkFBIiwiMTMzOSJdLFsiQ0xUIiwiMjAyNC0xMS0wMiIsIk1BRCIsbnVsbCwiQUEiLCI3NDgiXV0sW1siTUFEIiwiMjAyNC0xMS0xNCIsIkpGSyIsbnVsbCwiQUEiLCI5NSJdXV0="
               },
               "totalPrice": 575,
               "totalDuration": 1411
@@ -1395,8 +1273,8 @@
                     "flight_number": "IB 325",
                     "ticket_also_sold_by": [
                       "American",
-                      "British Airways",
-                      "Finnair"
+                      "Finnair",
+                      "British Airways"
                     ],
                     "legroom": "31 in",
                     "extensions": [
@@ -1417,7 +1295,7 @@
                 "price": 575,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/IB.png",
-                "booking_token": "WyJDalJJWjJGRFdWUnZXR3hyTXpCQlJFVkVRMmRDUnkwdExTMHRMUzB0TFhaMGJXd3hOVUZCUVVGQlIySm9Xa1pWUVdaYU5EQkJFZ2RKUWpNeU5TTXhHZ3NJbk1FREVBSWFBMVZUUkRnY2NKekJBdz09IixbWyJKRksiLCIyMDI0LTExLTAyIiwiQ0xUIixudWxsLCJBQSIsIjEzMzkiXSxbIkNMVCIsIjIwMjQtMTEtMDIiLCJNQUQiLG51bGwsIkFBIiwiNzQ4Il1dLFtbIk1BRCIsIjIwMjQtMTEtMTQiLCJKRksiLG51bGwsIklCIiwiMzI1Il1dXQ=="
+                "booking_token": "WyJDalJJUVY4MmRHTkhiRXQ0T1ZsQlJrSlRURkZDUnkwdExTMHRMUzB0YjNsamFXc3hOa0ZCUVVGQlIySm9aR1JOUjA5cU56QkJFZ1ZKUWpNeU5Sb0xDSnpCQXhBQ0dnTlZVMFE0SEhDY3dRTT0iLFtbIkpGSyIsIjIwMjQtMTEtMDIiLCJDTFQiLG51bGwsIkFBIiwiMTMzOSJdLFsiQ0xUIiwiMjAyNC0xMS0wMiIsIk1BRCIsbnVsbCwiQUEiLCI3NDgiXV0sW1siTUFEIiwiMjAyNC0xMS0xNCIsIkpGSyIsbnVsbCwiSUIiLCIzMjUiXV1d"
               },
               "totalPrice": 575,
               "totalDuration": 1446
@@ -1429,73 +1307,78 @@
                     "departure_airport": {
                       "name": "Adolfo Suárez Madrid–Barajas Airport",
                       "id": "MAD",
-                      "time": "2024-11-14 20:30"
+                      "time": "2024-11-14 12:00"
                     },
                     "arrival_airport": {
-                      "name": "Dublin Airport",
-                      "id": "DUB",
-                      "time": "2024-11-14 22:05"
+                      "name": "Heathrow Airport",
+                      "id": "LHR",
+                      "time": "2024-11-14 13:30"
                     },
-                    "duration": 155,
+                    "duration": 150,
                     "airplane": "Airbus A320",
-                    "airline": "Aer Lingus",
-                    "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/EI.png",
+                    "airline": "British Airways",
+                    "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/BA.png",
                     "travel_class": "Economy",
-                    "flight_number": "EI 595",
-                    "legroom": "30 in",
+                    "flight_number": "BA 459",
+                    "ticket_also_sold_by": [
+                      "American"
+                    ],
+                    "legroom": "29 in",
                     "extensions": [
-                      "Average legroom (30 in)",
-                      "Carbon emissions estimate: 142 kg"
-                    ]
+                      "Below average legroom (29 in)",
+                      "Wi-Fi for a fee",
+                      "In-seat USB outlet",
+                      "Carbon emissions estimate: 102 kg"
+                    ],
+                    "often_delayed_by_over_30_min": true
                   },
                   {
                     "departure_airport": {
-                      "name": "Dublin Airport",
-                      "id": "DUB",
-                      "time": "2024-11-15 16:45"
+                      "name": "Heathrow Airport",
+                      "id": "LHR",
+                      "time": "2024-11-14 15:35"
                     },
                     "arrival_airport": {
                       "name": "John F. Kennedy International Airport",
                       "id": "JFK",
-                      "time": "2024-11-15 19:25"
+                      "time": "2024-11-14 18:40"
                     },
-                    "duration": 460,
-                    "airplane": "Airbus A330",
-                    "airline": "Aer Lingus",
-                    "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/EI.png",
+                    "duration": 485,
+                    "airplane": "Boeing 777",
+                    "airline": "American",
+                    "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AA.png",
                     "travel_class": "Economy",
-                    "flight_number": "EI 107",
+                    "flight_number": "AA 105",
                     "legroom": "31 in",
                     "extensions": [
                       "Average legroom (31 in)",
                       "Wi-Fi for a fee",
                       "In-seat power & USB outlets",
                       "On-demand video",
-                      "Carbon emissions estimate: 342 kg"
+                      "Carbon emissions estimate: 538 kg"
                     ]
                   }
                 ],
                 "layovers": [
                   {
-                    "duration": 1120,
-                    "name": "Dublin Airport",
-                    "id": "DUB",
-                    "overnight": true
+                    "duration": 125,
+                    "name": "Heathrow Airport",
+                    "id": "LHR"
                   }
                 ],
-                "total_duration": 1735,
+                "total_duration": 760,
                 "carbon_emissions": {
-                  "this_flight": 485000,
+                  "this_flight": 641000,
                   "typical_for_this_route": 484000,
-                  "difference_percent": 0
+                  "difference_percent": 32
                 },
-                "price": 810,
+                "price": 594,
                 "type": "Round trip",
-                "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/EI.png",
-                "booking_token": "WyJDalJJWjJGRFdWUnZXR3hyTXpCQlJFVkVRMmRDUnkwdExTMHRMUzB0TFhaMGJXd3hOVUZCUVVGQlIySm9Xa1pWUVdaYU5EQkJFZ3RGU1RVNU5YeEZTVEV3TnhvTENOVDRCQkFDR2dOVlUwUTRISERVK0FRPSIsW1siSkZLIiwiMjAyNC0xMS0wMiIsIkNMVCIsbnVsbCwiQUEiLCIxMzM5Il0sWyJDTFQiLCIyMDI0LTExLTAyIiwiTUFEIixudWxsLCJBQSIsIjc0OCJdXSxbWyJNQUQiLCIyMDI0LTExLTE0IiwiRFVCIixudWxsLCJFSSIsIjU5NSJdLFsiRFVCIiwiMjAyNC0xMS0xNSIsIkpGSyIsbnVsbCwiRUkiLCIxMDciXV1d"
+                "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
+                "booking_token": "WyJDalJJUVY4MmRHTkhiRXQ0T1ZsQlJrSlRURkZDUnkwdExTMHRMUzB0YjNsamFXc3hOa0ZCUVVGQlIySm9aR1JOUjA5cU56QkJFZ3RDUVRRMU9YeEJRVEV3TlJvTENPclBBeEFDR2dOVlUwUTRISERxendNPSIsW1siSkZLIiwiMjAyNC0xMS0wMiIsIkNMVCIsbnVsbCwiQUEiLCIxMzM5Il0sWyJDTFQiLCIyMDI0LTExLTAyIiwiTUFEIixudWxsLCJBQSIsIjc0OCJdXSxbWyJNQUQiLCIyMDI0LTExLTE0IiwiTEhSIixudWxsLCJCQSIsIjQ1OSJdLFsiTEhSIiwiMjAyNC0xMS0xNCIsIkpGSyIsbnVsbCwiQUEiLCIxMDUiXV1d"
               },
-              "totalPrice": 810,
-              "totalDuration": 2651
+              "totalPrice": 594,
+              "totalDuration": 1676
             }
           ]
         },
@@ -1544,7 +1427,7 @@
             "price": 706,
             "type": "Round trip",
             "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/IB.png",
-            "departure_token": "WyJDalJJVjBNeldDMUJlV3cwZVVsQlEzZGFXbmRDUnkwdExTMHRMUzB0TFhaM2MzY3hNMEZCUVVGQlIySm9Xa1pCVDA4emFVVkJFZ1ZKUWpJeE1ob0xDSmFuQkJBQ0dnTlZVMFE0SEhDV3B3UT0iLFtbIkpGSyIsIjIwMjQtMTEtMDIiLCJNQUQiLG51bGwsIklCIiwiMjEyIl1dXQ=="
+            "departure_token": "WyJDalJJVG5abGRHNW5OMmRxWkZWQlJUUjNTbEZDUnkwdExTMHRMUzB0ZDJaaVpHWXhPVUZCUVVGQlIySm9aR000UkdRd2NEaEJFZ1ZKUWpJeE1ob0xDSmFuQkJBQ0dnTlZVMFE0SEhDV3B3UT0iLFtbIkpGSyIsIjIwMjQtMTEtMDIiLCJNQUQiLG51bGwsIklCIiwiMjEyIl1dXQ=="
           },
           "outbound_google_flights_url": "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhowEgoyMDI0LTExLTAyagcIARIDSkZLagcIARIDTEdBagcIARIDRVdScgcIARIDTUFEGjASCjIwMjQtMTEtMTRqBwgBEgNNQURyBwgBEgNKRktyBwgBEgNMR0FyBwgBEgNFV1JCAQFIAXABmAEB",
           "return_google_flights_url": "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhpREgoyMDI0LTExLTAyIh8KA0pGSxIKMjAyNC0xMS0wMhoDTUFEKgJJQjIDMjEyagcIARIDSkZLagcIARIDTEdBagcIARIDRVdScgcIARIDTUFEGjASCjIwMjQtMTEtMTRqBwgBEgNNQURyBwgBEgNKRktyBwgBEgNMR0FyBwgBEgNFV1JCAQFIAXABmAEB",
@@ -1593,7 +1476,7 @@
                 "price": 706,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AA.png",
-                "booking_token": "WyJDalJJUjNKSFEzTnNTVTR3ZGpoQlJGSlNTRUZDUnkwdExTMHRMUzB0TFMxMmRIRm1NVUZCUVVGQlIySm9Xa1ozUVZWUU9XRkJFZ1pCUVRrMUl6RWFDd2lXcHdRUUFob0RWVk5FT0J4d2xxY0UiLFtbIkpGSyIsIjIwMjQtMTEtMDIiLCJNQUQiLG51bGwsIklCIiwiMjEyIl1dLFtbIk1BRCIsIjIwMjQtMTEtMTQiLCJKRksiLG51bGwsIkFBIiwiOTUiXV1d"
+                "booking_token": "WyJDalJJY0Y4MmFHZHlXVmhEZWxsQlFqSlVjVUZDUnkwdExTMHRMUzB0Y0dwaVkyd3hNMEZCUVVGQlIySm9aR1J6U1ZVNE1ESkJFZ1JCUVRrMUdnc0lscWNFRUFJYUExVlRSRGdjY0phbkJBPT0iLFtbIkpGSyIsIjIwMjQtMTEtMDIiLCJNQUQiLG51bGwsIklCIiwiMjEyIl1dLFtbIk1BRCIsIjIwMjQtMTEtMTQiLCJKRksiLG51bGwsIkFBIiwiOTUiXV1d"
               },
               "totalPrice": 706,
               "totalDuration": 920
@@ -1620,8 +1503,8 @@
                     "flight_number": "IB 325",
                     "ticket_also_sold_by": [
                       "American",
-                      "British Airways",
-                      "Finnair"
+                      "Finnair",
+                      "British Airways"
                     ],
                     "legroom": "31 in",
                     "extensions": [
@@ -1642,7 +1525,7 @@
                 "price": 706,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/IB.png",
-                "booking_token": "WyJDalJJUjNKSFEzTnNTVTR3ZGpoQlJGSlNTRUZDUnkwdExTMHRMUzB0TFMxMmRIRm1NVUZCUVVGQlIySm9Xa1ozUVZWUU9XRkJFZ2RKUWpNeU5TTXhHZ3NJbHFjRUVBSWFBMVZUUkRnY2NKYW5CQT09IixbWyJKRksiLCIyMDI0LTExLTAyIiwiTUFEIixudWxsLCJJQiIsIjIxMiJdXSxbWyJNQUQiLCIyMDI0LTExLTE0IiwiSkZLIixudWxsLCJJQiIsIjMyNSJdXV0="
+                "booking_token": "WyJDalJJY0Y4MmFHZHlXVmhEZWxsQlFqSlVjVUZDUnkwdExTMHRMUzB0Y0dwaVkyd3hNMEZCUVVGQlIySm9aR1J6U1ZVNE1ESkJFZ1ZKUWpNeU5Sb0xDSmFuQkJBQ0dnTlZVMFE0SEhDV3B3UT0iLFtbIkpGSyIsIjIwMjQtMTEtMDIiLCJNQUQiLG51bGwsIklCIiwiMjEyIl1dLFtbIk1BRCIsIjIwMjQtMTEtMTQiLCJKRksiLG51bGwsIklCIiwiMzI1Il1dXQ=="
               },
               "totalPrice": 706,
               "totalDuration": 955
@@ -1668,7 +1551,8 @@
                     "travel_class": "Economy",
                     "flight_number": "BA 459",
                     "ticket_also_sold_by": [
-                      "Iberia"
+                      "Iberia",
+                      "American"
                     ],
                     "legroom": "29 in",
                     "extensions": [
@@ -1683,12 +1567,12 @@
                     "departure_airport": {
                       "name": "Heathrow Airport",
                       "id": "LHR",
-                      "time": "2024-11-14 15:55"
+                      "time": "2024-11-14 15:35"
                     },
                     "arrival_airport": {
                       "name": "John F. Kennedy International Airport",
                       "id": "JFK",
-                      "time": "2024-11-14 19:00"
+                      "time": "2024-11-14 18:40"
                     },
                     "duration": 485,
                     "airplane": "Boeing 777",
@@ -1697,7 +1581,8 @@
                     "travel_class": "Economy",
                     "flight_number": "AA 105",
                     "ticket_also_sold_by": [
-                      "Iberia"
+                      "Iberia",
+                      "British Airways"
                     ],
                     "legroom": "31 in",
                     "extensions": [
@@ -1711,12 +1596,12 @@
                 ],
                 "layovers": [
                   {
-                    "duration": 145,
+                    "duration": 125,
                     "name": "Heathrow Airport",
                     "id": "LHR"
                   }
                 ],
-                "total_duration": 780,
+                "total_duration": 760,
                 "carbon_emissions": {
                   "this_flight": 641000,
                   "typical_for_this_route": 484000,
@@ -1725,10 +1610,10 @@
                 "price": 825,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-                "booking_token": "WyJDalJJUjNKSFEzTnNTVTR3ZGpoQlJGSlNTRUZDUnkwdExTMHRMUzB0TFMxMmRIRm1NVUZCUVVGQlIySm9Xa1ozUVZWUU9XRkJFZ3RDUVRRMU9YeEJRVEV3TlJvTENQU0RCUkFDR2dOVlUwUTRISEQwZ3dVPSIsW1siSkZLIiwiMjAyNC0xMS0wMiIsIk1BRCIsbnVsbCwiSUIiLCIyMTIiXV0sW1siTUFEIiwiMjAyNC0xMS0xNCIsIkxIUiIsbnVsbCwiQkEiLCI0NTkiXSxbIkxIUiIsIjIwMjQtMTEtMTQiLCJKRksiLG51bGwsIkFBIiwiMTA1Il1dXQ=="
+                "booking_token": "WyJDalJJY0Y4MmFHZHlXVmhEZWxsQlFqSlVjVUZDUnkwdExTMHRMUzB0Y0dwaVkyd3hNMEZCUVVGQlIySm9aR1J6U1ZVNE1ESkJFZzFDUVRRMU9YeEJRVEV3TlNNeEdnc0k5SU1GRUFJYUExVlRSRGdjY1BTREJRPT0iLFtbIkpGSyIsIjIwMjQtMTEtMDIiLCJNQUQiLG51bGwsIklCIiwiMjEyIl1dLFtbIk1BRCIsIjIwMjQtMTEtMTQiLCJMSFIiLG51bGwsIkJBIiwiNDU5Il0sWyJMSFIiLCIyMDI0LTExLTE0IiwiSkZLIixudWxsLCJBQSIsIjEwNSJdXV0="
               },
               "totalPrice": 825,
-              "totalDuration": 1205
+              "totalDuration": 1185
             }
           ]
         },
@@ -1777,7 +1662,7 @@
             "price": 724,
             "type": "Round trip",
             "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UA.png",
-            "departure_token": "WyJDalJJVjBNeldDMUJlV3cwZVVsQlEzZGFXbmRDUnkwdExTMHRMUzB0TFhaM2MzY3hNMEZCUVVGQlIySm9Xa1pCVDA4emFVVkJFZ1JWUVRVeEdnc0lxTFVFRUFJYUExVlRSRGdjY0tpMUJBPT0iLFtbIkVXUiIsIjIwMjQtMTEtMDIiLCJNQUQiLG51bGwsIlVBIiwiNTEiXV1d"
+            "departure_token": "WyJDalJJVG5abGRHNW5OMmRxWkZWQlJUUjNTbEZDUnkwdExTMHRMUzB0ZDJaaVpHWXhPVUZCUVVGQlIySm9aR000UkdRd2NEaEJFZ1JWUVRVeEdnc0lxTFVFRUFJYUExVlRSRGdjY0tpMUJBPT0iLFtbIkVXUiIsIjIwMjQtMTEtMDIiLCJNQUQiLG51bGwsIlVBIiwiNTEiXV1d"
           },
           "outbound_google_flights_url": "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhowEgoyMDI0LTExLTAyagcIARIDSkZLagcIARIDTEdBagcIARIDRVdScgcIARIDTUFEGjASCjIwMjQtMTEtMTRqBwgBEgNNQURyBwgBEgNKRktyBwgBEgNMR0FyBwgBEgNFV1JCAQFIAXABmAEB",
           "return_google_flights_url": "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhpQEgoyMDI0LTExLTAyIh4KA0VXUhIKMjAyNC0xMS0wMhoDTUFEKgJVQTICNTFqBwgBEgNKRktqBwgBEgNMR0FqBwgBEgNFV1JyBwgBEgNNQUQaMBIKMjAyNC0xMS0xNGoHCAESA01BRHIHCAESA0pGS3IHCAESA0xHQXIHCAESA0VXUkIBAUgBcAGYAQE=",
@@ -1824,7 +1709,7 @@
                 "price": 729,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UA.png",
-                "booking_token": "WyJDalJJV2kxMVRFbFdPR1ppWnpSQlEwY3RUbEZDUnkwdExTMHRMUzB0TFMxNWJHMXdNMEZCUVVGQlIySm9Xa1k0VFV4WVZsZEJFZ1JWUVRVd0dnc0lrcmtFRUFJYUExVlRSRGdjY0pLNUJBPT0iLFtbIkVXUiIsIjIwMjQtMTEtMDIiLCJNQUQiLG51bGwsIlVBIiwiNTEiXV0sW1siTUFEIiwiMjAyNC0xMS0xNCIsIkVXUiIsbnVsbCwiVUEiLCI1MCJdXV0="
+                "booking_token": "WyJDalJJZDNwQmRXNXNSRWQyUWtsQlJGYzJhMEZDUnkwdExTMHRMUzB0TFMwdGRuUnlOMEZCUVVGQlIySm9aR1E0VGtSaGFsbEJFZ1JWUVRVd0dnc0lrcmtFRUFJYUExVlRSRGdjY0pLNUJBPT0iLFtbIkVXUiIsIjIwMjQtMTEtMDIiLCJNQUQiLG51bGwsIlVBIiwiNTEiXV0sW1siTUFEIiwiMjAyNC0xMS0xNCIsIkVXUiIsbnVsbCwiVUEiLCI1MCJdXV0="
               },
               "totalPrice": 729,
               "totalDuration": 980
@@ -1903,7 +1788,7 @@
                 "price": 724,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UA.png",
-                "booking_token": "WyJDalJJV2kxMVRFbFdPR1ppWnpSQlEwY3RUbEZDUnkwdExTMHRMUzB0TFMxNWJHMXdNMEZCUVVGQlIySm9Xa1k0VFV4WVZsZEJFZ3hWUVRJMk1YeFZRVEU1T1RjYUN3aW90UVFRQWhvRFZWTkVPQnh3cUxVRSIsW1siRVdSIiwiMjAyNC0xMS0wMiIsIk1BRCIsbnVsbCwiVUEiLCI1MSJdXSxbWyJNQUQiLCIyMDI0LTExLTE0IiwiSUFEIixudWxsLCJVQSIsIjI2MSJdLFsiSUFEIiwiMjAyNC0xMS0xNCIsIkVXUiIsbnVsbCwiVUEiLCIxOTk3Il1dXQ=="
+                "booking_token": "WyJDalJJZDNwQmRXNXNSRWQyUWtsQlJGYzJhMEZDUnkwdExTMHRMUzB0TFMwdGRuUnlOMEZCUVVGQlIySm9aR1E0VGtSaGFsbEJFZ3hWUVRJMk1YeFZRVEU1T1RjYUN3aW90UVFRQWhvRFZWTkVPQnh3cUxVRSIsW1siRVdSIiwiMjAyNC0xMS0wMiIsIk1BRCIsbnVsbCwiVUEiLCI1MSJdXSxbWyJNQUQiLCIyMDI0LTExLTE0IiwiSUFEIixudWxsLCJVQSIsIjI2MSJdLFsiSUFEIiwiMjAyNC0xMS0xNCIsIkVXUiIsbnVsbCwiVUEiLCIxOTk3Il1dXQ=="
               },
               "totalPrice": 724,
               "totalDuration": 1547
@@ -1981,7 +1866,7 @@
                 "price": 726,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/LX.png",
-                "booking_token": "WyJDalJJV2kxMVRFbFdPR1ppWnpSQlEwY3RUbEZDUnkwdExTMHRMUzB0TFMxNWJHMXdNMEZCUVVGQlIySm9Xa1k0VFV4WVZsZEJFZzFNV0RJd01qZDhURmd4T0NNeEdnc0ltTGNFRUFJYUExVlRSRGdjY0ppM0JBPT0iLFtbIkVXUiIsIjIwMjQtMTEtMDIiLCJNQUQiLG51bGwsIlVBIiwiNTEiXV0sW1siTUFEIiwiMjAyNC0xMS0xNCIsIlpSSCIsbnVsbCwiTFgiLCIyMDI3Il0sWyJaUkgiLCIyMDI0LTExLTE0IiwiRVdSIixudWxsLCJMWCIsIjE4Il1dXQ=="
+                "booking_token": "WyJDalJJZDNwQmRXNXNSRWQyUWtsQlJGYzJhMEZDUnkwdExTMHRMUzB0TFMwdGRuUnlOMEZCUVVGQlIySm9aR1E0VGtSaGFsbEJFZzFNV0RJd01qZDhURmd4T0NNeEdnc0ltTGNFRUFJYUExVlRSRGdjY0ppM0JBPT0iLFtbIkVXUiIsIjIwMjQtMTEtMDIiLCJNQUQiLG51bGwsIlVBIiwiNTEiXV0sW1siTUFEIiwiMjAyNC0xMS0xNCIsIlpSSCIsbnVsbCwiTFgiLCIyMDI3Il0sWyJaUkgiLCIyMDI0LTExLTE0IiwiRVdSIixudWxsLCJMWCIsIjE4Il1dXQ=="
               },
               "totalPrice": 726,
               "totalDuration": 1430
@@ -2059,10 +1944,90 @@
                 "price": 728,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/LH.png",
-                "booking_token": "WyJDalJJV2kxMVRFbFdPR1ppWnpSQlEwY3RUbEZDUnkwdExTMHRMUzB0TFMxNWJHMXdNMEZCUVVGQlIySm9Xa1k0VFV4WVZsZEJFZ3hNU0RFNE1ERjhURWcwTVRJYUN3ak11QVFRQWhvRFZWTkVPQnh3ekxnRSIsW1siRVdSIiwiMjAyNC0xMS0wMiIsIk1BRCIsbnVsbCwiVUEiLCI1MSJdXSxbWyJNQUQiLCIyMDI0LTExLTE0IiwiTVVDIixudWxsLCJMSCIsIjE4MDEiXSxbIk1VQyIsIjIwMjQtMTEtMTQiLCJFV1IiLG51bGwsIkxIIiwiNDEyIl1dXQ=="
+                "booking_token": "WyJDalJJZDNwQmRXNXNSRWQyUWtsQlJGYzJhMEZDUnkwdExTMHRMUzB0TFMwdGRuUnlOMEZCUVVGQlIySm9aR1E0VGtSaGFsbEJFZ3hNU0RFNE1ERjhURWcwTVRJYUN3ak11QVFRQWhvRFZWTkVPQnh3ekxnRSIsW1siRVdSIiwiMjAyNC0xMS0wMiIsIk1BRCIsbnVsbCwiVUEiLCI1MSJdXSxbWyJNQUQiLCIyMDI0LTExLTE0IiwiTVVDIixudWxsLCJMSCIsIjE4MDEiXSxbIk1VQyIsIjIwMjQtMTEtMTQiLCJFV1IiLG51bGwsIkxIIiwiNDEyIl1dXQ=="
               },
               "totalPrice": 728,
               "totalDuration": 1225
+            },
+            {
+              "returnFlight": {
+                "flights": [
+                  {
+                    "departure_airport": {
+                      "name": "Adolfo Suárez Madrid–Barajas Airport",
+                      "id": "MAD",
+                      "time": "2024-11-14 06:25"
+                    },
+                    "arrival_airport": {
+                      "name": "Brussels Airport",
+                      "id": "BRU",
+                      "time": "2024-11-14 08:50"
+                    },
+                    "duration": 145,
+                    "airplane": "Airbus A320",
+                    "airline": "Brussels Airlines",
+                    "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/SN.png",
+                    "travel_class": "Economy",
+                    "flight_number": "SN 3732",
+                    "ticket_also_sold_by": [
+                      "United"
+                    ],
+                    "legroom": "29 in",
+                    "extensions": [
+                      "Below average legroom (29 in)",
+                      "Carbon emissions estimate: 121 kg"
+                    ]
+                  },
+                  {
+                    "departure_airport": {
+                      "name": "Brussels Airport",
+                      "id": "BRU",
+                      "time": "2024-11-14 11:15"
+                    },
+                    "arrival_airport": {
+                      "name": "Newark Liberty International Airport",
+                      "id": "EWR",
+                      "time": "2024-11-14 13:35"
+                    },
+                    "duration": 500,
+                    "airplane": "Boeing 787-10",
+                    "airline": "United",
+                    "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UA.png",
+                    "travel_class": "Economy",
+                    "flight_number": "UA 995",
+                    "ticket_also_sold_by": [
+                      "Brussels Airlines"
+                    ],
+                    "legroom": "31 in",
+                    "extensions": [
+                      "Average legroom (31 in)",
+                      "Wi-Fi for a fee",
+                      "In-seat power & USB outlets",
+                      "On-demand video",
+                      "Carbon emissions estimate: 362 kg"
+                    ]
+                  }
+                ],
+                "layovers": [
+                  {
+                    "duration": 145,
+                    "name": "Brussels Airport",
+                    "id": "BRU"
+                  }
+                ],
+                "total_duration": 790,
+                "carbon_emissions": {
+                  "this_flight": 485000,
+                  "typical_for_this_route": 484000,
+                  "difference_percent": 0
+                },
+                "price": 734,
+                "type": "Round trip",
+                "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
+                "booking_token": "WyJDalJJZDNwQmRXNXNSRWQyUWtsQlJGYzJhMEZDUnkwdExTMHRMUzB0TFMwdGRuUnlOMEZCUVVGQlIySm9aR1E0VGtSaGFsbEJFZ3hUVGpNM016SjhWVUU1T1RVYUN3amV2QVFRQWhvRFZWTkVPQnh3M3J3RSIsW1siRVdSIiwiMjAyNC0xMS0wMiIsIk1BRCIsbnVsbCwiVUEiLCI1MSJdXSxbWyJNQUQiLCIyMDI0LTExLTE0IiwiQlJVIixudWxsLCJTTiIsIjM3MzIiXSxbIkJSVSIsIjIwMjQtMTEtMTQiLCJFV1IiLG51bGwsIlVBIiwiOTk1Il1dXQ=="
+              },
+              "totalPrice": 734,
+              "totalDuration": 1235
             },
             {
               "returnFlight": {
@@ -2141,7 +2106,7 @@
                 "price": 743,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
-                "booking_token": "WyJDalJJV2kxMVRFbFdPR1ppWnpSQlEwY3RUbEZDUnkwdExTMHRMUzB0TFMxNWJHMXdNMEZCUVVGQlIySm9Xa1k0VFV4WVZsZEJFZ3hNU0RFeE1qRjhWVUU1TmpFYUN3aVV4QVFRQWhvRFZWTkVPQnh3bE1RRSIsW1siRVdSIiwiMjAyNC0xMS0wMiIsIk1BRCIsbnVsbCwiVUEiLCI1MSJdXSxbWyJNQUQiLCIyMDI0LTExLTE0IiwiRlJBIixudWxsLCJMSCIsIjExMjEiXSxbIkZSQSIsIjIwMjQtMTEtMTQiLCJFV1IiLG51bGwsIlVBIiwiOTYxIl1dXQ=="
+                "booking_token": "WyJDalJJZDNwQmRXNXNSRWQyUWtsQlJGYzJhMEZDUnkwdExTMHRMUzB0TFMwdGRuUnlOMEZCUVVGQlIySm9aR1E0VGtSaGFsbEJFZ3hNU0RFeE1qRjhWVUU1TmpFYUN3aVV4QVFRQWhvRFZWTkVPQnh3bE1RRSIsW1siRVdSIiwiMjAyNC0xMS0wMiIsIk1BRCIsbnVsbCwiVUEiLCI1MSJdXSxbWyJNQUQiLCIyMDI0LTExLTE0IiwiRlJBIixudWxsLCJMSCIsIjExMjEiXSxbIkZSQSIsIjIwMjQtMTEtMTQiLCJFV1IiLG51bGwsIlVBIiwiOTYxIl1dXQ=="
               },
               "totalPrice": 743,
               "totalDuration": 1265
@@ -2194,7 +2159,7 @@
             "price": 736,
             "type": "Round trip",
             "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/DL.png",
-            "departure_token": "WyJDalJJVjBNeldDMUJlV3cwZVVsQlEzZGFXbmRDUnkwdExTMHRMUzB0TFhaM2MzY3hNMEZCUVVGQlIySm9Xa1pCVDA4emFVVkJFZ1ZFVERFeU5ob0xDTTYrQkJBQ0dnTlZVMFE0SEhET3ZnUT0iLFtbIkpGSyIsIjIwMjQtMTEtMDIiLCJNQUQiLG51bGwsIkRMIiwiMTI2Il1dXQ=="
+            "departure_token": "WyJDalJJVG5abGRHNW5OMmRxWkZWQlJUUjNTbEZDUnkwdExTMHRMUzB0ZDJaaVpHWXhPVUZCUVVGQlIySm9aR000UkdRd2NEaEJFZ1ZFVERFeU5ob0xDTTYrQkJBQ0dnTlZVMFE0SEhET3ZnUT0iLFtbIkpGSyIsIjIwMjQtMTEtMDIiLCJNQUQiLG51bGwsIkRMIiwiMTI2Il1dXQ=="
           },
           "outbound_google_flights_url": "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhowEgoyMDI0LTExLTAyagcIARIDSkZLagcIARIDTEdBagcIARIDRVdScgcIARIDTUFEGjASCjIwMjQtMTEtMTRqBwgBEgNNQURyBwgBEgNKRktyBwgBEgNMR0FyBwgBEgNFV1JCAQFIAXABmAEB",
           "return_google_flights_url": "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&tfs=CBwQAhpREgoyMDI0LTExLTAyIh8KA0pGSxIKMjAyNC0xMS0wMhoDTUFEKgJETDIDMTI2agcIARIDSkZLagcIARIDTEdBagcIARIDRVdScgcIARIDTUFEGjASCjIwMjQtMTEtMTRqBwgBEgNNQURyBwgBEgNKRktyBwgBEgNMR0FyBwgBEgNFV1JCAQFIAXABmAEB",
@@ -2244,7 +2209,7 @@
                 "price": 736,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/DL.png",
-                "booking_token": "WyJDalJJTm1GeGIzWnBRV0ZSWmtsQlJUWllZbmRDUnkwdExTMHRMUzB0TFhkbWFXa3lNa0ZCUVVGQlIySm9Xa2RSUVVaak1FOUJFZ2RFVERFeU55TXhHZ3NJenI0RUVBSWFBMVZUUkRnY2NNNitCQT09IixbWyJKRksiLCIyMDI0LTExLTAyIiwiTUFEIixudWxsLCJETCIsIjEyNiJdXSxbWyJNQUQiLCIyMDI0LTExLTE0IiwiSkZLIixudWxsLCJETCIsIjEyNyJdXV0="
+                "booking_token": "WyJDalJJVFRSTU1WZGxaWEJvZEc5QlFqUkVNWGRDUnkwdExTMHRMUzB0TFMxd2FucGlPRUZCUVVGQlIySm9aR1ZSUVVocVEwVkJFZ1ZFVERFeU54b0xDTTYrQkJBQ0dnTlZVMFE0SEhET3ZnUT0iLFtbIkpGSyIsIjIwMjQtMTEtMDIiLCJNQUQiLG51bGwsIkRMIiwiMTI2Il1dLFtbIk1BRCIsIjIwMjQtMTEtMTQiLCJKRksiLG51bGwsIkRMIiwiMTI3Il1dXQ=="
               },
               "totalPrice": 736,
               "totalDuration": 955
@@ -2326,7 +2291,7 @@
                 "price": 768,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/KL.png",
-                "booking_token": "WyJDalJJTm1GeGIzWnBRV0ZSWmtsQlJUWllZbmRDUnkwdExTMHRMUzB0TFhkbWFXa3lNa0ZCUVVGQlIySm9Xa2RSUVVaak1FOUJFZzVMVERFMU1EUjhTMHcyTkRNak1Sb0xDTVRYQkJBQ0dnTlZVMFE0SEhERTF3UT0iLFtbIkpGSyIsIjIwMjQtMTEtMDIiLCJNQUQiLG51bGwsIkRMIiwiMTI2Il1dLFtbIk1BRCIsIjIwMjQtMTEtMTQiLCJBTVMiLG51bGwsIktMIiwiMTUwNCJdLFsiQU1TIiwiMjAyNC0xMS0xNCIsIkpGSyIsbnVsbCwiS0wiLCI2NDMiXV1d"
+                "booking_token": "WyJDalJJVFRSTU1WZGxaWEJvZEc5QlFqUkVNWGRDUnkwdExTMHRMUzB0TFMxd2FucGlPRUZCUVVGQlIySm9aR1ZSUVVocVEwVkJFZ3hMVERFMU1EUjhTMHcyTkRNYUN3akUxd1FRQWhvRFZWTkVPQnh3eE5jRSIsW1siSkZLIiwiMjAyNC0xMS0wMiIsIk1BRCIsbnVsbCwiREwiLCIxMjYiXV0sW1siTUFEIiwiMjAyNC0xMS0xNCIsIkFNUyIsbnVsbCwiS0wiLCIxNTA0Il0sWyJBTVMiLCIyMDI0LTExLTE0IiwiSkZLIixudWxsLCJLTCIsIjY0MyJdXV0="
               },
               "totalPrice": 768,
               "totalDuration": 1170
@@ -2408,7 +2373,7 @@
                 "price": 772,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AF.png",
-                "booking_token": "WyJDalJJTm1GeGIzWnBRV0ZSWmtsQlJUWllZbmRDUnkwdExTMHRMUzB0TFhkbWFXa3lNa0ZCUVVGQlIySm9Xa2RSUVVaak1FOUJFZ3hCUmpFek1ERjhRVVk0SXpFYUN3aUcyd1FRQWhvRFZWTkVPQnh3aHRzRSIsW1siSkZLIiwiMjAyNC0xMS0wMiIsIk1BRCIsbnVsbCwiREwiLCIxMjYiXV0sW1siTUFEIiwiMjAyNC0xMS0xNCIsIkNERyIsbnVsbCwiQUYiLCIxMzAxIl0sWyJDREciLCIyMDI0LTExLTE0IiwiSkZLIixudWxsLCJBRiIsIjgiXV1d"
+                "booking_token": "WyJDalJJVFRSTU1WZGxaWEJvZEc5QlFqUkVNWGRDUnkwdExTMHRMUzB0TFMxd2FucGlPRUZCUVVGQlIySm9aR1ZSUVVocVEwVkJFZ3BCUmpFek1ERjhRVVk0R2dzSWh0c0VFQUlhQTFWVFJEZ2NjSWJiQkE9PSIsW1siSkZLIiwiMjAyNC0xMS0wMiIsIk1BRCIsbnVsbCwiREwiLCIxMjYiXV0sW1siTUFEIiwiMjAyNC0xMS0xNCIsIkNERyIsbnVsbCwiQUYiLCIxMzAxIl0sWyJDREciLCIyMDI0LTExLTE0IiwiSkZLIixudWxsLCJBRiIsIjgiXV1d"
               },
               "totalPrice": 772,
               "totalDuration": 1195
@@ -2455,7 +2420,7 @@
                 "price": 6458,
                 "type": "Round trip",
                 "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/IB.png",
-                "booking_token": "WyJDalJJTm1GeGIzWnBRV0ZSWmtsQlJUWllZbmRDUnkwdExTMHRMUzB0TFhkbWFXa3lNa0ZCUVVGQlIySm9Xa2RSUVVaak1FOUJFZ1ZKUWpNeU5Sb0xDUGEwSnhBQ0dnTlZVMFE0SEhEMnRDYz0iLFtbIkpGSyIsIjIwMjQtMTEtMDIiLCJNQUQiLG51bGwsIkRMIiwiMTI2Il1dLFtbIk1BRCIsIjIwMjQtMTEtMTQiLCJKRksiLG51bGwsIklCIiwiMzI1Il1dXQ=="
+                "booking_token": "WyJDalJJVFRSTU1WZGxaWEJvZEc5QlFqUkVNWGRDUnkwdExTMHRMUzB0TFMxd2FucGlPRUZCUVVGQlIySm9aR1ZSUVVocVEwVkJFZ1ZKUWpNeU5Sb0xDUGEwSnhBQ0dnTlZVMFE0SEhEMnRDYz0iLFtbIkpGSyIsIjIwMjQtMTEtMDIiLCJNQUQiLG51bGwsIkRMIiwiMTI2Il1dLFtbIk1BRCIsIjIwMjQtMTEtMTQiLCJKRksiLG51bGwsIklCIiwiMzI1Il1dXQ=="
               },
               "totalPrice": 6458,
               "totalDuration": 960
