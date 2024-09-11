@@ -2,23 +2,24 @@ import { promises as fs } from 'fs';
 import path from 'path';
 
 export function generateDateCombinations(
-  startDate: Date,
-  endDate: Date,
+  startDate: string,
+  endDate: string,
   tripDuration: number
-): [Date, Date][] {
-  const combinations: [Date, Date][] = [];
+): [string, string][] {
+  const combinations: [string, string][] = [];
   let currentDate = new Date(startDate);
+  const endDateObj = new Date(endDate);
 
   while (
     currentDate <=
-    new Date(endDate.getTime() - tripDuration * 24 * 60 * 60 * 1000)
+    new Date(endDateObj.getTime() - tripDuration * 24 * 60 * 60 * 1000)
   ) {
-    const departureDate = new Date(currentDate);
-    const returnDate = new Date(
-      departureDate.getTime() + tripDuration * 24 * 60 * 60 * 1000
+    const departureDate = formatDate(currentDate);
+    const returnDate = formatDate(
+      new Date(currentDate.getTime() + tripDuration * 24 * 60 * 60 * 1000)
     );
 
-    if (returnDate <= endDate) {
+    if (new Date(returnDate) <= endDateObj) {
       combinations.push([departureDate, returnDate]);
     }
 
@@ -26,6 +27,11 @@ export function generateDateCombinations(
   }
 
   return combinations;
+}
+
+// Helper function to format Date to "YYYY-MM-DD" string
+function formatDate(date: Date): string {
+  return date.toISOString().split('T')[0];
 }
 
 export const formatDuration = (minutes?: number) => {
@@ -172,4 +178,16 @@ export function filterAndPrioritizeFlights(flights, typicalPriceRange) {
   }
 
   return prioritizedFlights;
+}
+
+export function removeDateTimezone(date) {
+  // Create a new Date object using only the year, month, and day
+  const dateWithoutTimezone = new Date(
+    date.getFullYear(),
+    date.getMonth(),
+    date.getDate()
+  );
+
+  // Convert to ISO string and remove the time portion
+  return dateWithoutTimezone.toISOString().split('T')[0];
 }

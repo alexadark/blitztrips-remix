@@ -7,7 +7,10 @@ import { generateObject, generateText } from 'ai';
 import { openai } from '@ai-sdk/openai';
 import { z } from 'zod';
 import { getRoundTripFlights, getMultiCityFlights } from '~/lib/getFlights';
-import { generateDateCombinations } from '~/lib/helper-functions';
+import {
+  generateDateCombinations,
+  removeDateTimezone,
+} from '~/lib/helper-functions';
 import { format } from 'date-fns';
 
 export const action: ActionFunction = async ({ request }) => {
@@ -42,16 +45,16 @@ export const action: ActionFunction = async ({ request }) => {
 
     // Generate date combinations
     const dateCombinations = generateDateCombinations(
-      startDate,
-      endDate,
+      removeDateTimezone(startDate),
+      removeDateTimezone(endDate),
       tripDuration
     );
-    const humanDateCombinations = dateCombinations.map((combination) => {
-      return {
-        departureDate: format(combination[0], 'MMM dd, yyyy'),
-        returnDate: format(combination[1], 'MMM dd, yyyy'),
-      };
-    });
+    // const humanDateCombinations = dateCombinations.map((combination) => {
+    //   return {
+    //     departureDate: format(combination[0], 'MMM dd, yyyy'),
+    //     returnDate: format(combination[1], 'MMM dd, yyyy'),
+    //   };
+    // });
 
     const { object: cityCodes } = await generateObject({
       system: `you're an airport search engine and you know all the airport codes for all the world`,
@@ -94,7 +97,7 @@ export const action: ActionFunction = async ({ request }) => {
       action: 'generateitinerary',
       finalResults,
       dateCombinations,
-      humanDateCombinations,
+      // humanDateCombinations,
       travelDates,
       // ... other search-related data ...
     });
