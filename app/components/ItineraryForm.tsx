@@ -10,11 +10,33 @@ import { Form } from '@remix-run/react';
 const ItineraryForm: React.FC = () => {
   const [dateRange, setDateRange] = useState([
     {
-      startDate: new Date(2024, 10, 1), // November 1, 2024
-      endDate: new Date(2024, 10, 14), // November 14, 2024
+      startDate: new Date(Date.UTC(2024, 11, 1)), // November 1, 2024 (month is 0-indexed)
+      endDate: new Date(Date.UTC(2024, 11, 14)), // November 14, 2024
       key: 'selection',
     },
   ]);
+
+  const handleDateChange = (item: any) => {
+    setDateRange([
+      {
+        startDate: new Date(
+          Date.UTC(
+            item.selection.startDate.getFullYear(),
+            item.selection.startDate.getMonth(),
+            item.selection.startDate.getDate()
+          )
+        ),
+        endDate: new Date(
+          Date.UTC(
+            item.selection.endDate.getFullYear(),
+            item.selection.endDate.getMonth(),
+            item.selection.endDate.getDate()
+          )
+        ),
+        key: 'selection',
+      },
+    ]);
+  };
 
   return (
     <>
@@ -193,7 +215,7 @@ const ItineraryForm: React.FC = () => {
             </label>
             <DateRange
               editableDateInputs={true}
-              onChange={(item) => setDateRange([item.selection])}
+              onChange={handleDateChange}
               moveRangeOnFirstSelection={false}
               ranges={dateRange}
             />
