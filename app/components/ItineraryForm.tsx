@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
-// import { searchFlights } from '@/app/actions/searchFlights';
-// import { generateItinerary } from '@/app/actions/generateItinerary';
-import { DateRange } from 'react-date-range';
-import 'react-date-range/dist/styles.css'; // main style file
-import 'react-date-range/dist/theme/default.css'; // theme css file
+import React, { useState, useEffect } from 'react';
 import { Form } from '@remix-run/react';
-// import { FlightResults } from '@/components/trip-components/FlightResults';
-//
+import 'react-datepicker/dist/react-datepicker.css';
+
 const ItineraryForm: React.FC = () => {
-  const [dateRange, setDateRange] = useState([
-    {
-      startDate: new Date(2024, 10, 1), // November 1, 2024
-      endDate: new Date(2024, 10, 14), // November 14, 2024
-      key: 'selection',
-    },
-  ]);
+  const [startDate, setStartDate] = useState<Date | null>(
+    new Date(2024, 10, 1)
+  );
+  const [endDate, setEndDate] = useState<Date | null>(new Date(2024, 10, 14));
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const formatDate = (date: Date | null) => {
+    return date ? date.toISOString().split('T')[0] : '';
+  };
 
   return (
     <>
@@ -187,22 +188,48 @@ const ItineraryForm: React.FC = () => {
             </div>
           </div>
 
-          <div className="form-control">
-            <label className="label" htmlFor="travelDates">
-              <span className="label-text">Travel Dates</span>
-            </label>
-            <DateRange
-              editableDateInputs={true}
-              onChange={(item) => setDateRange([item.selection])}
-              moveRangeOnFirstSelection={false}
-              ranges={dateRange}
-            />
-            <input
-              type="hidden"
-              name="travelDates"
-              value={`${dateRange[0].startDate.toISOString()} to ${dateRange[0].endDate.toISOString()}`}
-            />
-          </div>
+          {isClient ? (
+            <>
+              <div className="form-control">
+                <label className="label" htmlFor="startDate">
+                  <span className="label-text">Start Date</span>
+                </label>
+                <DatePickerWrapper
+                  selected={startDate}
+                  onChange={(date: Date) => setStartDate(date)}
+                  selectsStart
+                  startDate={startDate}
+                  endDate={endDate}
+                  dateFormat="yyyy-MM-dd"
+                  className="input input-bordered"
+                />
+              </div>
+
+              <div className="form-control">
+                <label className="label" htmlFor="endDate">
+                  <span className="label-text">End Date</span>
+                </label>
+                <DatePickerWrapper
+                  selected={endDate}
+                  onChange={(date: Date) => setEndDate(date)}
+                  selectsEnd
+                  startDate={startDate}
+                  endDate={endDate}
+                  minDate={startDate}
+                  dateFormat="yyyy-MM-dd"
+                  className="input input-bordered"
+                />
+              </div>
+            </>
+          ) : (
+            <div>Loading date picker...</div>
+          )}
+
+          <input
+            type="hidden"
+            name="travelDates"
+            value={`${formatDate(startDate)} to ${formatDate(endDate)}`}
+          />
 
           <div className="form-control">
             <label className="label" htmlFor="extraConsiderations">
@@ -227,6 +254,22 @@ const ItineraryForm: React.FC = () => {
       </Form>
     </>
   );
+};
+
+const DatePickerWrapper = (props: any) => {
+  const [DatePicker, setDatePicker] = useState<any>(null);
+
+  useEffect(() => {
+    import('react-datepicker').then((module) => {
+      setDatePicker(() => module.default);
+    });
+  }, []);
+
+  if (!DatePicker) {
+    return null;
+  }
+
+  return <DatePicker {...props} />;
 };
 
 export default ItineraryForm;
