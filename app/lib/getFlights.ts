@@ -9,7 +9,7 @@ import {
 } from './helper-functions';
 
 const API_KEY = process.env.SERPAPI_API_KEY;
-const MAX_OUTBOUND_FLIGHTS = 5;
+const MAX_OUTBOUND_FLIGHTS = 3;
 const MAX_RETURN_FLIGHTS = 5;
 
 const commonParams = {
