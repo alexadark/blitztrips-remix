@@ -2,11 +2,11 @@ import type { ActionFunction, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Form, useActionData } from '@remix-run/react';
 import ItineraryForm from '~/components/ItineraryForm';
-// import { FlightResults } from '~/components/FlightResults';
+import { FlightResults } from '~/components/FlightResults';
 import { generateObject, generateText } from 'ai';
 import { openai } from '@ai-sdk/openai';
 import { z } from 'zod';
-// import { getRoundTripFlights, getMultiCityFlights } from '~/lib/getFlights';
+import { getRoundTripFlights, getMultiCityFlights } from '~/lib/getFlights';
 import {
   generateDateCombinations,
   formatDuration,
@@ -66,34 +66,34 @@ export const action: ActionFunction = async ({ request }) => {
     console.log('cityCodes', cityCodes);
 
     // Call getRoundTripFlights function
-    // const roundTripFlights = await getRoundTripFlights(
-    //   cityCodes.homeTownIataCodes,
-    //   cityCodes.entryCityIataCodes,
-    //   dateCombinations,
-    //   numAdults,
-    //   children,
-    //   infants
-    // );
+    const roundTripFlights = await getRoundTripFlights(
+      cityCodes.homeTownIataCodes,
+      cityCodes.entryCityIataCodes,
+      dateCombinations,
+      numAdults,
+      children,
+      infants
+    );
 
     // Add multi-city flight search
-    // const multiCityFlights = await getMultiCityFlights(
-    //   cityCodes.homeTownIataCodes,
-    //   cityCodes.entryCityIataCodes,
-    //   cityCodes.departureCityIataCodes,
-    //   dateCombinations,
-    //   numAdults,
-    //   children,
-    //   infants
-    // );
-    // const length = dateCombinations.length;
-    // const finalResults = multiCityFlights?.results?.slice(-length);
+    const multiCityFlights = await getMultiCityFlights(
+      cityCodes.homeTownIataCodes,
+      cityCodes.entryCityIataCodes,
+      cityCodes.departureCityIataCodes,
+      dateCombinations,
+      numAdults,
+      children,
+      infants
+    );
+    const length = dateCombinations.length;
+    const finalResults = multiCityFlights?.results?.slice(-length);
 
     return json({
       action: 'generateitinerary',
-      // finalResults,
+      finalResults,
       // ... other search-related data ...
-      travelDates,
-      dateCombinations,
+      // travelDates,
+      // dateCombinations,
     });
   } else if (action === 'chooseflights') {
     const selectedFlights = formData.getAll('selectedFlights');
