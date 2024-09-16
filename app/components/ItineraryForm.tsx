@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-// import { searchFlights } from '@/app/actions/searchFlights';
-// import { generateItinerary } from '@/app/actions/generateItinerary';
 import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { Form } from '@remix-run/react';
-// import { FlightResults } from '@/components/trip-components/FlightResults';
-//
+
 const ItineraryForm: React.FC = () => {
   const [dateRange, setDateRange] = useState([
     {
@@ -200,7 +197,7 @@ const ItineraryForm: React.FC = () => {
             <input
               type="hidden"
               name="travelDates"
-              value={`${dateRange[0].startDate.toISOString()} to ${dateRange[0].endDate.toISOString()}`}
+              value={`${dateRange[0].startDate.getTime()} to ${dateRange[0].endDate.getTime()}`}
             />
           </div>
 

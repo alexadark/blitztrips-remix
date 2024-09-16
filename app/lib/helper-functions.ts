@@ -5,27 +5,34 @@ export function generateDateCombinations(
   startDate: Date,
   endDate: Date,
   tripDuration: number
-): [Date, Date][] {
-  const combinations: [Date, Date][] = [];
-  let currentDate = new Date(startDate);
+): [string, string][] {
+  const combinations: [string, string][] = [];
+  let currentDate = new Date(startDate.getTime());
 
   while (
-    currentDate <=
-    new Date(endDate.getTime() - tripDuration * 24 * 60 * 60 * 1000)
+    currentDate.getTime() <=
+    new Date(endDate.getTime() - tripDuration * 24 * 60 * 60 * 1000).getTime()
   ) {
-    const departureDate = new Date(currentDate);
+    const departureDate = new Date(currentDate.getTime());
     const returnDate = new Date(
       departureDate.getTime() + tripDuration * 24 * 60 * 60 * 1000
     );
 
-    if (returnDate <= endDate) {
-      combinations.push([departureDate, returnDate]);
+    if (returnDate.getTime() <= endDate.getTime()) {
+      combinations.push([
+        formatDateToYYYYMMDD(departureDate),
+        formatDateToYYYYMMDD(returnDate),
+      ]);
     }
 
-    currentDate.setDate(currentDate.getDate() + 1);
+    currentDate.setUTCDate(currentDate.getUTCDate() + 1);
   }
 
   return combinations;
+}
+
+function formatDateToYYYYMMDD(date: Date): string {
+  return date.toISOString().split('T')[0];
 }
 
 export const formatDuration = (minutes?: number) => {

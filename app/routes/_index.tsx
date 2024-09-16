@@ -2,12 +2,16 @@ import type { ActionFunction, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Form, useActionData } from '@remix-run/react';
 import ItineraryForm from '~/components/ItineraryForm';
-import { FlightResults } from '~/components/FlightResults';
+// import { FlightResults } from '~/components/FlightResults';
 import { generateObject, generateText } from 'ai';
 import { openai } from '@ai-sdk/openai';
 import { z } from 'zod';
-import { getRoundTripFlights, getMultiCityFlights } from '~/lib/getFlights';
-import { generateDateCombinations } from '~/lib/helper-functions';
+// import { getRoundTripFlights, getMultiCityFlights } from '~/lib/getFlights';
+import {
+  generateDateCombinations,
+  formatDuration,
+  formatDateTime,
+} from '~/lib/helper-functions';
 import { format } from 'date-fns';
 
 export const action: ActionFunction = async ({ request }) => {
@@ -36,9 +40,9 @@ export const action: ActionFunction = async ({ request }) => {
 
     const [startDateStr, endDateStr] = travelDates.split(' to ');
 
-    // Convert string dates to Date objects
-    const startDate = new Date(startDateStr);
-    const endDate = new Date(endDateStr);
+    // Convert epoch strings to Date objects in UTC
+    const startDate = new Date(parseInt(startDateStr, 10));
+    const endDate = new Date(parseInt(endDateStr, 10));
 
     // Generate date combinations
     const dateCombinations = generateDateCombinations(
@@ -62,32 +66,34 @@ export const action: ActionFunction = async ({ request }) => {
     console.log('cityCodes', cityCodes);
 
     // Call getRoundTripFlights function
-    const roundTripFlights = await getRoundTripFlights(
-      cityCodes.homeTownIataCodes,
-      cityCodes.entryCityIataCodes,
-      dateCombinations,
-      numAdults,
-      children,
-      infants
-    );
+    // const roundTripFlights = await getRoundTripFlights(
+    //   cityCodes.homeTownIataCodes,
+    //   cityCodes.entryCityIataCodes,
+    //   dateCombinations,
+    //   numAdults,
+    //   children,
+    //   infants
+    // );
 
     // Add multi-city flight search
-    const multiCityFlights = await getMultiCityFlights(
-      cityCodes.homeTownIataCodes,
-      cityCodes.entryCityIataCodes,
-      cityCodes.departureCityIataCodes,
-      dateCombinations,
-      numAdults,
-      children,
-      infants
-    );
-    const length = dateCombinations.length;
-    const finalResults = multiCityFlights?.results?.slice(-length);
+    // const multiCityFlights = await getMultiCityFlights(
+    //   cityCodes.homeTownIataCodes,
+    //   cityCodes.entryCityIataCodes,
+    //   cityCodes.departureCityIataCodes,
+    //   dateCombinations,
+    //   numAdults,
+    //   children,
+    //   infants
+    // );
+    // const length = dateCombinations.length;
+    // const finalResults = multiCityFlights?.results?.slice(-length);
 
     return json({
       action: 'generateitinerary',
-      finalResults,
+      // finalResults,
       // ... other search-related data ...
+      travelDates,
+      dateCombinations,
     });
   } else if (action === 'chooseflights') {
     const selectedFlights = formData.getAll('selectedFlights');
@@ -123,6 +129,7 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   const data = useActionData();
+  console.log('data', data);
 
   return (
     <div className="font-sans p-4">
