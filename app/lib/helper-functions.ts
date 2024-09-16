@@ -7,25 +7,24 @@ export function generateDateCombinations(
   tripDuration: number
 ): [string, string][] {
   const combinations: [string, string][] = [];
-  let currentDate = new Date(startDate.getTime());
+  let currentDate = new Date(startDate.getTime() + 24 * 60 * 60 * 1000); // Start from the next day
+  const endDateUTC = new Date(endDate.getTime() + 24 * 60 * 60 * 1000); // Extend end date by one day
 
-  while (
-    currentDate.getTime() <=
-    new Date(endDate.getTime() - tripDuration * 24 * 60 * 60 * 1000).getTime()
-  ) {
+  while (currentDate <= endDateUTC) {
     const departureDate = new Date(currentDate.getTime());
     const returnDate = new Date(
-      departureDate.getTime() + tripDuration * 24 * 60 * 60 * 1000
+      departureDate.getTime() + (tripDuration - 1) * 24 * 60 * 60 * 1000
     );
 
-    if (returnDate.getTime() <= endDate.getTime()) {
+    if (returnDate <= endDateUTC) {
       combinations.push([
         formatDateToYYYYMMDD(departureDate),
         formatDateToYYYYMMDD(returnDate),
       ]);
     }
 
-    currentDate.setUTCDate(currentDate.getUTCDate() + 1);
+    // Move to the next day
+    currentDate = new Date(currentDate.getTime() + 24 * 60 * 60 * 1000);
   }
 
   return combinations;
